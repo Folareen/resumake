@@ -17,8 +17,8 @@ const PublicRoutes = () => {
             <Route path='/dashboard' element={<Navigate replace to='/login' />} />
             <Route path='*' element={<NotFound />} />
             <Route path='/create' element={<Create />} />
-            <Route path='/templates' element={<Templates />} />
-            <Route path='/blank' element={<Blank />} />
+            <Route path='/create/templates' element={<Templates />} />
+            <Route path='/create/blank' element={<Blank />} />
         </Routes>
     )
 }
