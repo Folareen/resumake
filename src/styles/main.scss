@@ -20,3 +20,44 @@
 
 // 7. Themes
 @import "themes/default";
+
+.toolbar {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    position: fixed;
+    top: 10px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.toolbar button{
+    padding: 3px;
+    margin: 0 3px;
+}
+
+.editable {
+    resize: both;
+    overflow: auto;
+}
+
+.line {
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    resize: horizontal;
+    overflow: auto;
+}
+
+.resume{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px !important;
+}
+
+p:focus{
+    outline: 1px solid gray;
+}
