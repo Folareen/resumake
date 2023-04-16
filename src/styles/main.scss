@@ -34,7 +34,7 @@
     transform: translateX(-50%);
 }
 
-.toolbar button{
+.toolbar button {
     padding: 3px;
     margin: 0 3px;
 }
@@ -42,6 +42,7 @@
 .editable {
     resize: both;
     overflow: auto;
+    max-width: 100%;
 }
 
 .line {
@@ -52,12 +53,16 @@
     overflow: auto;
 }
 
-.resume{
-    width: 80%;
+.resume {
+    width: 793px;
+    height: 1122px;
+    border: 1px solid red;
     margin: auto;
     margin-top: 50px !important;
+    background-color: gray;
+    transform: scale(0.5);
 }
 
-p:focus{
+p:focus {
     outline: 1px solid gray;
 }
