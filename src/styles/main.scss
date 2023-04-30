@@ -39,10 +39,31 @@
     margin: 0 3px;
 }
 
+.editable-container {
+    position: relative;
+}
+
 .editable {
     resize: both;
     overflow: auto;
     max-width: 100%;
+    display: inline-block;
+    min-width: max-content;
+}
+
+.editable.inline {
+    width: 50%;
+}
+
+.editable.block {
+    width: 100%;
+}
+
+.editable-btns {
+    position: absolute;
+    top: -10px;
+    z-index: 10;
+    width: 100%;
 }
 
 .line {
@@ -56,13 +77,13 @@
 .resume {
     width: 793px;
     height: 1122px;
-    border: 1px solid red;
     margin: auto;
     margin-top: 50px !important;
-    background-color: gray;
-    transform: scale(0.5);
+    background-color: rgb(240, 240, 240);
+    overflow: visible;
 }
 
-p:focus {
+.editable:focus,
+.editable:active {
     outline: 1px solid gray;
 }
