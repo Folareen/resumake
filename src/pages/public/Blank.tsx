@@ -3,7 +3,7 @@ import Editable from '../../components/Editable'
 import ReactToPdf from 'react-to-pdf'
 import { IoDuplicate } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
-import { MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
+import { MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 
 const Blank = () => {
     const [refresh, setRefresh] = useState<boolean>(false)
@@ -51,12 +51,18 @@ const Blank = () => {
     }
     const moveUp = () => {
         const newEl = currentEl as HTMLElement
-        console.log(newEl.offsetLeft)
-        console.log(newEl.offsetRight)
         newEl.classList.remove('inline')
         newEl.classList.add('block')
         newEl.addEventListener('click', showToolbarHandler)
         currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
+    }
+    const moveDown = () => {
+        console.log('move down')
+        const newEl = currentEl as HTMLElement
+        newEl.classList.remove('inline')
+        newEl.classList.add('block')
+        newEl.addEventListener('click', showToolbarHandler)
+        currentEl?.parentNode?.insertBefore(newEl, currentEl?.nextSibling);
     }
 
 
@@ -134,6 +140,9 @@ const Blank = () => {
                         </button>
                         <button className='btn' onClick={moveUp}>
                             <MdOutlineKeyboardDoubleArrowUp />
+                        </button>
+                        <button className='btn' onClick={moveDown}>
+                            <MdOutlineKeyboardDoubleArrowDown />
                         </button>
                         <button className='btn' onClick={() => {
                             currentEl?.remove()
