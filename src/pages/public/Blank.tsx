@@ -4,6 +4,7 @@ import ReactToPdf from 'react-to-pdf'
 import { IoDuplicate } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
 import { MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
+import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 
 const Blank = () => {
     const [refresh, setRefresh] = useState<boolean>(false)
@@ -63,6 +64,15 @@ const Blank = () => {
         newEl.classList.add('block')
         newEl.addEventListener('click', showToolbarHandler)
         currentEl?.parentNode?.insertBefore(newEl, currentEl?.nextSibling);
+    }
+    const insertUp = () => {
+        const newEl = currentEl?.cloneNode(true) as HTMLElement
+        newEl.innerText = ''
+        newEl.classList.remove('inline')
+        newEl.classList.add('block')
+        newEl.addEventListener('click', showToolbarHandler)
+        currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
+        newEl.focus()
     }
 
 
@@ -143,6 +153,9 @@ const Blank = () => {
                         </button>
                         <button className='btn' onClick={moveDown}>
                             <MdOutlineKeyboardDoubleArrowDown />
+                        </button>
+                        <button className='btn' onClick={insertUp}>
+                            <TbRowInsertTop />
                         </button>
                         <button className='btn' onClick={() => {
                             currentEl?.remove()
