@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import Editable from '../../components/Editable'
 import ReactToPdf from 'react-to-pdf'
 import { IoDuplicate } from 'react-icons/io5'
-import { BsChevronCompactDown, BsChevronCompactUp } from 'react-icons/bs'
+import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
 
 const Blank = () => {
     const [refresh, setRefresh] = useState<boolean>(false)
@@ -41,8 +41,12 @@ const Blank = () => {
         newEl.classList.remove('inline')
         newEl.classList.add('block')
         newEl.addEventListener('click', showToolbarHandler)
-        console.log(currentEl?.parentNode, 'currElParent')
         currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
+    }
+    const duplicateRight = () => {
+        const newEl = currentEl?.cloneNode(true) as HTMLElement
+        newEl.addEventListener('click', showToolbarHandler)
+        currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
     }
 
 
@@ -114,6 +118,10 @@ const Blank = () => {
                             <BsChevronCompactUp />
                             <IoDuplicate />
                         </button>
+                        <button style={{ display: 'flex', flexDirection: 'row' }} className='btn' onClick={duplicateRight}>
+                            <BsChevronCompactRight />
+                            <IoDuplicate />
+                        </button>
                         <button className='btn' onClick={() => {
                             currentEl?.remove()
 
@@ -140,9 +148,6 @@ const Blank = () => {
                 </Editable>
                 <Editable onSelect={showToolbarHandler}>
                     you
-                </Editable>
-                <Editable onSelect={showToolbarHandler}>
-                    lmao
                 </Editable>
 
             </div>
