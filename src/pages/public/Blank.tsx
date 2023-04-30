@@ -3,6 +3,7 @@ import Editable from '../../components/Editable'
 import ReactToPdf from 'react-to-pdf'
 import { IoDuplicate } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
+import { MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 
 const Blank = () => {
     const [refresh, setRefresh] = useState<boolean>(false)
@@ -47,6 +48,15 @@ const Blank = () => {
         const newEl = currentEl?.cloneNode(true) as HTMLElement
         newEl.addEventListener('click', showToolbarHandler)
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
+    }
+    const moveUp = () => {
+        const newEl = currentEl as HTMLElement
+        console.log(newEl.offsetLeft)
+        console.log(newEl.offsetRight)
+        newEl.classList.remove('inline')
+        newEl.classList.add('block')
+        newEl.addEventListener('click', showToolbarHandler)
+        currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
     }
 
 
@@ -121,6 +131,9 @@ const Blank = () => {
                         <button style={{ display: 'flex', flexDirection: 'row' }} className='btn' onClick={duplicateRight}>
                             <BsChevronCompactRight />
                             <IoDuplicate />
+                        </button>
+                        <button className='btn' onClick={moveUp}>
+                            <MdOutlineKeyboardDoubleArrowUp />
                         </button>
                         <button className='btn' onClick={() => {
                             currentEl?.remove()
