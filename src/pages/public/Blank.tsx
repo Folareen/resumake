@@ -74,6 +74,15 @@ const Blank = () => {
         currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
         newEl.focus()
     }
+    const insertDown = () => {
+        const newEl = currentEl?.cloneNode(true) as HTMLElement
+        newEl.innerText = ''
+        newEl.classList.remove('inline')
+        newEl.classList.add('block')
+        newEl.addEventListener('click', showToolbarHandler)
+        currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
+        newEl.focus()
+    }
 
 
     const bodyRef = useRef<HTMLDivElement>(null)
@@ -156,6 +165,9 @@ const Blank = () => {
                         </button>
                         <button className='btn' onClick={insertUp}>
                             <TbRowInsertTop />
+                        </button>
+                        <button className='btn' onClick={insertDown}>
+                            <TbRowInsertBottom />
                         </button>
                         <button className='btn' onClick={() => {
                             currentEl?.remove()
