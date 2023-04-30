@@ -36,6 +36,28 @@ const Blank = () => {
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
 
     }
+    const duplicateUp = () => {
+        const newEl = currentEl?.cloneNode(true) as HTMLElement
+        console.log(newEl)
+        // const newElement = document.createElement('p')
+        // newElement.innerHTML = newEl.innerHTML
+        // newElement.setAttribute('contenteditable', 'true')
+        // newElement.setAttribute('class', 'editable')
+        // newElement.setAttribute('id', `editable-container-${(new Date()).getTime()}`)
+        newEl.classList.remove('inline')
+        newEl.classList.add('block')
+        newEl.addEventListener('click', showToolbarHandler)
+        // newElement.addEventListener('select', () => console.log('selectt'))
+        // newEl?.children[1]?.addEventListener('select', showToolbarHandler)
+        // newEl?.addEventListener('click', () => { console.log('hiii') })
+        console.log(currentEl, 'currEl')
+        console.log(currentEl?.parentNode, 'currElParent')
+        // currentEl?.insertAdjacentHTML("afterend", newElement?.outerHTML);
+
+        currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
+
+    }
+
 
     const bodyRef = useRef<HTMLDivElement>(null)
 
@@ -100,6 +122,10 @@ const Blank = () => {
                         <button style={{ display: 'flex', flexDirection: 'column' }} className='btn' onClick={duplicateDown}>
                             <IoDuplicate />
                             <BsChevronCompactDown />
+                        </button>
+                        <button style={{ display: 'flex', flexDirection: 'column' }} className='btn' onClick={duplicateDown}>
+                            <BsChevronCompactUp />
+                            <IoDuplicate />
                         </button>
                         <button className='btn' onClick={() => {
                             currentEl?.remove()
