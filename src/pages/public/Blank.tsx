@@ -43,7 +43,7 @@ const Blank = () => {
         newEl.classList.remove('inline')
         newEl.classList.add('block')
         newEl.addEventListener('click', showToolbarHandler)
-        currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
+        currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling || currentEl);
     }
     const duplicateRight = () => {
         const newEl = currentEl?.cloneNode(true) as HTMLElement
@@ -71,7 +71,7 @@ const Blank = () => {
         newEl.classList.remove('inline')
         newEl.classList.add('block')
         newEl.addEventListener('click', showToolbarHandler)
-        currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
+        currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling || currentEl);
         newEl.focus()
     }
     const insertDown = () => {
