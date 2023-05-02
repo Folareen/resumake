@@ -5,6 +5,7 @@ import { IoDuplicate } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
 import { MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
+import { CgInsertAfterR } from 'react-icons/cg'
 
 const Blank = () => {
     const [refresh, setRefresh] = useState<boolean>(false)
@@ -83,6 +84,13 @@ const Blank = () => {
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
         newEl.focus()
     }
+    // const insertInside = () => {
+    //     const newEl = currentEl?.cloneNode(true) as HTMLElement
+    //     newEl.innerText = ''
+    //     newEl.addEventListener('click', showToolbarHandler)
+    //     currentEl.appendChild(newEl);
+    //     newEl.focus()
+    // }
 
 
     const bodyRef = useRef<HTMLDivElement>(null)
@@ -169,6 +177,9 @@ const Blank = () => {
                         <button className='btn' onClick={insertDown}>
                             <TbRowInsertBottom />
                         </button>
+                        {/* <button className='btn' onClick={insertInside}>
+                            <CgInsertAfterR />
+                        </button> */}
                         <button className='btn' onClick={() => {
                             currentEl?.remove()
 
