@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/authSlice";
-import toolbarReducer from "./features/toolbarSlice";
+import resumeReducer from "./features/resumeSlice";
 
 const store = configureStore({
     reducer: {
         auth: authReducer,
-        toolbar: toolbarReducer,
+        resume: resumeReducer,
     },
 })
 

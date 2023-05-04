@@ -1,26 +1,26 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { hideToolbar, showToolbar } from '../redux/features/toolbarSlice'
+import { hideToolbar, showToolbar } from '../redux/features/resumeSlice'
 import { IoDuplicate } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
 import { MdContentCopy, MdContentCut, MdContentPaste, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
 import { IoColorPaletteSharp } from 'react-icons/io5'
-import { IoIosColorFill } from 'react-icons/io'
+import { IoIosColorFill, IoMdLink } from 'react-icons/io'
 import { RootState } from '../redux/store'
 import { AiOutlineOrderedList } from 'react-icons/ai'
-import { FaUndo } from 'react-icons/fa'
+import { FaRedo, FaUndo } from 'react-icons/fa'
 
-type ToolbarProps = {
-    refresh: boolean,
-    setRefresh: React.Dispatch<React.SetStateAction<boolean>>,
-}
+// type ToolbarProps = {
+//     refresh: boolean,
+//     setRefresh: React.Dispatch<React.SetStateAction<boolean>>,
+// }
 
-const Toolbar = ({ refresh, setRefresh }: ToolbarProps) => {
+const Toolbar = () => {
 
     const dispatch = useDispatch()
-    const { currentEl } = useSelector((state: RootState) => state.toolbar)
+    const { currentEl } = useSelector((state: RootState) => state.resume)
 
     const showToolbarHandler = (e: React.MouseEvent<HTMLElement>) => {
         console.log('showtoolbarr', e, e.currentTarget)
@@ -172,6 +172,22 @@ const Toolbar = ({ refresh, setRefresh }: ToolbarProps) => {
                 document.execCommand('undo')
             }}>
                 <FaUndo />
+            </button>
+            <button onClick={() => {
+                document.execCommand('redo')
+            }}>
+                <FaRedo />
+            </button>
+            <button onClick={() => {
+                let link = prompt('Enter the link here: ', 'https://')
+                console.log(link, 'link')
+                if (!link) {
+                    alert('Please enter a valid link')
+                    return
+                }
+                document.execCommand('createLink', false, link)
+            }}>
+                <IoMdLink />
             </button>
             <button className='btn' onClick={() => {
             }}>

@@ -2,13 +2,16 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import Editable from '../../components/Editable'
 import ReactToPdf from 'react-to-pdf'
 import Toolbar from '../../components/Toolbar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
+import { editResume, previewResume } from '../../redux/features/resumeSlice'
 
 const Blank = () => {
-    const { show } = useSelector((state: RootState) => state.toolbar)
+    const { showToolbar, editMode } = useSelector((state: RootState) => state.resume)
 
     const bodyRef = useRef<HTMLDivElement>(null)
+
+    const dispatch = useDispatch()
 
     return (
         <div>
@@ -20,23 +23,52 @@ const Blank = () => {
             shape
             */}
 
-            <ReactToPdf filename={`test.pdf`} targetRef={bodyRef} options={{
-                // format: [bodyRef?.current?.clientWidth, bodyRef?.current?.clientHeight],
-                unit: 'px',
-            }} scale={1}>
-                {
-                    ({ toPdf }: { toPdf: () => void }) => (
+            {
+                editMode ?
+                    (<div>
                         <button onClick={() => {
-                            toPdf()
+                            dispatch(previewResume())
                         }}>
-                            Download as Pdf
+                            preview
                         </button>
-                    )
-                }
-            </ReactToPdf>
+                        <button onClick={() => {
+                            dispatch(editResume())
+                        }}>
+                            save
+                        </button>
+                    </div>)
+                    :
+                    (<div>
+                        <button onClick={() => {
+                            dispatch(editResume())
+                        }}>
+                            edit
+                        </button>
+
+                        <ReactToPdf filename={`test.pdf`} targetRef={bodyRef} options={{
+                            // format: [bodyRef?.current?.clientWidth, bodyRef?.current?.clientHeight],
+                            unit: 'px',
+                        }} scale={1}>
+                            {
+                                ({ toPdf }: { toPdf: () => void }) => (
+                                    <button onClick={() => {
+                                        toPdf()
+                                    }}>
+                                        Download as Pdf
+                                    </button>
+                                )
+                            }
+                        </ReactToPdf>
+                        <button>
+                            Download as Image
+                        </button>
+
+                    </div>)
+            }
+
 
             {
-                show && (
+                showToolbar && (
                     <Toolbar />
                 )
             }

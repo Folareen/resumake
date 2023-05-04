@@ -1,6 +1,7 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { showToolbar } from '../redux/features/toolbarSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { showToolbar } from '../redux/features/resumeSlice'
+import { RootState } from '../redux/store'
 
 type EditableProps = {
     children: React.ReactNode | string
@@ -9,13 +10,16 @@ type EditableProps = {
 const Editable = ({ children }: EditableProps) => {
 
     const dispatch = useDispatch()
+    const { editMode } = useSelector((state: RootState) => state.resume)
 
     return (
         <div
-            contentEditable
+            contentEditable={editMode}
             className='editable inline' onSelect={(e: React.MouseEvent<HTMLElement>) => {
                 console.log('showtoolbarr', e, e.currentTarget)
-                dispatch(showToolbar(e.currentTarget))
+                if (editMode) {
+                    dispatch(showToolbar(e.currentTarget))
+                }
             }}
         >
             {children}
