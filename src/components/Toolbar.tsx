@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideToolbar, showToolbar } from '../redux/features/resumeSlice'
-import { IoDuplicate } from 'react-icons/io5'
+import { IoDuplicate, IoTrashBin } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
 import { MdContentCopy, MdContentCut, MdContentPaste, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
@@ -268,7 +268,7 @@ const Toolbar = () => {
                 currentEl?.remove()
 
             }}>
-                x
+                <IoTrashBin />
             </button>
         </div>
     )
