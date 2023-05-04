@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { hideToolbar, showToolbar } from '../redux/features/toolbarSlice'
 import { IoDuplicate } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
-import { MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
+import { MdContentCopy, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
-import { IoColorPaletteSharp, IoIosColorFill } from 'react-icons/io5'
+import { IoColorPaletteSharp } from 'react-icons/io5'
+import { IoIosColorFill } from 'react-icons/io'
 import { RootState } from '../redux/store'
+import { AiOutlineOrderedList } from 'react-icons/ai'
 
 type ToolbarProps = {
     refresh: boolean,
@@ -136,6 +138,17 @@ const Toolbar = ({ refresh, setRefresh }: ToolbarProps) => {
                 setRefresh(!refresh)
             }}>
                 Ou
+            </button>
+            {/* <button onClick={() => {
+                // document.execCommand('indent', false, null)
+                document.execCommand('insertOrderedList', false, null)
+            }}>
+                <AiOutlineOrderedList />
+            </button> */}
+            <button onClick={() => {
+                document.execCommand('copy')
+            }}>
+                <MdContentCopy />
             </button>
             <button className='btn' onClick={() => {
             }}>

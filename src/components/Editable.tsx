@@ -11,7 +11,7 @@ const Editable = ({ children }: EditableProps) => {
     const dispatch = useDispatch()
 
     return (
-        <p
+        <div
             contentEditable
             className='editable inline' onSelect={(e: React.MouseEvent<HTMLElement>) => {
                 console.log('showtoolbarr', e, e.currentTarget)
@@ -19,7 +19,7 @@ const Editable = ({ children }: EditableProps) => {
             }}
         >
             {children}
-        </p>
+        </div>
     )
 }
 
