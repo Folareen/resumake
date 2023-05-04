@@ -9,7 +9,7 @@ import { CgInsertAfterR } from 'react-icons/cg'
 import { IoColorPaletteSharp } from 'react-icons/io5'
 import { IoIosColorFill, IoMdLink } from 'react-icons/io'
 import { RootState } from '../redux/store'
-import { AiOutlineLine, AiOutlineOrderedList, AiOutlineVerticalAlignTop } from 'react-icons/ai'
+import { AiOutlineLine, AiOutlineOrderedList, AiOutlineVerticalAlignBottom, AiOutlineVerticalAlignTop } from 'react-icons/ai'
 import { FaRedo, FaUndo } from 'react-icons/fa'
 import { BiFontSize } from 'react-icons/bi'
 
@@ -109,6 +109,7 @@ const Toolbar = () => {
         newEl.innerText = ''
         newEl.classList.remove('inline')
         // newEl.classList.add('block')
+        newEl.classList.add('line')
         newEl.addEventListener('click', showToolbarHandler)
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
         newEl.focus()
@@ -256,6 +257,9 @@ const Toolbar = () => {
             </button>
             <button className='btn' onClick={insertLineUp}>
                 <AiOutlineVerticalAlignTop />
+            </button>
+            <button className='btn' onClick={insertLineDown}>
+                <AiOutlineVerticalAlignBottom />
             </button>
             {/* <button className='btn' onClick={insertInside}>
                             <CgInsertAfterR />
