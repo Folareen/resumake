@@ -11,6 +11,7 @@ import { IoIosColorFill, IoMdLink } from 'react-icons/io'
 import { RootState } from '../redux/store'
 import { AiOutlineOrderedList } from 'react-icons/ai'
 import { FaRedo, FaUndo } from 'react-icons/fa'
+import { BiFontSize } from 'react-icons/bi'
 
 // type ToolbarProps = {
 //     refresh: boolean,
@@ -134,6 +135,13 @@ const Toolbar = () => {
                 document.execCommand('outdent')
             }}>
                 Ou
+            </button>
+            <button onClick={() => {
+                console.log('adjust font')
+                document.execCommand('fontSize', false, '1')
+                // smallest smaller small normal large larger largest
+            }}>
+                <BiFontSize />
             </button>
             {/* <button onClick={() => {
                 // document.execCommand('indent', false, null)
