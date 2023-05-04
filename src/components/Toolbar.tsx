@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { hideToolbar, showToolbar } from '../redux/features/toolbarSlice'
 import { IoDuplicate } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
-import { MdContentCopy, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
+import { MdContentCopy, MdContentCut, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
 import { IoColorPaletteSharp } from 'react-icons/io5'
@@ -149,6 +149,11 @@ const Toolbar = ({ refresh, setRefresh }: ToolbarProps) => {
                 document.execCommand('copy')
             }}>
                 <MdContentCopy />
+            </button>
+            <button onClick={() => {
+                document.execCommand('cut')
+            }}>
+                <MdContentCut />
             </button>
             <button className='btn' onClick={() => {
             }}>
