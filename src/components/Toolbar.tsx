@@ -10,6 +10,7 @@ import { IoColorPaletteSharp } from 'react-icons/io5'
 import { IoIosColorFill } from 'react-icons/io'
 import { RootState } from '../redux/store'
 import { AiOutlineOrderedList } from 'react-icons/ai'
+import { FaUndo } from 'react-icons/fa'
 
 type ToolbarProps = {
     refresh: boolean,
@@ -166,6 +167,11 @@ const Toolbar = ({ refresh, setRefresh }: ToolbarProps) => {
                     });
             }}>
                 <MdContentPaste />
+            </button>
+            <button onClick={() => {
+                document.execCommand('undo')
+            }}>
+                <FaUndo />
             </button>
             <button className='btn' onClick={() => {
             }}>
