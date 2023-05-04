@@ -138,9 +138,11 @@ const Toolbar = ({ refresh, setRefresh }: ToolbarProps) => {
                 Ou
             </button>
             <button className='btn' onClick={() => {
-                document.execCommand('backColor')
             }}>
                 <IoColorPaletteSharp />
+                <input type='color' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    document.execCommand('foreColor', false, e.target.value)
+                }} />
             </button>
             <button style={{ display: 'flex', flexDirection: 'column' }} className='btn' onClick={duplicateDown}>
                 <IoDuplicate />
