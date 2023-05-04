@@ -112,31 +112,26 @@ const Toolbar = () => {
 
             <button onClick={() => {
                 document.execCommand('bold')
-                setRefresh(!refresh)
             }}>
                 B
             </button>
             <button onClick={() => {
                 document.execCommand('underline')
-                setRefresh(!refresh)
             }}>
                 U
             </button>
             <button onClick={() => {
                 document.execCommand('italic')
-                setRefresh(!refresh)
             }}>
                 I
             </button>
             <button onClick={() => {
                 document.execCommand('indent')
-                setRefresh(!refresh)
             }}>
                 Id
             </button>
             <button onClick={() => {
                 document.execCommand('outdent')
-                setRefresh(!refresh)
             }}>
                 Ou
             </button>
