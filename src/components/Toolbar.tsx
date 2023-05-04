@@ -9,7 +9,7 @@ import { CgInsertAfterR } from 'react-icons/cg'
 import { IoColorPaletteSharp } from 'react-icons/io5'
 import { IoIosColorFill, IoMdLink } from 'react-icons/io'
 import { RootState } from '../redux/store'
-import { AiOutlineOrderedList } from 'react-icons/ai'
+import { AiOutlineLine, AiOutlineOrderedList } from 'react-icons/ai'
 import { FaRedo, FaUndo } from 'react-icons/fa'
 import { BiFontSize } from 'react-icons/bi'
 
@@ -142,6 +142,11 @@ const Toolbar = () => {
                 // smallest smaller small normal large larger largest
             }}>
                 <BiFontSize />
+            </button>
+            <button onClick={() => {
+                document.execCommand('insertHorizontalRule')
+            }}>
+                <AiOutlineLine />
             </button>
             {/* <button onClick={() => {
                 // document.execCommand('indent', false, null)
