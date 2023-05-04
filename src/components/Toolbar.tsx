@@ -6,7 +6,7 @@ import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsCh
 import { MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
-import { IoColorPaletteSharp } from 'react-icons/io5'
+import { IoColorPaletteSharp, IoIosColorFill } from 'react-icons/io5'
 import { RootState } from '../redux/store'
 
 type ToolbarProps = {
@@ -142,6 +142,13 @@ const Toolbar = ({ refresh, setRefresh }: ToolbarProps) => {
                 <IoColorPaletteSharp />
                 <input type='color' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     document.execCommand('foreColor', false, e.target.value)
+                }} />
+            </button>
+            <button className='btn' onClick={() => {
+            }}>
+                <IoIosColorFill />
+                <input type='color' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    document.execCommand('backColor', false, e.target.value)
                 }} />
             </button>
             <button style={{ display: 'flex', flexDirection: 'column' }} className='btn' onClick={duplicateDown}>
