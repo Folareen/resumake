@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideToolbar, showToolbar } from '../redux/features/resumeSlice'
 import { IoDuplicate, IoTrashBin } from 'react-icons/io5'
-import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp, BsSubscript, BsSuperscript } from 'react-icons/bs'
+import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp, BsJustify, BsJustifyLeft, BsJustifyRight, BsSubscript, BsSuperscript } from 'react-icons/bs'
 import { MdContentCopy, MdContentCut, MdContentPaste, MdLinkOff, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp, MdOutlineStrikethroughS } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
@@ -11,7 +11,7 @@ import { IoIosColorFill, IoMdLink } from 'react-icons/io'
 import { RootState } from '../redux/store'
 import { AiOutlineLine, AiOutlineOrderedList, AiOutlineVerticalAlignBottom, AiOutlineVerticalAlignTop } from 'react-icons/ai'
 import { FaRedo, FaUndo } from 'react-icons/fa'
-import { BiFontSize } from 'react-icons/bi'
+import { BiAlignJustify, BiFontSize } from 'react-icons/bi'
 
 // type ToolbarProps = {
 //     refresh: boolean,
@@ -170,6 +170,38 @@ const Toolbar = () => {
                 document.execCommand('strikeThrough')
             }}>
                 <MdOutlineStrikethroughS />
+            </button>
+            <button onClick={() => {
+                currentEl?.classList.toggle('text-right')
+                currentEl?.classList.remove('text-left')
+                currentEl?.classList.remove('text-center')
+                currentEl?.classList.remove('text-justify')
+            }}>
+                <BsJustifyRight />
+            </button>
+            <button onClick={() => {
+                currentEl?.classList.toggle('text-left')
+                currentEl?.classList.remove('text-right')
+                currentEl?.classList.remove('text-center')
+                currentEl?.classList.remove('text-justify')
+            }}>
+                <BsJustifyLeft />
+            </button>
+            <button onClick={() => {
+                currentEl?.classList.toggle('text-center')
+                currentEl?.classList.remove('text-left')
+                currentEl?.classList.remove('text-right')
+                currentEl?.classList.remove('text-justify')
+            }}>
+                <BiAlignJustify />
+            </button>
+            <button onClick={() => {
+                currentEl?.classList.toggle('text-justify')
+                currentEl?.classList.remove('text-left')
+                currentEl?.classList.remove('text-right')
+                currentEl?.classList.remove('text-center')
+            }}>
+                <BsJustify />
             </button>
             <button onClick={() => {
                 console.log('adjust font')
