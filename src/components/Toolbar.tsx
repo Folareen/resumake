@@ -9,7 +9,7 @@ import { CgInsertAfterR } from 'react-icons/cg'
 import { IoColorPaletteSharp } from 'react-icons/io5'
 import { IoIosColorFill, IoMdLink } from 'react-icons/io'
 import { RootState } from '../redux/store'
-import { AiOutlineLine, AiOutlineOrderedList, AiOutlineVerticalAlignBottom, AiOutlineVerticalAlignTop } from 'react-icons/ai'
+import { AiOutlineLine, AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineVerticalAlignBottom, AiOutlineVerticalAlignTop } from 'react-icons/ai'
 import { FaRedo, FaUndo } from 'react-icons/fa'
 import { BiAlignJustify, BiFontSize } from 'react-icons/bi'
 
@@ -227,6 +227,15 @@ const Toolbar = () => {
                 currentEl.style.display = 'inline-block'
             }}>
                 <AiOutlineOrderedList />
+            </button>
+            <button onClick={() => {
+                // document.execCommand('indent', false, null)
+                currentEl.style.display = 'block'
+                document.execCommand('indent')
+                document.execCommand('insertUnorderedList', false, null)
+                currentEl.style.display = 'inline-block'
+            }}>
+                <AiOutlineUnorderedList />
             </button>
             <button onClick={() => {
                 document.execCommand('copy')
