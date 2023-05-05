@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { hideToolbar, showToolbar } from '../redux/features/resumeSlice'
 import { IoDuplicate, IoTrashBin } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
-import { MdContentCopy, MdContentCut, MdContentPaste, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
+import { MdContentCopy, MdContentCut, MdContentPaste, MdLinkOff, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
 import { IoColorPaletteSharp } from 'react-icons/io5'
@@ -216,6 +216,11 @@ const Toolbar = () => {
                 document.execCommand('createLink', false, link)
             }}>
                 <IoMdLink />
+            </button>
+            <button onClick={() => {
+                document.execCommand('unLink')
+            }}>
+                <MdLinkOff />
             </button>
             <button className='btn' onClick={() => {
             }}>
