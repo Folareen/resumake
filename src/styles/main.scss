@@ -44,12 +44,15 @@
 }
 
 .editable {
-    resize: both;
-    overflow: auto;
     max-width: 100%;
     display: inline-block;
     min-width: max-content;
     min-height: max-content;
+}
+
+.editable.resizable {
+    resize: both;
+    overflow: auto;
 }
 
 .editable.inline {
@@ -85,7 +88,7 @@
     overflow: visible;
 }
 
-.editable:focus,
-.editable:active {
+.editable.resizable:focus,
+.editable.resizable:active {
     outline: 1px solid gray;
 }

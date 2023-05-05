@@ -15,7 +15,8 @@ const Editable = ({ children }: EditableProps) => {
     return (
         <div
             contentEditable={editMode}
-            className='editable inline' onSelect={(e: React.MouseEvent<HTMLElement>) => {
+            className={`editable inline ${editMode && 'resizable'}`}
+            onSelect={(e: React.MouseEvent<HTMLElement>) => {
                 console.log('showtoolbarr', e, e.currentTarget)
                 if (editMode) {
                     dispatch(showToolbar(e.currentTarget))
