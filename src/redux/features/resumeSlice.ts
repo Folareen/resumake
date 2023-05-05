@@ -26,9 +26,12 @@ const resumeSlice = createSlice({
         },
         editResume: (state) => {
             state.editMode = true
+            state.showToolbar = true
         },
         previewResume: (state) => {
             state.editMode = false
+            state.showToolbar = false
+            state.currentEl = null
         }
     }
 })
