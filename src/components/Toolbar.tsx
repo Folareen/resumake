@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { hideToolbar, showToolbar } from '../redux/features/resumeSlice'
 import { IoDuplicate, IoTrashBin } from 'react-icons/io5'
 import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp, BsSubscript, BsSuperscript } from 'react-icons/bs'
-import { MdContentCopy, MdContentCut, MdContentPaste, MdLinkOff, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
+import { MdContentCopy, MdContentCut, MdContentPaste, MdLinkOff, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp, MdOutlineStrikethroughS } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
 import { IoColorPaletteSharp } from 'react-icons/io5'
@@ -165,6 +165,11 @@ const Toolbar = () => {
                 document.execCommand('subscript')
             }}>
                 <BsSubscript />
+            </button>
+            <button onClick={() => {
+                document.execCommand('strikeThrough')
+            }}>
+                <MdOutlineStrikethroughS />
             </button>
             <button onClick={() => {
                 console.log('adjust font')
