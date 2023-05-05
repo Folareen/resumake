@@ -10,7 +10,7 @@ import { IoColorPaletteSharp } from 'react-icons/io5'
 import { IoIosColorFill, IoMdLink } from 'react-icons/io'
 import { RootState } from '../redux/store'
 import { AiOutlineLine, AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineVerticalAlignBottom, AiOutlineVerticalAlignTop } from 'react-icons/ai'
-import { FaRedo, FaUndo } from 'react-icons/fa'
+import { FaFont, FaRedo, FaUndo } from 'react-icons/fa'
 import { BiAlignJustify, BiFontSize } from 'react-icons/bi'
 
 // type ToolbarProps = {
@@ -213,6 +213,13 @@ const Toolbar = () => {
                 // smallest smaller small normal large larger largest
             }}>
                 <BiFontSize />
+            </button>
+            <button onClick={() => {
+                console.log('adjust font')
+                document.execCommand('fontName', false, 'Serif')
+                // select from list of fonts....
+            }}>
+                <FaFont />
             </button>
             <button onClick={() => {
                 document.execCommand('insertHorizontalRule')
