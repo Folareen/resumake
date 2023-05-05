@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideToolbar, showToolbar } from '../redux/features/resumeSlice'
 import { IoDuplicate, IoTrashBin } from 'react-icons/io5'
-import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp } from 'react-icons/bs'
+import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp, BsSuperscript } from 'react-icons/bs'
 import { MdContentCopy, MdContentCut, MdContentPaste, MdLinkOff, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
@@ -155,6 +155,11 @@ const Toolbar = () => {
                 document.execCommand('outdent')
             }}>
                 Ou
+            </button>
+            <button onClick={() => {
+                document.execCommand('superscript')
+            }}>
+                <BsSuperscript />
             </button>
             <button onClick={() => {
                 console.log('adjust font')
