@@ -3,13 +3,16 @@ import { createSlice } from '@reduxjs/toolkit'
 type ResumeState = {
     showToolbar: boolean,
     currentEl: HTMLElement | null,
-    editMode: boolean
+    editMode: boolean,
+    userData: any,
+    // resumeContent: 
 }
 
 const initialState: ResumeState = {
     showToolbar: false,
     currentEl: null,
-    editMode: false
+    editMode: false,
+    userData: null
 }
 
 const resumeSlice = createSlice({
@@ -32,9 +35,15 @@ const resumeSlice = createSlice({
             state.editMode = false
             state.showToolbar = false
             state.currentEl = null
+        },
+        submitUserData: (state, action) => {
+            state.userData = action.payload
+        },
+        clearUserData: (state) => {
+            state.userData = null
         }
     }
 })
 
-export const { showToolbar, hideToolbar, editResume, previewResume } = resumeSlice.actions
+export const { showToolbar, hideToolbar, editResume, previewResume, submitUserData, clearUserData } = resumeSlice.actions
 export default resumeSlice.reducer

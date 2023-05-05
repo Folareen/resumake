@@ -3,29 +3,29 @@ import { useDispatch, useSelector } from 'react-redux'
 import { showToolbar } from '../redux/features/resumeSlice'
 import { RootState } from '../redux/store'
 
-type EditableProps = {
-    children: React.ReactNode | string
+type ResElProps = {
+    children: React.ReactNode | string,
+    className?: string
 }
 
-const Editable = ({ children }: EditableProps) => {
+const ResEl = ({ children, className }: ResElProps) => {
 
     const dispatch = useDispatch()
     const { editMode } = useSelector((state: RootState) => state.resume)
 
     return (
-        <div
+        <p
             contentEditable={editMode}
-            className={`editable inline ${editMode && 'resizable'}`}
+            className={`resume-element inline ${editMode && 'editable'} ${className}`}
             onSelect={(e: React.MouseEvent<HTMLElement>) => {
-                console.log('showtoolbarr', e, e.currentTarget)
                 if (editMode) {
                     dispatch(showToolbar(e.currentTarget))
                 }
             }}
         >
             {children}
-        </div>
+        </p>
     )
 }
 
-export default Editable
+export default ResEl

@@ -30,22 +30,11 @@ const Toolbar = () => {
 
     const duplicateDown = () => {
         const newEl = currentEl?.cloneNode(true) as HTMLElement
-        console.log(newEl, 'newEl')
-        // const newElement = document.createElement('p')
-        // newElement.innerHTML = newEl.innerHTML
-        // newElement.setAttribute('contenteditable', 'true')
-        // newElement.setAttribute('class', 'editable')
-        // newElement.setAttribute('id', `editable-container-${(new Date()).getTime()}`)
         newEl.classList.remove('inline')
         newEl.classList.add('block')
         newEl.addEventListener('click', showToolbarHandler)
-        // newElement.addEventListener('select', () => console.log('selectt'))
-        // newEl?.children[1]?.addEventListener('select', showToolbarHandler)
-        // newEl?.addEventListener('click', () => { console.log('hiii') })
         console.log(currentEl, 'currEl')
         console.log(currentEl?.parentNode, 'currElParent')
-        // currentEl?.insertAdjacentHTML("afterend", newElement?.outerHTML);
-
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
 
     }
