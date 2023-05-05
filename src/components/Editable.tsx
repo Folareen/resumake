@@ -13,7 +13,7 @@ const Editable = ({ children }: EditableProps) => {
     const { editMode } = useSelector((state: RootState) => state.resume)
 
     return (
-        <p
+        <div
             contentEditable={editMode}
             className={`editable inline ${editMode && 'resizable'}`}
             onSelect={(e: React.MouseEvent<HTMLElement>) => {
@@ -24,7 +24,7 @@ const Editable = ({ children }: EditableProps) => {
             }}
         >
             {children}
-        </p>
+        </div>
     )
 }
 

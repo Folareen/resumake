@@ -147,12 +147,16 @@ const Toolbar = () => {
                 I
             </button>
             <button onClick={() => {
+                currentEl.style.display = 'block'
                 document.execCommand('indent')
+                currentEl.style.display = 'inline-block'
             }}>
                 Id
             </button>
             <button onClick={() => {
+                currentEl.style.display = 'block'
                 document.execCommand('outdent')
+                currentEl.style.display = 'inline-block'
             }}>
                 Ou
             </button>
@@ -215,12 +219,15 @@ const Toolbar = () => {
             }}>
                 <AiOutlineLine />
             </button>
-            {/* <button onClick={() => {
+            <button onClick={() => {
                 // document.execCommand('indent', false, null)
+                currentEl.style.display = 'block'
+                document.execCommand('indent')
                 document.execCommand('insertOrderedList', false, null)
+                currentEl.style.display = 'inline-block'
             }}>
                 <AiOutlineOrderedList />
-            </button> */}
+            </button>
             <button onClick={() => {
                 document.execCommand('copy')
             }}>
