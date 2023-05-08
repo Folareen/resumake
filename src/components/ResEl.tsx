@@ -4,37 +4,35 @@ import { showToolbar } from '../redux/features/resumeSlice'
 import { RootState } from '../redux/store'
 
 type ResElProps = {
-    children: React.ReactNode | string,
-    className?: string
+    tag?: string, // new prop for specifying the tag
+    children?: React.ReactNode | string,
+    className?: string,
 }
 
-const ResEl = ({ children, className }: ResElProps) => {
-
+const ResEl = ({ tag: Tag = 'p', children, className }: ResElProps) => {
     const dispatch = useDispatch()
     const { editMode } = useSelector((state: RootState) => state.resume)
 
     return (
-        <p
+        <Tag
             contentEditable={editMode}
             onKeyDown={(e) => {
                 if (!e.currentTarget?.children) {
                     if (e.currentTarget.innerText === '') {
                         e.currentTarget.classList.add('empty')
-                    }
-                    else {
+                    } else {
                         e.currentTarget.classList.remove('empty')
                     }
                     return
                 }
                 const children = [...e.currentTarget.children]
-                children.forEach(element => {
+                children.forEach((element) => {
                     if (element.innerText === '') {
                         element.classList.add('empty')
-                    }
-                    else {
+                    } else {
                         element.classList.remove('empty')
                     }
-                });
+                })
                 if (e.currentTarget.innerText.length > 0) {
                     e.currentTarget.classList.remove('empty')
                 }
@@ -47,7 +45,7 @@ const ResEl = ({ children, className }: ResElProps) => {
             }}
         >
             {children}
-        </p>
+        </Tag>
     )
 }
 
