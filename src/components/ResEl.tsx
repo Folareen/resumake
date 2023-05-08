@@ -16,7 +16,7 @@ const ResEl = ({ tag: Tag = 'p', children, className }: ResElProps) => {
     return (
         <Tag
             contentEditable={editMode}
-            onKeyDown={(e) => {
+            onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => {
                 if (!e.currentTarget?.children) {
                     if (e.currentTarget.innerText === '') {
                         e.currentTarget.classList.add('empty')
