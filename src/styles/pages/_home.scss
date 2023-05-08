@@ -1,6 +1,42 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
-.resumake{
-    text-align: center;
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: lightblue;
+
+    &__content {
+        min-height: 40vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        h1 {
+            text-align: center;
+            font-weight: 800;
+            color: darkblue;
+            font-size: 36px;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+            color: rgb(36, 36, 44);
+            font-size: 20px;
+        }
+
+        a {
+            padding: 10px 20px;
+            background-color: rgb(7, 34, 116);
+            color: white;
+            text-decoration: none;
+            display: block;
+            max-width: max-content;
+            margin: 30px auto;
+            border-radius: 5px;
+        }
+    }
 }

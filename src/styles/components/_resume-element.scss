@@ -1,0 +1,29 @@
+.resume-element {
+    max-width: 100%;
+    display: inline-block;
+    min-width: max-content;
+    min-height: max-content;
+
+    &.empty {
+        min-height: 24px;
+    }
+
+    &.editable {
+        resize: both;
+        overflow: auto;
+
+        &:focus,
+        &:active {
+            outline: 1px solid gray;
+        }
+    }
+
+
+    &.inline {
+        width: 50%;
+    }
+
+    &.block {
+        width: 100%;
+    }
+}

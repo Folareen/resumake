@@ -1,0 +1,18 @@
+.toolbar {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+    position: fixed;
+    top: 10px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow-x: scroll;
+
+    button {
+        padding: 3px;
+        margin: 0 3px;
+    }
+}

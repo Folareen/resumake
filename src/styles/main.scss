@@ -14,6 +14,10 @@
 
 // 5. Components
 @import "components/button";
+@import "components/resume-element";
+@import "components/toolbar";
+@import "components/line";
+@import "components/resume";
 
 // 6. Page-specific styles
 @import "pages/home";
@@ -21,72 +25,6 @@
 // 7. Themes
 @import "themes/default";
 
-.toolbar {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2px;
-    position: fixed;
-    top: 10px;
-    width: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-    overflow-x: scroll;
-}
-
-.toolbar button {
-    padding: 3px;
-    margin: 0 3px;
-}
-
-
-.resume-element {
-    max-width: 100%;
-    display: inline-block;
-    min-width: max-content;
-    min-height: max-content;
-}
-
-.resume-element.empty{
-    min-height: 24px;
-}
-
-.editable {
-    resize: both;
-    overflow: auto;
-}
-
-.resume-element.inline {
-    width: 50%;
-}
-
-.resume-element.block {
-    width: 100%;
-}
-
-.line {
-    height: 2px;
-    width: 100%;
-    display: block;
-    background-color: black;
-    resize: horizontal;
-    overflow: auto;
-}
-
-.resume {
-    width: 793px;
-    height: 1122px;
-    margin: auto;
-    margin-top: 50px !important;
-    background-color: rgb(240, 240, 240);
-    overflow: visible;
-}
-
-.editable:focus,
-.editable:active {
-    outline: 1px solid gray;
-}
 
 .text-right {
     text-align: right;
@@ -105,48 +43,5 @@
 }
 
 
-.header {
-    font-weight: bold;
-    color: darkblue;
-    font-size: 20px;
-}
 
-.landing {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: lightblue;
-}
 
-.landing-content {
-    min-height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    h1 {
-        text-align: center;
-        font-weight: 800;
-        color: darkblue;
-        font-size: 36px;
-    }
-
-    p {
-        text-align: center;
-        margin-top: 20px;
-        color: rgb(36, 36, 44);
-        font-size: 20px;
-    }
-
-    a{
-        padding: 10px 20px;
-        background-color: rgb(7, 34, 116);
-        color: white;
-        text-decoration: none;
-        display: block;
-        max-width: max-content;
-        margin: 30px auto;
-        border-radius: 5px;
-    }
-}
