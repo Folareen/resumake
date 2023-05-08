@@ -1,10 +1,10 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
-import ResEl from '../ResEl'
+import ResEl from './ResEl'
 import ReactToPdf from 'react-to-pdf'
-import Toolbar from '../../components/Toolbar'
+import Toolbar from './Toolbar'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../redux/store'
-import { editResume, previewResume } from '../../redux/features/resumeSlice'
+import { RootState } from '../redux/store'
+import { editResume, previewResume } from '../redux/features/resumeSlice'
 
 type ResumeLayoutProps = {
     children: ReactNode,

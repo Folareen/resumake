@@ -1,8 +1,8 @@
 import React, { useRef } from 'react'
-import ResEl from '../../ResEl'
-import ResumeLayout from '../ResumeLayout'
+import ResEl from '../../../components/ResEl'
+import ResumeLayout from '../../../components/ResumeLayout'
 
-const CleanAndSimple = () => {
+const ClassicElegance = () => {
     const resumeRef = useRef<HTMLDivElement | null>(null)
 
     return (
@@ -30,4 +30,4 @@ const CleanAndSimple = () => {
     )
 }
 
-export default CleanAndSimple
+export default ClassicElegance

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import ResEl from '../../components/ResEl'
-import ResumeLayout from '../../components/resume/ResumeLayout'
+import ResumeLayout from '../../components/ResumeLayout'
 
 const Blank = () => {
     const resumeRef = useRef<HTMLDivElement | null>(null)
@@ -10,7 +10,7 @@ const Blank = () => {
             <div className='resume' ref={resumeRef}>
 
                 <ResEl className='header'>
-                    
+
                 </ResEl>
 
             </div>
