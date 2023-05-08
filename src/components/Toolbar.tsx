@@ -24,7 +24,6 @@ const Toolbar = () => {
     const { currentEl } = useSelector((state: RootState) => state.resume)
 
     const showToolbarHandler = (e: React.MouseEvent<HTMLElement>) => {
-        console.log('showtoolbarr', e, e.currentTarget)
         dispatch(showToolbar(e.currentTarget))
     }
 
@@ -33,8 +32,6 @@ const Toolbar = () => {
         newEl.classList.remove('inline')
         newEl.classList.add('block')
         newEl.addEventListener('click', showToolbarHandler)
-        console.log(currentEl, 'currEl')
-        console.log(currentEl?.parentNode, 'currElParent')
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
 
     }
@@ -58,7 +55,6 @@ const Toolbar = () => {
         currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling);
     }
     const moveDown = () => {
-        console.log('move down')
         const newEl = currentEl as HTMLElement
         newEl.classList.remove('inline')
         newEl.classList.add('block')
@@ -83,6 +79,16 @@ const Toolbar = () => {
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
         newEl.focus()
     }
+    const insertInside = () => {
+        const newEl = currentEl?.cloneNode(true) as HTMLElement
+        newEl.innerText = ''
+        newEl.classList.remove('inline')
+        newEl.classList.add('block')
+        newEl.classList.add('empty')
+        newEl.addEventListener('click', showToolbarHandler)
+        currentEl.appendChild(newEl);
+        newEl.focus()
+    }
     const insertLineUp = () => {
         const newEl = currentEl?.cloneNode(true) as HTMLElement
         newEl.innerText = ''
@@ -103,13 +109,6 @@ const Toolbar = () => {
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
         newEl.focus()
     }
-    // const insertInside = () => {
-    //     const newEl = currentEl?.cloneNode(true) as HTMLElement
-    //     newEl.innerText = ''
-    //     newEl.addEventListener('click', showToolbarHandler)
-    //     currentEl.appendChild(newEl);
-    //     newEl.focus()
-    // }
 
 
     return (
@@ -197,14 +196,12 @@ const Toolbar = () => {
                 <BsJustify />
             </button>
             <button onClick={() => {
-                console.log('adjust font')
                 document.execCommand('fontSize', false, '1')
                 // smallest smaller small normal large larger largest
             }}>
                 <BiFontSize />
             </button>
             <button onClick={() => {
-                console.log('adjust font')
                 document.execCommand('fontName', false, 'Serif')
                 // select from list of fonts....
             }}>
@@ -267,7 +264,6 @@ const Toolbar = () => {
             </button>
             <button onClick={() => {
                 let link = prompt('Enter the link here: ', 'https://')
-                console.log(link, 'link')
                 if (!link) {
                     alert('Please enter a valid link')
                     return
@@ -325,9 +321,9 @@ const Toolbar = () => {
             <button className='btn' onClick={insertLineDown}>
                 <AiOutlineVerticalAlignBottom />
             </button>
-            {/* <button className='btn' onClick={insertInside}>
-                            <CgInsertAfterR />
-                        </button> */}
+            <button className='btn' onClick={insertInside}>
+                <CgInsertAfterR />
+            </button>
             <button className='btn' onClick={() => {
                 currentEl?.remove()
 

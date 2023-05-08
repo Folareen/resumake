@@ -48,6 +48,10 @@
     min-height: max-content;
 }
 
+.resume-element.empty{
+    min-height: 24px;
+}
+
 .editable {
     resize: both;
     overflow: auto;

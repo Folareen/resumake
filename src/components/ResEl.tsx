@@ -16,6 +16,29 @@ const ResEl = ({ children, className }: ResElProps) => {
     return (
         <p
             contentEditable={editMode}
+            onKeyDown={(e) => {
+                if (!e.currentTarget?.children) {
+                    if (e.currentTarget.innerText === '') {
+                        e.currentTarget.classList.add('empty')
+                    }
+                    else {
+                        e.currentTarget.classList.remove('empty')
+                    }
+                    return
+                }
+                const children = [...e.currentTarget.children]
+                children.forEach(element => {
+                    if (element.innerText === '') {
+                        element.classList.add('empty')
+                    }
+                    else {
+                        element.classList.remove('empty')
+                    }
+                });
+                if (e.currentTarget.innerText.length > 0) {
+                    e.currentTarget.classList.remove('empty')
+                }
+            }}
             className={`resume-element inline ${editMode && 'editable'} ${className}`}
             onSelect={(e: React.MouseEvent<HTMLElement>) => {
                 if (editMode) {
