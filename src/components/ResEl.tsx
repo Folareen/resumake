@@ -4,12 +4,12 @@ import { showToolbar } from '../redux/features/resumeSlice'
 import { RootState } from '../redux/store'
 
 type ResElProps = {
-    tag?: string, // new prop for specifying the tag
+    tag?: string,
     children?: React.ReactNode | string,
     className?: string,
 }
 
-const ResEl = ({ tag: Tag = 'p', children, className }: ResElProps) => {
+const ResEl = ({ tag: Tag = 'p', children, className = '' }: ResElProps) => {
     const dispatch = useDispatch()
     const { editMode } = useSelector((state: RootState) => state.resume)
 
