@@ -31,7 +31,12 @@
 
 
     &.line {
-        height: 1px !important;
+        height: 1px ;
+        width: 100%;
+        display: block;
+        background-color: rgb(0, 0, 0);
+        resize: horizontal;
+        overflow: auto;
 
         &.editable {
             resize: horizontal !important;
