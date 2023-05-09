@@ -213,18 +213,14 @@ const Toolbar = () => {
                 <AiOutlineLine />
             </button>
             <button onClick={() => {
-                // document.execCommand('indent', false, null)
                 currentEl.style.display = 'block'
-                document.execCommand('indent')
                 document.execCommand('insertOrderedList', false, null)
                 currentEl.style.display = 'inline-block'
             }}>
                 <AiOutlineOrderedList />
             </button>
             <button onClick={() => {
-                // document.execCommand('indent', false, null)
                 currentEl.style.display = 'block'
-                document.execCommand('indent')
                 document.execCommand('insertUnorderedList', false, null)
                 currentEl.style.display = 'inline-block'
             }}>
