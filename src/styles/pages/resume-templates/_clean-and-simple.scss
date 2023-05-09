@@ -1,0 +1,21 @@
+.clean-and-simple{
+    background-color: rgb(248, 248, 248);
+
+    .name, .address, .phone-email{
+        text-align: center;
+        width: 100%;
+    }
+
+    .summary{
+        width: 100%;
+    }
+
+
+    h1, h2, h3, h4, h5, h6{
+        width: 100% !important;
+    }
+
+    .first-experience, .second-experience, .third-experience{
+        width: 100%;
+    }
+}

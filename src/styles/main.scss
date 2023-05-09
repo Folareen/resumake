@@ -16,11 +16,11 @@
 @import "components/button";
 @import "components/resume-element";
 @import "components/toolbar";
-@import "components/line";
 @import "components/resume";
 
 // 6. Page-specific styles
 @import "pages/home";
+@import "pages/resume-templates/clean-and-simple";
 
 // 7. Themes
 @import "themes/default";
