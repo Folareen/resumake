@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import ResEl from '../../../components/ResEl'
-import ResumeLayout from '../../../components/ResumeLayout'
+import ResumeContainer from '../../../components/ResumeContainer'
 
 const ClassicElegance = () => {
     const resumeRef = useRef<HTMLDivElement | null>(null)
 
     return (
-        <ResumeLayout resumeRef={resumeRef}>
+        <ResumeContainer resumeRef={resumeRef}>
             <div className='resume' ref={resumeRef}>
 
                 <ResEl className='header'>
@@ -26,7 +26,7 @@ const ClassicElegance = () => {
                 </ResEl>
 
             </div>
-        </ResumeLayout>
+        </ResumeContainer>
     )
 }
 

@@ -1,12 +1,12 @@
 import React, { useRef } from 'react'
 import ResEl from '../../../components/ResEl'
-import ResumeLayout from '../../../components/ResumeLayout'
+import ResumeContainer from '../../../components/ResumeContainer'
 
 const CleanAndSimple = () => {
     const resumeRef = useRef<HTMLDivElement | null>(null)
 
     return (
-        <ResumeLayout resumeRef={resumeRef} resClassName='clean-and-simple'>
+        <ResumeContainer resumeRef={resumeRef} resClassName='clean-and-simple'>
 
             <ResEl tag="h1" className='name'>
                 JENNIFER DAVIS
@@ -138,7 +138,7 @@ const CleanAndSimple = () => {
                 San Diego State University // San Diego, CA
             </ResEl>
 
-        </ResumeLayout>
+        </ResumeContainer>
     )
 }
 
