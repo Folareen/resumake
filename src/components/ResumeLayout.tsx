@@ -75,9 +75,6 @@ const ResumeLayout = ({ children, resumeRef, resClassName }: ResumeLayoutProps) 
 
             </div>
 
-
-
-
         </div>
     )
 }
