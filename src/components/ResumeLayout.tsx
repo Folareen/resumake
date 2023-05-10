@@ -8,10 +8,11 @@ import { editResume, previewResume } from '../redux/features/resumeSlice'
 
 type ResumeLayoutProps = {
     children: ReactNode,
-    resumeRef: HTMLDivElement | null
+    resumeRef: HTMLDivElement | null,
+    resClassName: string
 }
 
-const ResumeLayout = ({ children, resumeRef }: ResumeLayoutProps) => {
+const ResumeLayout = ({ children, resumeRef, resClassName }: ResumeLayoutProps) => {
     const { showToolbar, editMode } = useSelector((state: RootState) => state.resume)
 
     const dispatch = useDispatch()
@@ -69,7 +70,10 @@ const ResumeLayout = ({ children, resumeRef }: ResumeLayoutProps) => {
                 )
             }
 
-            {children}
+            <div ref={resumeRef} className={`${resClassName} resume`}>
+                {children}
+
+            </div>
 
 
 
