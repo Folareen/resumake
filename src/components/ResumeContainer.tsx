@@ -5,14 +5,20 @@ import Toolbar from './Toolbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
 import { editResume, previewResume } from '../redux/features/resumeSlice'
+import ResumeLayout from './ResumeLayout'
 
 type ResumeContainerProps = {
-    children: ReactNode,
+    HeaderSection?: any,
+    FooterSection?: any,
+    MainLeftSection?: any,
+    MainRightSection?: any,
+    isSectioned: boolean,
+    children?: ReactNode,
     resumeRef: HTMLDivElement | null,
     resClassName: string
 }
 
-const ResumeContainer = ({ children, resumeRef, resClassName }: ResumeContainerProps) => {
+const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRightSection, isSectioned, children, resumeRef, resClassName }: ResumeContainerProps) => {
     const { showToolbar, editMode } = useSelector((state: RootState) => state.resume)
 
     const dispatch = useDispatch()
@@ -70,10 +76,9 @@ const ResumeContainer = ({ children, resumeRef, resClassName }: ResumeContainerP
                 )
             }
 
-            <div ref={resumeRef} className={`${resClassName} resume`}>
+            <ResumeLayout resClassName={resClassName} HeaderSection={HeaderSection} FooterSection={FooterSection} MainLeftSection={MainLeftSection} MainRightSection={MainRightSection} isSectioned={isSectioned} resumeRef={resumeRef}>
                 {children}
-
-            </div>
+            </ResumeLayout>
 
         </div>
     )
