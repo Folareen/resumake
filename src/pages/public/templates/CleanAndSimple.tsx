@@ -6,7 +6,7 @@ const CleanAndSimple = () => {
     const resumeRef = useRef<HTMLDivElement | null>(null)
 
     return (
-        <ResumeContainer resumeRef={resumeRef} resClassName='clean-and-simple'>
+        <ResumeContainer resumeRef={resumeRef} resClassName='clean-and-simple' isSectioned={false}>
 
             <ResEl tag="h1" className='name'>
                 JENNIFER DAVIS
