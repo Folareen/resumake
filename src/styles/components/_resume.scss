@@ -103,5 +103,62 @@
         display: inline-block;
     }
 
+    &--sectioned {
+        display: flex;
+        flex-direction: column;
+
+        .main {
+            display: flex;
+            width: 100%;
+            flex: 1;
+
+            &.col-30-70{
+                >div:first-child {
+                    width: 30%;
+                }
+                >div:last-child {
+                    width: 70%;
+                }
+            }
+            
+            &.col-40-60{
+                >div:first-child {
+                    width: 40%;
+                }
+                >div:last-child {
+                    width: 100%;
+                }
+            }
+
+            &.col-50-50{
+                >div:first-child {
+                    width: 50%;
+                }
+                >div:last-child {
+                    width: 50%;
+                }
+            }
+
+            &.col-60-40{
+                >div:first-child {
+                    width: 60%;
+                }
+                >div:last-child {
+                    width: 40%;
+                }
+            }
+
+            &.col-70-30{
+                >div:first-child {
+                    width: 70%;
+                }
+                >div:last-child {
+                    width: 30%;
+                }
+            }
+
+
+        }
+    }
 
 }

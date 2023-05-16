@@ -9,7 +9,8 @@ type ResumeLayoutProps = {
     isSectioned: boolean,
     children?: ReactNode,
     resumeRef: HTMLDivElement | null,
-    resClassName: string
+    resClassName: string,
+    mainLayout: string
 }
 
 const DefaultHeaderSection = () => (
@@ -42,14 +43,14 @@ const DefaultFooterSection = () => (
 )
 
 
-const ResumeLayout = ({ HeaderSection = DefaultHeaderSection, FooterSection = DefaultFooterSection, MainLeftSection = DefaultMainLeftSection, MainRightSection = DefaultMainRightSection, isSectioned, children, resumeRef, resClassName }: ResumeLayoutProps) => {
+const ResumeLayout = ({ HeaderSection = DefaultHeaderSection, FooterSection = DefaultFooterSection, MainLeftSection = DefaultMainLeftSection, MainRightSection = DefaultMainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout }: ResumeLayoutProps) => {
     return (
         <div ref={resumeRef} className={`${resClassName} resume ${isSectioned ? 'resume--sectioned' : 'resume--not-sectioned'} `}>
             {
                 isSectioned ?
                     <>
                         <HeaderSection />
-                        <div className='main'>
+                        <div className={`main ${mainLayout}`}>
                             <MainLeftSection />
                             <MainRightSection />
                         </div>
