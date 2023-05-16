@@ -10,6 +10,10 @@
     justify-content: center;
     align-items: center;
 }
+@mixin justify-between{
+    display: flex;
+    justify-content: space-between;
+}
 
 @mixin transition($time) {
     transition: all $time ease-in-out;
