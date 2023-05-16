@@ -52,6 +52,9 @@ const ResumeLayout = ({ HeaderSection = DefaultHeaderSection, FooterSection = De
                         <HeaderSection />
                         <div className={`main ${mainLayout}`}>
                             <MainLeftSection />
+                            <div className="main__divider">
+
+                            </div>
                             <MainRightSection />
                         </div>
                         <FooterSection />
