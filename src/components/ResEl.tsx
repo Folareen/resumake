@@ -4,7 +4,7 @@ import { showToolbar } from '../redux/features/resumeSlice'
 import { RootState } from '../redux/store'
 
 type ResElProps = {
-    tag?: string,
+    tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'div',
     children?: React.ReactNode | string,
     className?: string,
 }
