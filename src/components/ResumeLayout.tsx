@@ -8,7 +8,7 @@ type ResumeLayoutProps = {
     MainRightSection?: any,
     isSectioned: boolean,
     children?: ReactNode,
-    resumeRef: HTMLDivElement | null,
+    resumeRef: React.MutableRefObject<HTMLDivElement> | null,
     resClassName: string,
     mainLayout: string
 }
