@@ -53,12 +53,12 @@
 
     ul {
         //   margin: 0.5em 0;
-        padding: 0 0 0 40px;
+        padding: 0 0 0 20px;
     }
 
     ol {
         //   margin: 0.5em 0;
-        padding: 0 0 0 40px;
+        padding: 0 0 0 20px;
     }
 
     li {
@@ -112,48 +112,65 @@
             width: 100%;
             flex: 1;
 
+            &__divider{
+                margin: 5% 0;
+                width: 1px;
+                height: 90%;
+                background-color: black;
+            }
+
             &.col-30-70{
+                @include justify-between;
+
                 >div:first-child {
-                    width: 30%;
+                    width: 26%;
                 }
                 >div:last-child {
-                    width: 70%;
+                    width: 66%;
                 }
             }
             
             &.col-40-60{
+                @include justify-between;
+
                 >div:first-child {
-                    width: 40%;
+                    width: 36%;
                 }
                 >div:last-child {
-                    width: 100%;
+                    width: 56%;
                 }
             }
 
             &.col-50-50{
+                @include justify-between;
+
                 >div:first-child {
-                    width: 50%;
+                    width: 46%;
                 }
                 >div:last-child {
-                    width: 50%;
+                    width: 46%;
                 }
             }
 
             &.col-60-40{
+                @include justify-between;
+
                 >div:first-child {
-                    width: 60%;
+                    width: 56%;
                 }
                 >div:last-child {
-                    width: 40%;
+                    width: 36%;
                 }
             }
 
             &.col-70-30{
+                @include justify-between;
+
                 >div:first-child {
-                    width: 70%;
+                    width: 66%;
                 }
                 >div:last-child {
-                    width: 30%;
+                    width: 26%;
                 }
             }
 
