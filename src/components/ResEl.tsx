@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { showToolbar } from '../redux/features/resumeSlice'
 import { RootState } from '../redux/store'
@@ -25,7 +25,7 @@ const ResEl = ({ tag: Tag = 'p', children, className = '' }: ResElProps) => {
                     }
                     return
                 }
-                const children = [...e.currentTarget.children]
+                const children: any[] = [...e.currentTarget.children]
                 children.forEach((element) => {
                     if (element.innerText === '') {
                         element.classList.add('empty')
@@ -38,7 +38,7 @@ const ResEl = ({ tag: Tag = 'p', children, className = '' }: ResElProps) => {
                 }
             }}
             className={`resume-element inline ${editMode && 'editable'} ${className}`}
-            onSelect={(e: React.MouseEvent<HTMLElement>) => {
+            onSelect={(e: React.SyntheticEvent<HTMLElement, Event>) => {
                 if (editMode) {
                     dispatch(showToolbar(e.currentTarget))
                 }
