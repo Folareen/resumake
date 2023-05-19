@@ -13,17 +13,13 @@ import { AiOutlineLine, AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineV
 import { FaFont, FaRedo, FaUndo } from 'react-icons/fa'
 import { BiAlignJustify, BiFontSize } from 'react-icons/bi'
 
-// type ToolbarProps = {
-//     refresh: boolean,
-//     setRefresh: React.Dispatch<React.SetStateAction<boolean>>,
-// }
 
 const Toolbar = () => {
 
     const dispatch = useDispatch()
     const { currentEl } = useSelector((state: RootState) => state.resume)
 
-    const showToolbarHandler = (e: React.MouseEvent<HTMLElement>) => {
+    const showToolbarHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
         dispatch(showToolbar(e.currentTarget))
     }
 

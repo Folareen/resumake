@@ -3,7 +3,7 @@ import ResEl from '../../components/ResEl'
 import ResumeContainer from '../../components/ResumeContainer'
 
 const Blank = () => {
-    const resumeRef = useRef<HTMLDivElement | null>(null)
+    const resumeRef = useRef<React.MutableRefObject<HTMLDivElement> | null>(null)
 
     return (
         <ResumeContainer resumeRef={resumeRef}>

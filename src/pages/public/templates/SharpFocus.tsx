@@ -189,9 +189,8 @@ const FooterSection = () => (
 
 
 const SharpFocus = () => {
-    const resumeRef = useRef<HTMLDivElement | null>(null)
+    const resumeRef = useRef<React.MutableRefObject<HTMLDivElement> | null>(null)
 
-    const secRef = useRef(null)
 
     return (
         <ResumeContainer
