@@ -16,10 +16,11 @@ type ResumeContainerProps = {
     children?: ReactNode,
     resumeRef: React.MutableRefObject<HTMLDivElement> | null,
     resClassName: string,
-    mainLayout?: string
+    mainLayout?: string,
+    addDivider: boolean
 }
 
-const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout }: ResumeContainerProps) => {
+const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeContainerProps) => {
     const { showToolbar, editMode } = useSelector((state: RootState) => state.resume)
 
     const dispatch = useDispatch()
@@ -77,7 +78,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                 )
             }
 
-            <ResumeLayout resClassName={resClassName} HeaderSection={HeaderSection} FooterSection={FooterSection} MainLeftSection={MainLeftSection} MainRightSection={MainRightSection} isSectioned={isSectioned} resumeRef={resumeRef} mainLayout={mainLayout || ''}>
+            <ResumeLayout resClassName={resClassName} HeaderSection={HeaderSection} FooterSection={FooterSection} MainLeftSection={MainLeftSection} MainRightSection={MainRightSection} isSectioned={isSectioned} resumeRef={resumeRef} mainLayout={mainLayout || ''} addDivider={addDivider}>
                 {children}
             </ResumeLayout>
 
