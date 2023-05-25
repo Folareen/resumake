@@ -11,6 +11,9 @@ const CleanAndSimple = () => {
             <ResEl tag="h1" className='name'>
                 JENNIFER DAVIS
             </ResEl>
+            <ResEl tag='h3' className='profession'>
+                Project Manager
+            </ResEl>
             <ResEl className='address'>
                 CITY OF HOUSTON, TX 77002
             </ResEl>

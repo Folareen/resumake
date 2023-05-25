@@ -7,6 +7,9 @@ const HeaderSection = () => (
         <ResEl tag="h1" className='name'>
             JENNIFER DAVIS
         </ResEl>
+        <ResEl tag='h3' className='profession'>
+            Project Manager
+        </ResEl>
         <ResEl className='summary'>
             Resourceful Project Manager skilled in leading cross-functional teams and delivering projects on time and within budget. Proficient in project planning and execution, risk management, and stakeholder communication. Strong communication and problem-solving skills.
         </ResEl>
