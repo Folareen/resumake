@@ -1,0 +1,97 @@
+.creative-spark {
+    background-color: rgb(248, 248, 248);
+    padding: 0;
+
+    .profile{
+        width: 100%;
+        background-color: rgba(56, 56, 135, 0.9);
+        color: white;
+        padding: 10px;
+    }
+
+    .career-objective{
+        width: 100%;
+        background-color: rgba(56, 56, 135, 0.5);
+        padding: 10px;
+    }
+
+    .contact{
+        width: 100%;
+        background-color: rgba(56, 56, 135, 0.4);
+        padding: 10px;
+    }
+
+    .skills{
+        width: 100%;
+        background-color: rgba(56, 56, 135, 0.3);
+        padding: 10px;
+    }
+
+    .education{
+        width: 100%;
+        background-color: rgba(56, 56, 135, 0.2);
+        padding: 10px;
+    }
+
+    .experience{
+        width: 100%;
+        background-color: rgba(56, 56, 135, 0.1);
+        padding: 10px;
+    }
+
+    .projects{
+        width: 100%;
+        background-color: rgba(56, 56, 135, 0.05);
+        padding: 10px;
+    }
+
+
+    .main {
+        // background-color: #f1f7fa;
+    }
+
+    .main-left {
+        background-color: rgba(56, 56, 135, 0.1);
+        width: 35% !important;
+    }
+
+    .main-right {
+        background-color: rgba(56, 56, 135, 0.05);
+        // padding: 15px;
+        width: 65% !important;
+    }
+
+    .name,
+    .profession {
+        width: 100%;
+        // text-align: center;
+    }
+
+    .summary {
+        width: 100%;
+    }
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        width: 100%;
+    }
+
+    .first-experience,
+    .second-experience,
+    .third-experience {
+        width: 100%;
+    }
+
+
+    .address,
+    .phone,
+    .email,
+    .website {
+        width: 100%;
+    }
+}
