@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 import ResEl from '../../../components/ResEl'
 import ResumeContainer from '../../../components/ResumeContainer'
-import ResumeLayout from '../../../components/ResumeLayout'
 
 const HeaderSection = () => (
     <div>
