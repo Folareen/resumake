@@ -187,9 +187,12 @@ const MainRightSection = () => (
 
 
         <ResEl className='block empty' />
-        <ResEl tag='h3' className='block'>
-            PROJECTS
-        </ResEl>
+        <div className='heading-item'>
+            <i className="fa-solid fa-briefcase"></i>
+            <ResEl tag='h3' className='block'>
+                PROJECTS
+            </ResEl>
+        </div>
 
         <ResEl tag='h5' className='block'>
             Project Manager // Houston, TX // July 2017 to Current
