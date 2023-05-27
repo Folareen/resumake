@@ -4,7 +4,7 @@ import ReactToPdf from 'react-to-pdf'
 import Toolbar from './Toolbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
-import { editResume, previewResume } from '../redux/features/resumeSlice'
+import { changeZoomLevel, editResume, previewResume } from '../redux/features/resumeSlice'
 import ResumeLayout from './ResumeLayout'
 
 type ResumeContainerProps = {
@@ -21,13 +21,29 @@ type ResumeContainerProps = {
 }
 
 const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeContainerProps) => {
-    const { showToolbar, editMode } = useSelector((state: RootState) => state.resume)
+    const { showToolbar, editMode, zoomLevel } = useSelector((state: RootState) => state.resume)
 
     const dispatch = useDispatch()
 
     return (
         <div>
 
+            <div>
+                <select onChange={(e) => {
+                    dispatch(changeZoomLevel(e.target.value))
+                }} value={zoomLevel}>
+                    {
+                        ['zoom 40', 'zoom 60', 'zoom 80', 'zoom 100'].map(
+                            (zoomLevel) => (
+                                <option value={zoomLevel}>
+                                    {zoomLevel}%
+                                </option>
+                            )
+                        )
+                    }
+                </select>
+
+            </div>
             {
                 editMode ?
                     (<div>
@@ -56,19 +72,26 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                         }} scale={1}>
                             {
                                 ({ toPdf }: { toPdf: () => void }) => (
-                                    <button onClick={() => {
-                                        toPdf()
+                                    <button onClick={async () => {
+                                        const formerZoomLevel = zoomLevel.split(' ').join('-')
+                                        resumeRef?.current.classList.remove(formerZoomLevel)
+                                        resumeRef?.current.classList.add('zoom-100')
+                                        await toPdf()
+                                        resumeRef?.current.classList.remove('zoom-100')
+                                        resumeRef?.current.classList.add(formerZoomLevel)
                                     }}>
                                         Download as Pdf
                                     </button>
                                 )
                             }
                         </ReactToPdf>
+
                         <button>
                             Download as Image
                         </button>
 
-                    </div>)
+                    </div>
+                    )
             }
 
 

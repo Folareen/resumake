@@ -6,13 +6,15 @@ type ResumeState = {
     editMode: boolean,
     userData: any,
     // resumeContent: 
+    zoomLevel: string
 }
 
 const initialState: ResumeState = {
     showToolbar: false,
     currentEl: null,
     editMode: false,
-    userData: null
+    userData: null,
+    zoomLevel: 'zoom 100'
 }
 
 const resumeSlice = createSlice({
@@ -41,9 +43,12 @@ const resumeSlice = createSlice({
         },
         clearUserData: (state) => {
             state.userData = null
+        },
+        changeZoomLevel: (state, action) => {
+            state.zoomLevel = action.payload
         }
     }
 })
 
-export const { showToolbar, hideToolbar, editResume, previewResume, submitUserData, clearUserData } = resumeSlice.actions
+export const { showToolbar, hideToolbar, editResume, previewResume, submitUserData, clearUserData, changeZoomLevel } = resumeSlice.actions
 export default resumeSlice.reducer

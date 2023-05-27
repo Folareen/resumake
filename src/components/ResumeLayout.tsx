@@ -1,4 +1,6 @@
 import React, { ReactNode } from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../redux/store'
 import ResEl from './ResEl'
 
 type ResumeLayoutProps = {
@@ -45,8 +47,10 @@ const DefaultFooterSection = () => (
 
 
 const ResumeLayout = ({ HeaderSection = DefaultHeaderSection, FooterSection = DefaultFooterSection, MainLeftSection = DefaultMainLeftSection, MainRightSection = DefaultMainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeLayoutProps) => {
+    const { zoomLevel } = useSelector((state: RootState) => state.resume)
+
     return (
-        <div ref={resumeRef} className={`${resClassName} resume ${isSectioned ? 'resume--sectioned' : 'resume--not-sectioned'} `}>
+        <div ref={resumeRef} className={`${resClassName} resume ${zoomLevel.split(' ').join('-')} ${isSectioned ? 'resume--sectioned' : 'resume--not-sectioned'} `}>
             {
                 isSectioned ?
                     <>

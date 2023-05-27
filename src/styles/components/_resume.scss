@@ -1,9 +1,28 @@
 .resume {
-    width: 793px;
-    height: 1122px;
+    &.zoom-40 {
+        width: 317.2px;
+        height: 448.8px;
+        font-size: 6.4px;
+    }
+    &.zoom-60 {
+        width: 475.8px;
+        height: 673.2px;
+        font-size: 9.6px;
+    }
+    &.zoom-80 {
+        width: 634.4px;
+        height: 897.6px;
+        font-size: 12.8px;
+    }
+    &.zoom-100 {
+        width: 793px;
+        height: 1122px;
+        font-size: 16px;
+    }
+    
     margin: auto;
     margin-top: 50px !important;
-    overflow: visible;
+    overflow: hidden;
     padding: 5px;
 
     h1 {
@@ -53,12 +72,12 @@
 
     ul {
         //   margin: 0.5em 0;
-        padding: 0 0 0 20px;
+        padding: 0 0 0 1.25em;
     }
 
     ol {
         //   margin: 0.5em 0;
-        padding: 0 0 0 20px;
+        padding: 0 0 0 1.25em;
     }
 
     li {
@@ -112,63 +131,68 @@
             width: 100%;
             flex: 1;
 
-            &__divider{
+            &__divider {
                 margin: 5% 0;
                 width: 1px;
                 height: 90%;
                 background-color: black;
             }
 
-            &.col-30-70{
+            &.col-30-70 {
                 @include justify-between;
 
                 >div:first-child {
                     width: 26%;
                 }
+
                 >div:last-child {
                     width: 66%;
                 }
             }
-            
-            &.col-40-60{
+
+            &.col-40-60 {
                 @include justify-between;
 
                 >div:first-child {
                     width: 36%;
                 }
+
                 >div:last-child {
                     width: 56%;
                 }
             }
 
-            &.col-50-50{
+            &.col-50-50 {
                 @include justify-between;
 
                 >div:first-child {
                     width: 46%;
                 }
+
                 >div:last-child {
                     width: 46%;
                 }
             }
 
-            &.col-60-40{
+            &.col-60-40 {
                 @include justify-between;
 
                 >div:first-child {
                     width: 56%;
                 }
+
                 >div:last-child {
                     width: 36%;
                 }
             }
 
-            &.col-70-30{
+            &.col-70-30 {
                 @include justify-between;
 
                 >div:first-child {
                     width: 66%;
                 }
+
                 >div:last-child {
                     width: 26%;
                 }
