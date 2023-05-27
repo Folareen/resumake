@@ -1,13 +1,13 @@
 .resume-element {
     max-width: 100%;
     display: inline-block;
-    min-width: 24px;
+    min-width: 1.5em;
     max-width: 100%;
     text-overflow: hidden;
     min-height: max-content;
 
     &.empty {
-        min-height: 11px;
+        min-height: 0.6875em;
     }
 
     &.editable {
