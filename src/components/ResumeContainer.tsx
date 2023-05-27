@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
 import { changeZoomLevel, editResume, previewResume } from '../redux/features/resumeSlice'
 import ResumeLayout from './ResumeLayout'
+import { toast } from 'react-toastify'
 
 type ResumeContainerProps = {
     HeaderSection?: any,
@@ -24,6 +25,8 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
     const { showToolbar, editMode, zoomLevel } = useSelector((state: RootState) => state.resume)
 
     const dispatch = useDispatch()
+
+    const [downloadingPdf, setDownloadingPdf] = useState(false)
 
     return (
         <div>
@@ -73,14 +76,26 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                             {
                                 ({ toPdf }: { toPdf: () => void }) => (
                                     <button onClick={async () => {
-                                        const formerZoomLevel = zoomLevel.split(' ').join('-')
-                                        resumeRef?.current.classList.remove(formerZoomLevel)
-                                        resumeRef?.current.classList.add('zoom-100')
-                                        await toPdf()
-                                        resumeRef?.current.classList.remove('zoom-100')
-                                        resumeRef?.current.classList.add(formerZoomLevel)
+                                        try {
+                                            setDownloadingPdf(true)
+                                            const formerZoomLevel = zoomLevel.split(' ').join('-')
+                                            resumeRef?.current.classList.remove(formerZoomLevel)
+                                            resumeRef?.current.classList.add('zoom-100')
+                                            await toPdf()
+                                            resumeRef?.current.classList.remove('zoom-100')
+                                            resumeRef?.current.classList.add(formerZoomLevel)
+                                        } catch (error) {
+                                            toast.error('Unable to download resume.\n Please try again.')
+                                        } finally {
+                                            setDownloadingPdf(false)
+                                        }
                                     }}>
-                                        Download as Pdf
+                                        {
+                                            downloadingPdf ?
+                                                'Please wait...'
+                                                :
+                                                'Download as Pdf'
+                                        }
                                     </button>
                                 )
                             }
