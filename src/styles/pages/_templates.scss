@@ -1,0 +1,32 @@
+.templates{
+
+    &__container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+        margin: 30px 0;
+        padding: 20px;
+
+        .template-card{
+            box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+            color: unset;
+            text-decoration: none;
+
+            .title{
+                display: block;
+                text-align: center;
+                padding: 5px 0;
+
+            }
+
+            .resume{
+                margin-top: 0 !important;
+            }
+        }
+
+
+
+
+    }
+}

@@ -1,25 +1,40 @@
 .resume {
+    &.display-as-template-card {
+        width: 158.6px;
+        height: 224.4px;
+        font-size: 3.2px;
+
+        @media (min-width: 768px) {
+            width: 317.2px;
+            height: 448.8px;
+            font-size: 6.4px;
+        }
+    }
+
     &.zoom-40 {
         width: 317.2px;
         height: 448.8px;
         font-size: 6.4px;
     }
+
     &.zoom-60 {
         width: 475.8px;
         height: 673.2px;
         font-size: 9.6px;
     }
+
     &.zoom-80 {
         width: 634.4px;
         height: 897.6px;
         font-size: 12.8px;
     }
+
     &.zoom-100 {
         width: 793px;
         height: 1122px;
         font-size: 16px;
     }
-    
+
     margin: auto;
     margin-top: 50px !important;
     overflow: hidden;
