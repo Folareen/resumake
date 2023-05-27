@@ -33,7 +33,7 @@ const HeaderSection = () => (
                 </ResEl>
             </div>
             <div className='contact-item'>
-                <i class="fa-solid fa-globe"></i>
+                <i className="fa-solid fa-globe"></i>
                 <ResEl className='website' tag='h6' >
                     jenifferdavis.com
                 </ResEl>
