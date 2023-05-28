@@ -9,7 +9,7 @@ const Profile = () => {
     const dispatch = useDispatch()
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        e.preventDefault
+        e.preventDefault()
         dispatch(setUserData({
             key: 'profile',
             value: {
