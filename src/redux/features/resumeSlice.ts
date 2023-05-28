@@ -18,37 +18,37 @@ type ResumeState = {
         }
         careerObjective: string,
         skills: string[],
-        education?: {
+        education: {
             courseOfStudy: string,
             school: string,
             degree: string,
             startDate: string,
             endDate: string,
         }[],
-        workExperience?: {
+        workExperience: {
             jobTitle: string,
             company: string,
             startDate: string,
             endDate: string,
             jobDescription: string[]
         }[],
-        projects?: {
+        projects: {
             title: string,
             description: string[],
             links: string[]
         }[],
-        certifications?: {
+        certifications: {
             title: string,
             school: string,
             date: string,
-        }[],
+        }[] | null,
         awardsAndHonors?: {
             title: string,
             date: string,
-        }[],
-        languages?: string[],
-        hobbies?: string[],
-        interests?: string[],
+        }[] | null,
+        languages: string[] | null,
+        hobbies: string[] | null,
+        interests: string[] | null,
     },
     zoomLevel: string
 }
@@ -155,7 +155,12 @@ const initialState: ResumeState = {
                     'https://www.google.com',
                 ]
             },
-        ]
+        ],
+        certifications: null,
+        awardsAndHonors: null,
+        languages: null,
+        hobbies: null,
+        interests: null,
     }
 }
 
@@ -215,9 +220,6 @@ const resumeSlice = createSlice({
                     break;
                 case 'hobbies':
                     state.userData.hobbies = value
-                    break;
-                case 'interests':
-                    state.userData.interests = value
                     break;
                 case 'interests':
                     state.userData.interests = value
