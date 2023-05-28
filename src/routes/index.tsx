@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 import { auth } from "../../firebase.config"
 import { onAuthStateChanged } from "firebase/auth"
 import { setUser } from "../redux/features/authSlice"
+import { ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css'
 
 export default () => {
     const { user, loading } = useSelector((state: RootState) => state.auth)
@@ -36,6 +38,7 @@ export default () => {
 
     return (
         <BrowserRouter>
+            <ToastContainer />
             {
                 user ?
                     <PrivateRoutes />
