@@ -58,7 +58,7 @@ const Education = () => {
                     </div>
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         e.preventDefault()
-                        if (education) {
+                        if (education.courseOfStudy && education.school && education.degree && education.startDate && education.endDate) {
                             setEducations([...educations, education])
                             setEducation({
                                 courseOfStudy: '',
