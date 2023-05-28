@@ -57,11 +57,11 @@ const UserDataForm = () => {
             required: false
         },
         {
-            form: <Languages />,
+            form: <Interests />,
             required: false
         },
         {
-            form: <Interests />,
+            form: <Languages />,
             required: false
         },
         {
