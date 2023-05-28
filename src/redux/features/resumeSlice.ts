@@ -212,7 +212,8 @@ const resumeSlice = createSlice({
                 case 'certifications':
                     state.userData.certifications = value
                     break;
-                case 'awardAndHonors':
+                case 'awardsAndHonors':
+                    console.log(value)
                     state.userData.awardsAndHonors = value
                     break;
                 case 'languages':
