@@ -17,7 +17,7 @@ const Skills = () => {
     }
 
     return (
-        <div>Profile
+        <div>Skills
             <form>
                 <p>
                     {skills.map((skill, index) => {
