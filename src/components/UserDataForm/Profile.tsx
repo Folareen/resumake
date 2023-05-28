@@ -24,10 +24,10 @@ const Profile = () => {
             <form>
                 <input type='text' value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setName(e.target.value)
-                }} />
+                }} placeholder='name' />
                 <input type='text' value={profession} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setProfession(e.target.value)
-                }} />
+                }} placeholder='profession' />
                 <button onClick={onSave}>
                     Save
                 </button>
