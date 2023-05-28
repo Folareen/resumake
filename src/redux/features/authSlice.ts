@@ -1,22 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 type authStateType = {
-    user: any
+    user: any,
+    loading: boolean,
 }
 
 const initialState: authStateType = {
-    user: null
+    user: null,
+    loading: true,
 }
 
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        login: (state, action) => {
-            state.user = action.payload
+        setUser: (state, action) => {
+            state.user = action.payload,
+            state.loading = false
         }
     }
 })
 
-export const { login } = authSlice.actions
+export const { setUser } = authSlice.actions
 export default authSlice.reducer
