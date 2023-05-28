@@ -1,204 +1,183 @@
 import React, { useRef } from 'react'
+import { useSelector } from 'react-redux'
 import ResEl from '../../../components/ResEl'
 import ResumeContainer from '../../../components/ResumeContainer'
+import { RootState } from '../../../redux/store'
 
-const HeaderSection = () => (
-    <div className='header'>
-        <div className='name-profession'>
-            <ResEl tag="h1" className='name'>
-                JENNIFER DAVIS
-            </ResEl>
-            <ResEl tag="h3" className='profession'>
-                Project Manager
-            </ResEl>
+const HeaderSection = () => {
+    const { userData: { profile: { name, profession }, contact: { address, phone, email, website } } } = useSelector((state: RootState) => state.resume)
+
+    return (
+        <div className='header'>
+            <div className='name-profession'>
+                <ResEl tag="h1" className='name'>
+                    {name}
+                </ResEl>
+                <ResEl tag="h3" className='profession'>
+                    {profession}
+                </ResEl>
+            </div>
+            <div className='contact'>
+                <ResEl className='address' tag='h6'>
+                    {address}
+                </ResEl>
+                <ResEl className='phone' tag='h6'>
+                    {phone}
+                </ResEl>
+                <ResEl className='email' tag='h6'>
+                    {email}
+                </ResEl>
+                <ResEl className='website' tag='h6'>
+                    {website}
+                </ResEl>
+            </div>
         </div>
-        <div className='contact'>
-            <ResEl className='address' tag='h6'>
-                CITY OF HOUSTON, TX 77002
-            </ResEl>
-            <ResEl className='phone' tag='h6'>
-                (555) 555-5555 |
-            </ResEl>
-            <ResEl className='email' tag='h6'>
-                JENNIFER.DAVIS@EMAIL.COM
-            </ResEl>
-            <ResEl className='website' tag='h6'>
-                jenifferdavis.com
-            </ResEl>
-        </div>
-    </div>
-)
-const MainRightSection = () => (
-    <div className='main-right'>
+    )
+}
+const MainRightSection = () => {
+    const { userData: { workExperience, projects } } = useSelector((state: RootState) => state.resume)
+    return (
+        <div className='main-right'>
 
-        <div className='experience'>
-            <ResEl className='block empty' />
-            <ResEl tag='h3' className='block'>
-                WORK EXPERIENCE
-            </ResEl>
+            <div className='experience'>
+                <ResEl className='block empty' />
+                <ResEl tag='h3' className='block'>
+                    WORK EXPERIENCE
+                </ResEl>
 
-            <ResEl tag='h4' className='block'>
-                Project Manager
-            </ResEl>
-            <ResEl tag='h5' className='block' >
-                ABC Corporation, Houston, TX. * July 2017 to Current
-            </ResEl>
-            <ResEl className='first-experience block'>
-                <ul >
-                    <li>
-                        Lead project planning and execution activities, including budget development, resource allocation, risk management, and stakeholder communication.
-                    </li>
-                    <li>Collaborate with cross-functional teams to deliver projects on time and within budget, resulting in a 20% increase in customer satisfaction ratings.
-                    </li>
-                    <li> Optimize project management processes and touls, resulting in a 25% reduction in project cycle time.
-                    </li>
-                </ul>
-            </ResEl>
+                {
+                    workExperience.map((work, index) => (
+                        <>
+                            <ResEl tag='h4' className='block'>
+                                {work.jobTitle}
+                            </ResEl>
+                            <ResEl tag='h5' className='block' >
+                                {work.company} * {work.startDate} to {work.endDate}
+                            </ResEl>
+                            <ResEl className='first-experience block'>
+                                <ul >
+                                    {
+                                        work.jobDescription.map((desc, index) => (
+                                            <li key={index}>
+                                                {desc}
+                                            </li>
+                                        ))
+                                    }
+                                </ul>
+                            </ResEl>
+                            <ResEl className='block empty' />
+                        </>
+                    ))
+                }
 
-            <ResEl className='block empty' />
-            <ResEl tag='h4' className='block'>
-                Project Manager
-            </ResEl>
-            <ResEl tag='h5' className='block' >
-                ABC Corporation, Houston, TX. * July 2017 to Current
-            </ResEl>
-            <ResEl className='first-experience block'>
-                <ul >
-                    <li>
-                        Lead project planning and execution activities, including budget development, resource allocation, risk management, and stakeholder communication.
-                    </li>
-                    <li>Collaborate with cross-functional teams to deliver projects on time and within budget, resulting in a 20% increase in customer satisfaction ratings.
-                    </li>
-                    <li> Optimize project management processes and touls, resulting in a 25% reduction in project cycle time.
-                    </li>
-                </ul>
-            </ResEl>
+            </div>
 
-            <ResEl className='block empty' />
-            <ResEl tag='h4' className='block'>
-                Project Manager
-            </ResEl>
-            <ResEl tag='h5' className='block' >
-                ABC Corporation, Houston, TX. * July 2017 to Current
-            </ResEl>
-            <ResEl className='first-experience block'>
-                <ul >
-                    <li>
-                        Lead project planning and execution activities, including budget development, resource allocation, risk management, and stakeholder communication.
-                    </li>
-                    <li>Collaborate with cross-functional teams to deliver projects on time and within budget, resulting in a 20% increase in customer satisfaction ratings.
-                    </li>
-                    <li> Optimize project management processes and touls, resulting in a 25% reduction in project cycle time.
-                    </li>
-                </ul>
-            </ResEl>
+            <div className="projects">
 
-        </div>
+                <ResEl tag='h3' className='block'>
+                    PROJECTS
+                </ResEl>
 
-        <div className="projects">
+                {
+                    projects.map((project, index) => (
+                        <>
+                            <ResEl tag='h4' className='block'>
+                                {project.title}
+                            </ResEl>
+                            <ResEl className='first-experience block'>
+                                <ul >
+                                    {
+                                        project.description.map((desc, index) => (
+                                            <li key={index}>
+                                                {desc}
+                                            </li>
+                                        ))
 
-            <ResEl className='block empty' />
-            <ResEl tag='h3' className='block'>
-                PROJECTS
-            </ResEl>
+                                    }
+                                </ul>
+                            </ResEl>
+                            {
+                                project.links.map((link, index) => (
+                                    <ResEl className='block' key={index}>
+                                        <a href={link} target='_blank' rel="noreferrer">{link}</a>
+                                    </ResEl>
+                                ))
+                            }
+                            <ResEl className='block empty' />
+                        </>
+                    ))
+                }
+            </div>
 
-            <ResEl tag='h5' className='block'>
-                Project Manager // Houston, TX // July 2017 to Current
-            </ResEl>
-            <ResEl tag='h4' className='block' >
-                ABC Corporation
-            </ResEl>
-            <ResEl className='first-experience block'>
-                <ul >
-                    <li>
-                        Lead project planning and execution activities, including budget development, resource allocation, risk management, and stakeholder communication.
-                    </li>
-                    <li>Collaborate with cross-functional teams to deliver projects on time and within budget, resulting in a 20% increase in customer satisfaction ratings.
-                    </li>
-                    <li> Optimize project management processes and touls, resulting in a 25% reduction in project cycle time.
-                    </li>
-                </ul>
-            </ResEl>
-        </div>
-
-
-    </div>
-)
-const MainLeftSection = () => (
-    <div className='main-left'>
-
-        <div className='career-objective'>
-            <ResEl className='block empty' />
-            <ResEl tag='h3' className='block'>
-                CAREER OBJECTIVE
-            </ResEl>
-            <ResEl className='summary'>
-                Resourceful Project Manager skilled in leading cross-functional teams and delivering projects on time and within budget. Proficient in project planning and execution, risk management, and stakeholder communication. Strong communication and problem-solving skills.
-            </ResEl>
-        </div>
-
-        <div className='contact'>
-            <ResEl className='block empty' />
-        </div>
-
-        <div className='skills'>
-            <ResEl className='block empty' />
-            <ResEl tag='h3' className='block'>
-                SKILLS
-            </ResEl>
-
-            <ResEl className='block'>
-                <ul >
-                    <li>Product development
-                    </li>
-                    <li>Market research and analysis
-                    </li>
-                    <li>Customer needs assessment
-                    </li>
-                    <li> Cross-functional team leadership
-                    </li>
-                    <li>Product roadmap planning
-                    </li>
-                    <li>Agile development methodulogy
-                    </li>
-                    <li>Customer needs assessment
-                    </li>
-                </ul>
-            </ResEl>
-        </div>
-
-        <div className='education'>
-            <ResEl className='block empty' />
-            <ResEl tag='h3' className='block'>
-                EDUCATION
-            </ResEl>
-
-            <ResEl tag='h4' className='block'>
-                Master of Business Administration -
-            </ResEl>
-            <ResEl className='block'>
-                <b>Product Management</b>
-            </ResEl>
-            <ResEl className='block'>
-                University of California, Berkeley, CA
-            </ResEl>
-
-            <ResEl tag='h6' className='empty block' />
-
-            <ResEl tag='h4' className='block'>
-                Bachelor of Science
-            </ResEl>
-            <ResEl className='block'>
-                <b>Marketing</b>
-            </ResEl>
-            <ResEl className='block'>
-                San Diego State University, San Diego, CA
-            </ResEl>
 
         </div>
+    )
+}
+const MainLeftSection = () => {
+    const { userData: { careerObjective, skills, education } } = useSelector((state: RootState) => state.resume)
+    return (
+        <div className='main-left'>
 
-    </div>
-)
+            <div className='career-objective'>
+                <ResEl className='block empty' />
+                <ResEl tag='h3' className='block'>
+                    CAREER OBJECTIVE
+                </ResEl>
+                <ResEl className='summary'>
+                    {careerObjective}
+                </ResEl>
+            </div>
+
+
+            <div className='skills'>
+                <ResEl className='block empty' />
+                <ResEl tag='h3' className='block'>
+                    SKILLS
+                </ResEl>
+
+                <ResEl className='block'>
+                    <ul >
+                        {skills.map(
+                            (skill) => (
+                                <li>
+                                    {skill}
+                                </li>
+                            )
+                        )}
+                    </ul>
+                </ResEl>
+            </div>
+
+            <div className='education'>
+                <ResEl className='block empty' />
+                <ResEl tag='h3' className='block'>
+                    EDUCATION
+                </ResEl>
+
+                {
+                    education.map((edu, index) => (
+                        <>
+                            <ResEl tag='h4' className='block'>
+                                {edu.degree}
+                            </ResEl>
+                            <ResEl className='block'>
+                                <b>{edu.courseOfStudy}</b>
+                            </ResEl>
+                            <ResEl className='block'>
+                                {edu.school}
+                            </ResEl>
+                            <ResEl className='block'>
+                                <small>{edu.startDate} - {edu.endDate}</small>
+                            </ResEl>
+                            <ResEl tag='h6' className='empty block' />
+                        </>
+                    ))
+                }
+            </div>
+
+        </div>
+    )
+}
 const FooterSection = () => (
     <div>
     </div>
