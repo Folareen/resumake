@@ -96,14 +96,6 @@ const UserDataForm = () => {
                 >
                     Skip
                 </button>
-                <button
-                    disabled={!(currentFormIndex < forms.length - 1)}
-                    onClick={() => {
-                        dispatch(nextForm())
-                    }}
-                >
-                    Next
-                </button>
                 <button style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
                     Generate resume
                 </button>
