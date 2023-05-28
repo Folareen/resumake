@@ -46,9 +46,9 @@ type ResumeState = {
             title: string,
             date: string,
         }[] | null,
+        interests: string[] | null,
         languages: string[] | null,
         hobbies: string[] | null,
-        interests: string[] | null,
     },
     zoomLevel: string
 }
