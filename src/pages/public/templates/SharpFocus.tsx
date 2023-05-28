@@ -97,7 +97,7 @@ const MainLeftSection = () => (
     <div>
         <ResEl className='block empty' />
         <ResEl tag='h3' className='block'>
-            EXPERIENCE
+            WORK EXPERIENCE
         </ResEl>
         <ResEl className='line' tag='div' />
 

@@ -32,7 +32,7 @@ const CleanAndSimple = () => {
 
             <ResEl className='block' />
             <ResEl tag='h2' className='block'>
-                EXPERIENCE
+                WORK EXPERIENCE
             </ResEl>
 
             <ResEl tag='h3' className='block' >

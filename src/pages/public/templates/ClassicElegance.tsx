@@ -125,7 +125,7 @@ const MainRightSection = () => (
         <div className='heading-item'>
             <i className="fa-solid fa-briefcase"></i>
             <ResEl tag='h3' className='block'>
-                EXPERIENCE
+                WORK EXPERIENCE
             </ResEl>
         </div>
 
