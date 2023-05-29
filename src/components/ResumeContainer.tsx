@@ -10,6 +10,7 @@ import { toast } from 'react-toastify'
 import { useNavigate, useParams } from 'react-router-dom'
 import { addDoc, collection, deleteDoc, doc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
+import html2canvas from 'html2canvas'
 
 type ResumeContainerProps = {
     HeaderSection?: any,
@@ -150,7 +151,17 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                         }
                                     </ReactToPdf>
 
-                                    <button>
+                                    <button onClick={async () => {
+                                        const resumeEl = document.querySelector('.resume')
+                                        const canvas = await html2canvas(resumeEl as HTMLElement)
+                                        const data = canvas.toDataURL('image/jpg')
+                                        const link = document.createElement('a');
+
+                                        link.href = data;
+                                        link.download = 'resume.jpg';
+
+                                        link.click();
+                                    }}>
                                         Download as Image
                                     </button>
 
