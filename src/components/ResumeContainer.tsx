@@ -94,14 +94,6 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                             </select>
 
                         </div>
-                        <button onClick={handleSaveResume} disabled={savingResume}>
-                            {
-                                savingResume ?
-                                    'saving resume...'
-                                    :
-                                    'save'
-                            }
-                        </button>
                         {
                             editMode ?
                                 (<div>
@@ -113,6 +105,14 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                 </div>)
                                 :
                                 (<div>
+                                    <button onClick={handleSaveResume} disabled={savingResume}>
+                                        {
+                                            savingResume ?
+                                                'saving resume...'
+                                                :
+                                                'save'
+                                        }
+                                    </button>
                                     <button onClick={() => {
                                         dispatch(editResume())
                                     }}>
