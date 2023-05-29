@@ -20,7 +20,9 @@ const Toolbar = () => {
     const { currentEl } = useSelector((state: RootState) => state.resume)
 
     const showToolbarHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-        dispatch(showToolbar(e.currentTarget))
+        if (e.currentTarget.classList.contains('editable')) {
+            dispatch(showToolbar(e.currentTarget))
+        }
     }
 
     const duplicateDown = () => {
