@@ -12,6 +12,7 @@ import { RootState } from '../redux/store'
 import { AiOutlineLine, AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineVerticalAlignBottom, AiOutlineVerticalAlignTop } from 'react-icons/ai'
 import { FaFont, FaRedo, FaUndo } from 'react-icons/fa'
 import { BiAlignJustify, BiFontSize } from 'react-icons/bi'
+import ToolbarBtn from './ToolbarBtn'
 
 
 const Toolbar = () => {
@@ -91,7 +92,6 @@ const Toolbar = () => {
         const newEl = currentEl?.cloneNode(true) as HTMLElement
         newEl.innerText = ''
         newEl.classList.remove('inline')
-        // newEl.classList.add('block')
         newEl.classList.add('line')
         newEl.addEventListener('click', showToolbarHandler)
         currentEl?.parentNode.insertBefore(newEl, currentEl?.previousSibling || currentEl);
@@ -101,7 +101,6 @@ const Toolbar = () => {
         const newEl = currentEl?.cloneNode(true) as HTMLElement
         newEl.innerText = ''
         newEl.classList.remove('inline')
-        // newEl.classList.add('block')
         newEl.classList.add('line')
         newEl.addEventListener('click', showToolbarHandler)
         currentEl?.parentNode.insertBefore(newEl, currentEl?.nextSibling);
@@ -111,219 +110,363 @@ const Toolbar = () => {
 
     return (
         <div className='toolbar'>
-            <button className='hide-toolbar' onClick={() => {
-                dispatch(hideToolbar())
-            }}>
+            <ToolbarBtn
+                tooltip="Hide toolbar"
+                className="hide-toolbar"
+                onClick={() => {
+                    dispatch(hideToolbar());
+                }}
+            >
                 X
-            </button>
-
-            <button onClick={() => {
-                document.execCommand('bold')
-            }}>
-                B
-            </button>
-            <button onClick={() => {
-                document.execCommand('underline')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Underline"
+                className="underline"
+                onClick={() => {
+                    document.execCommand('underline');
+                }}
+            >
                 U
-            </button>
-            <button onClick={() => {
-                document.execCommand('italic')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Italic"
+                className="italic"
+                onClick={() => {
+                    document.execCommand('italic');
+                }}
+            >
                 I
-            </button>
-            <button onClick={() => {
-                currentEl.style.display = 'block'
-                document.execCommand('indent')
-                currentEl.style.display = 'inline-block'
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Indent"
+                className="indent"
+                onClick={() => {
+                    currentEl.style.display = 'block';
+                    document.execCommand('indent');
+                    currentEl.style.display = 'inline-block';
+                }}
+            >
                 Id
-            </button>
-            <button onClick={() => {
-                currentEl.style.display = 'block'
-                document.execCommand('outdent')
-                currentEl.style.display = 'inline-block'
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Outdent"
+                className="outdent"
+                onClick={() => {
+                    currentEl.style.display = 'block';
+                    document.execCommand('outdent');
+                    currentEl.style.display = 'inline-block';
+                }}
+            >
                 Ou
-            </button>
-            <button onClick={() => {
-                document.execCommand('superscript')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Superscript"
+                className="superscript"
+                onClick={() => {
+                    document.execCommand('superscript');
+                }}
+            >
                 <BsSuperscript />
-            </button>
-            <button onClick={() => {
-                document.execCommand('subscript')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Subscript"
+                className="subscript"
+                onClick={() => {
+                    document.execCommand('subscript');
+                }}
+            >
                 <BsSubscript />
-            </button>
-            <button onClick={() => {
-                document.execCommand('strikeThrough')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Strikethrough"
+                className="strikethrough"
+                onClick={() => {
+                    document.execCommand('strikeThrough');
+                }}
+            >
                 <MdOutlineStrikethroughS />
-            </button>
-            <button onClick={() => {
-                currentEl?.classList.toggle('text-right')
-                currentEl?.classList.remove('text-left')
-                currentEl?.classList.remove('text-center')
-                currentEl?.classList.remove('text-justify')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Align Right"
+                className="align-right"
+                onClick={() => {
+                    currentEl?.classList.toggle('text-right');
+                    currentEl?.classList.remove('text-left');
+                    currentEl?.classList.remove('text-center');
+                    currentEl?.classList.remove('text-justify');
+                }}
+            >
                 <BsJustifyRight />
-            </button>
-            <button onClick={() => {
-                currentEl?.classList.toggle('text-left')
-                currentEl?.classList.remove('text-right')
-                currentEl?.classList.remove('text-center')
-                currentEl?.classList.remove('text-justify')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Align Left"
+                className="align-left"
+                onClick={() => {
+                    currentEl?.classList.toggle('text-left');
+                    currentEl?.classList.remove('text-right');
+                    currentEl?.classList.remove('text-center');
+                    currentEl?.classList.remove('text-justify');
+                }}
+            >
                 <BsJustifyLeft />
-            </button>
-            <button onClick={() => {
-                currentEl?.classList.toggle('text-center')
-                currentEl?.classList.remove('text-left')
-                currentEl?.classList.remove('text-right')
-                currentEl?.classList.remove('text-justify')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Align Center"
+                className="align-center"
+                onClick={() => {
+                    currentEl?.classList.toggle('text-center');
+                    currentEl?.classList.remove('text-left');
+                    currentEl?.classList.remove('text-right');
+                    currentEl?.classList.remove('text-justify');
+                }}
+            >
                 <BiAlignJustify />
-            </button>
-            <button onClick={() => {
-                currentEl?.classList.toggle('text-justify')
-                currentEl?.classList.remove('text-left')
-                currentEl?.classList.remove('text-right')
-                currentEl?.classList.remove('text-center')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Justify"
+                className="justify"
+                onClick={() => {
+                    currentEl?.classList.toggle('text-justify');
+                    currentEl?.classList.remove('text-left');
+                    currentEl?.classList.remove('text-right');
+                    currentEl?.classList.remove('text-center');
+                }}
+            >
                 <BsJustify />
-            </button>
-            <button onClick={() => {
-                document.execCommand('fontSize', false, '1')
-                // smallest smaller small normal large larger largest
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Font Size"
+                className="font-size"
+                onClick={() => {
+                    document.execCommand('fontSize', false, '1');
+                }}
+            >
                 <BiFontSize />
-            </button>
-            <button onClick={() => {
-                document.execCommand('fontName', false, 'Serif')
-                // select from list of fonts....
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Font Name"
+                className="font-name"
+                onClick={() => {
+                    document.execCommand('fontName', false, 'Serif');
+                }}
+            >
                 <FaFont />
-            </button>
-            <button onClick={() => {
-                document.execCommand('insertHorizontalRule')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Insert Horizontal Rule"
+                className="insert-hr"
+                onClick={() => {
+                    document.execCommand('insertHorizontalRule');
+                }}
+            >
                 <AiOutlineLine />
-            </button>
-            <button onClick={() => {
-                currentEl.style.display = 'block'
-                document.execCommand('insertOrderedList', false, null)
-                currentEl.style.display = 'inline-block'
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Insert Ordered List"
+                className="insert-ol"
+                onClick={() => {
+                    currentEl.style.display = 'block';
+                    document.execCommand('insertOrderedList', false, null);
+                    currentEl.style.display = 'inline-block';
+                }}
+            >
                 <AiOutlineOrderedList />
-            </button>
-            <button onClick={() => {
-                currentEl.style.display = 'block'
-                document.execCommand('insertUnorderedList', false, null)
-                currentEl.style.display = 'inline-block'
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Insert Unordered List"
+                className="insert-ul"
+                onClick={() => {
+                    currentEl.style.display = 'block';
+                    document.execCommand('insertUnorderedList', false, null);
+                    currentEl.style.display = 'inline-block';
+                }}
+            >
                 <AiOutlineUnorderedList />
-            </button>
-            <button onClick={() => {
-                document.execCommand('copy')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Copy"
+                className="copy"
+                onClick={() => {
+                    document.execCommand('copy');
+                }}
+            >
                 <MdContentCopy />
-            </button>
-            <button onClick={() => {
-                document.execCommand('cut')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Cut"
+                className="cut"
+                onClick={() => {
+                    document.execCommand('cut');
+                }}
+            >
                 <MdContentCut />
-            </button>
-            <button onClick={() => {
-                document.execCommand('paste')
-                navigator.clipboard.readText()
-                    .then(text => {
-                        currentEl.innerHTML = currentEl?.innerHTML + text;
-                    })
-                    .catch(err => {
-                        console.error('Failed to read clipboard contents: ', err);
-                    });
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Paste"
+                className="paste"
+                onClick={() => {
+                    document.execCommand('paste');
+                    navigator.clipboard
+                        .readText()
+                        .then((text) => {
+                            currentEl.innerHTML = currentEl?.innerHTML + text;
+                        })
+                        .catch((err) => {
+                            console.error('Failed to read clipboard contents: ', err);
+                        });
+                }}
+            >
                 <MdContentPaste />
-            </button>
-            <button onClick={() => {
-                document.execCommand('undo')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Undo"
+                className="undo"
+                onClick={() => {
+                    document.execCommand('undo');
+                }}
+            >
                 <FaUndo />
-            </button>
-            <button onClick={() => {
-                document.execCommand('redo')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Redo"
+                className="redo"
+                onClick={() => {
+                    document.execCommand('redo');
+                }}
+            >
                 <FaRedo />
-            </button>
-            <button onClick={() => {
-                let link = prompt('Enter the link here: ', 'https://')
-                if (!link) {
-                    alert('Please enter a valid link')
-                    return
-                }
-                document.execCommand('createLink', false, link)
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Create Link"
+                className="create-link"
+                onClick={() => {
+                    let link = prompt('Enter the link here:', 'https://');
+                    if (!link) {
+                        alert('Please enter a valid link');
+                        return;
+                    }
+                    document.execCommand('createLink', false, link);
+                }}
+            >
                 <IoMdLink />
-            </button>
-            <button onClick={() => {
-                document.execCommand('unLink')
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Remove Link"
+                className="remove-link"
+                onClick={() => {
+                    document.execCommand('unlink');
+                }}
+            >
                 <MdLinkOff />
-            </button>
-            <button className='btn' onClick={() => {
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Text Color"
+                className="text-color"
+                onClick={() => { }}
+            >
                 <IoColorPaletteSharp />
-                <input type='color' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    document.execCommand('foreColor', false, e.target.value)
-                }} />
-            </button>
-            <button className='btn' onClick={() => {
-            }}>
+                <input
+                    type="color"
+                    onChange={(e) => {
+                        document.execCommand('foreColor', false, e.target.value);
+                    }}
+                />
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Background Color"
+                className="background-color"
+                onClick={() => { }}
+            >
                 <IoIosColorFill />
-                <input type='color' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    document.execCommand('backColor', false, e.target.value)
-                }} />
-            </button>
-            <button style={{ display: 'flex', flexDirection: 'column' }} className='btn' onClick={duplicateDown}>
+                <input
+                    type="color"
+                    onChange={(e) => {
+                        document.execCommand('backColor', false, e.target.value);
+                    }}
+                />
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Duplicate Down"
+                className="duplicate-down"
+                onClick={duplicateDown}
+            >
                 <IoDuplicate />
                 <BsChevronCompactDown />
-            </button>
-            <button style={{ display: 'flex', flexDirection: 'column' }} className='btn' onClick={duplicateUp}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Duplicate Up"
+                className="duplicate-up"
+                onClick={duplicateUp}
+            >
                 <BsChevronCompactUp />
                 <IoDuplicate />
-            </button>
-            <button style={{ display: 'flex', flexDirection: 'row' }} className='btn' onClick={duplicateRight}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Duplicate Right"
+                className="duplicate-right"
+                onClick={duplicateRight}
+            >
                 <BsChevronCompactRight />
                 <IoDuplicate />
-            </button>
-            <button className='btn' onClick={moveUp}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Move Up"
+                className="move-up"
+                onClick={moveUp}
+            >
                 <MdOutlineKeyboardDoubleArrowUp />
-            </button>
-            <button className='btn' onClick={moveDown}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Move Down"
+                className="move-down"
+                onClick={moveDown}
+            >
                 <MdOutlineKeyboardDoubleArrowDown />
-            </button>
-            <button className='btn' onClick={insertUp}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Insert Row Above"
+                className="insert-row-up"
+                onClick={insertUp}
+            >
                 <TbRowInsertTop />
-            </button>
-            <button className='btn' onClick={insertDown}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Insert Row Below"
+                className="insert-row-down"
+                onClick={insertDown}
+            >
                 <TbRowInsertBottom />
-            </button>
-            <button className='btn' onClick={insertLineUp}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Insert Line Above"
+                className="insert-line-up"
+                onClick={insertLineUp}
+            >
                 <AiOutlineVerticalAlignTop />
-            </button>
-            <button className='btn' onClick={insertLineDown}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Insert Line Below"
+                className="insert-line-down"
+                onClick={insertLineDown}
+            >
                 <AiOutlineVerticalAlignBottom />
-            </button>
-            <button className='btn' onClick={insertInside}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Insert Inside"
+                className="insert-inside"
+                onClick={insertInside}
+            >
                 <CgInsertAfterR />
-            </button>
-            <button className='btn' onClick={() => {
-                currentEl?.remove()
-
-            }}>
+            </ToolbarBtn>
+            <ToolbarBtn
+                tooltip="Delete"
+                className="delete"
+                onClick={() => {
+                    currentEl?.remove();
+                }}
+            >
                 <IoTrashBin />
-            </button>
+            </ToolbarBtn>
         </div>
     )
 }
