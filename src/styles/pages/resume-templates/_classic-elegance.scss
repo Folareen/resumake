@@ -25,8 +25,9 @@
         display: flex;
         margin-bottom: 0.625em;
 
-        i {
+        svg {
             margin-right: 0.625em;
+            font-size: inherit;
         }
     }
 
@@ -39,8 +40,9 @@
         display: flex;
         align-items: center;
 
-        i {
+        svg {
             margin-right: 0.3125em;
+            font-size: inherit;
         }
     }
 

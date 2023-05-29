@@ -1,4 +1,10 @@
 import React, { useRef } from 'react'
+import { BsTelephoneFill } from 'react-icons/bs'
+import { FaAddressCard, FaGlobe, FaGraduationCap } from 'react-icons/fa'
+import { IoLocationSharp } from 'react-icons/io5'
+import { MdEmail, MdWorkHistory } from 'react-icons/md'
+import { GiSkills } from 'react-icons/gi'
+import { GrProjects } from 'react-icons/gr'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import ResEl from '../../../components/ResEl'
@@ -21,25 +27,25 @@ const HeaderSection = () => {
             </div>
             <div className='contact'>
                 <div className='contact-item'>
-                    <i className="fa-solid fa-location-dot"></i>
+                    <IoLocationSharp />
                     <ResEl className='address' tag='h6'>
                         {address}
                     </ResEl>
                 </div>
                 <div className='contact-item'>
-                    <i className="fa-solid fa-phone"></i>
+                    <BsTelephoneFill />
                     <ResEl className='phone' tag='h6'>
                         {phone}
                     </ResEl>
                 </div>
                 <div className='contact-item'>
-                    <i className="fa-solid fa-envelope"></i>
+                    <MdEmail />
                     <ResEl className='email' tag='h6'>
                         {email}
                     </ResEl>
                 </div>
                 <div className='contact-item'>
-                    <i className="fa-solid fa-globe"></i>
+                    <FaGlobe />
                     <ResEl className='website' tag='h6' >
                         {website}
                     </ResEl>
@@ -56,7 +62,7 @@ const MainLeftSection = () => {
         <div className='main-left'>
 
             <div className='heading-item'>
-                <i className="fa-solid fa-id-card"></i>
+                <FaAddressCard />
                 <ResEl tag='h3' className='block'>
                     CAREER OBJECTIVE
                 </ResEl>
@@ -70,7 +76,7 @@ const MainLeftSection = () => {
             <ResEl className='block empty' />
 
             <div className='heading-item'>
-                <i className="fa-solid fa-id-card"></i>
+                <GiSkills />
                 <ResEl tag='h3' className='block'>
                     SKILLS
                 </ResEl>
@@ -90,7 +96,7 @@ const MainLeftSection = () => {
 
             <ResEl className='block empty' />
             <div className='heading-item'>
-                <i className="fa-solid fa-graduation-cap"></i>
+                <FaGraduationCap />
                 <ResEl tag='h3' className='block'>
                     EDUCATION
                 </ResEl>
@@ -126,7 +132,7 @@ const MainRightSection = () => {
 
             <ResEl className='block empty' />
             <div className='heading-item'>
-                <i className="fa-solid fa-briefcase"></i>
+                <MdWorkHistory />
                 <ResEl tag='h3' className='block'>
                     WORK EXPERIENCE
                 </ResEl>
@@ -158,7 +164,7 @@ const MainRightSection = () => {
             }
 
             <div className='heading-item'>
-                <i className="fa-solid fa-briefcase"></i>
+                <GrProjects />
                 <ResEl tag='h3' className='block'>
                     PROJECTS
                 </ResEl>
