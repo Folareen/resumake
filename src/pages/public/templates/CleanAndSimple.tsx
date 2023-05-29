@@ -26,14 +26,14 @@ const CleanAndSimple = () => {
             </ResEl>
 
 
-            <ResEl />
+            <ResEl className='empty block' />
             <ResEl className='line' />
             <ResEl className='summary'>
                 {careerObjective}
             </ResEl>
             <ResEl className='line' tag='div' />
 
-            <ResEl className='block' />
+            <ResEl className='block empty' />
             <ResEl tag='h2' className='block'>
                 WORK EXPERIENCE
             </ResEl>
@@ -90,7 +90,7 @@ const CleanAndSimple = () => {
             </ResEl>
 
 
-            <ResEl className='block' />
+            <ResEl className='block empty' />
             <ResEl tag='h2' className='block'>
                 EDUCATION
             </ResEl>
