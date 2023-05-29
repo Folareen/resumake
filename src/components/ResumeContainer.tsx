@@ -120,7 +120,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                         edit
                                     </button>
 
-                                    <ReactToPdf filename={`resume.pdf`} targetRef={resumeRef} options={{
+                                    <ReactToPdf filename={resumeID ? `${resumeID}.pdf` : `resume.pdf`} targetRef={resumeRef} options={{
                                         unit: 'px',
                                     }} scale={1}>
                                         {
@@ -158,7 +158,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                         const link = document.createElement('a');
 
                                         link.href = data;
-                                        link.download = 'resume.jpg';
+                                        link.download = resumeID ? `${resumeID}.jpg` : 'resume.jpg';
 
                                         link.click();
                                     }}>
