@@ -44,7 +44,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
             const resToSave = document.querySelector('.resume')?.cloneNode(true)
 
             if (user) {
-                const resumeName = prompt('resume name:', resumeID?.split('-').join(' '))
+                const resumeName = prompt('resume name:', resumeID?.split('-').join(' ') || '')
                 if (resumeName) {
                     const resumeId = resumeName?.toLowerCase().split(' ').join('-')
                     await setDoc(doc(db, user.uid, resumeId), {
