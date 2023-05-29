@@ -15,15 +15,13 @@ const SavedResume = () => {
     const { user } = useSelector((state: RootState) => state.auth)
     const { resumeID } = useParams()
 
-    const { editMode } = useSelector((state: RootState) => state.resume)
-
-
     const resumeRef = useRef<React.MutableRefObject<HTMLDivElement> | null>(null)
 
     const dispatch = useDispatch()
 
     const showToolbarHandler = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-        if (editMode) {
+        if (e.currentTarget.classList.contains('editable')) {
+            console.log('hi', e.currentTarget)
             dispatch(showToolbar(e.currentTarget))
         }
     }
@@ -32,10 +30,8 @@ const SavedResume = () => {
         () => {
             (
                 async () => {
-                    console.log('resume id!!', resumeID)
                     try {
                         const resDocSnap = await getDoc(doc(db, user.uid, resumeID))
-                        console.log(resDocSnap.data())
                         console.log(resDocSnap.exists())
                         if (resDocSnap.exists()) {
                             setSavedResume(resDocSnap.data().resume)
@@ -54,7 +50,6 @@ const SavedResume = () => {
 
     useEffect(() => {
         if (savedResume) {
-            console.log(savedResume)
             const __ = document.createElement('div')
             __.innerHTML = savedResume
 
@@ -62,11 +57,20 @@ const SavedResume = () => {
 
             const undefinedResumeEl = document.querySelector('.undefined')
 
-            undefinedResumeEl.innerHTML = __.firstChild.innerHTML
-            undefinedResumeEl.classList.remove('undefined')
-            undefinedResumeEl.classList.add(__classList[0])
+            if (undefinedResumeEl) {
+                undefinedResumeEl.innerHTML = __.firstChild.innerHTML
+                undefinedResumeEl.classList.remove('undefined')
+                if (__classList[0] == 'resume') {
+                    const last = __classList.length - 1
+                    undefinedResumeEl.classList.add(__classList[last])
+                } else {
+                    undefinedResumeEl.classList.add(__classList[0])
+                }
 
-            document.querySelector('.resume-container > div')?.insertBefore(undefinedResumeEl, document.querySelector('.resume')?.nextSibling)
+
+                document.querySelector('.resume-container > div')?.insertBefore(undefinedResumeEl, document.querySelector('.resume')?.nextSibling)
+            }
+
 
             const allResElements = document.querySelectorAll('.resume-element')
             const allResElementsArr = [...allResElements]
