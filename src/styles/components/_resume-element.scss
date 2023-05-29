@@ -7,12 +7,19 @@
     min-height: max-content;
 
     &.empty {
-        min-height: 0.6875em;
+        height: 0.6875em;
+
+        &.editable{
+            height: 0.6875em;
+        }
     }
 
     &.editable {
         resize: both;
         overflow: auto;
+        padding: 0 !important;
+        margin: 0 !important;
+
 
         &:focus,
         &:active {
