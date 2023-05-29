@@ -60,7 +60,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                     throw new Error('Resume name cannot be empty!')
                 }
             } else {
-                dispatch(saveResume(resToSave))
+                dispatch(saveResume(resToSave.outerHTML))
                 toast.error('Please login to save resume.')
                 navigate('/login')
             }
