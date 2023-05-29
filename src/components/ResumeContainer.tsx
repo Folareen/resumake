@@ -7,8 +7,8 @@ import { RootState } from '../redux/store'
 import { changeZoomLevel, editResume, previewResume, saveResume } from '../redux/features/resumeSlice'
 import ResumeLayout from './ResumeLayout'
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import { useNavigate, useParams } from 'react-router-dom'
+import { addDoc, collection, deleteDoc, doc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 
 type ResumeContainerProps = {
@@ -34,6 +34,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
     const [downloadingPdf, setDownloadingPdf] = useState(false)
 
     const navigate = useNavigate()
+    const { resumeID } = useParams()
 
     const [savingResume, setSavingResume] = useState(false)
 
@@ -43,16 +44,18 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
             const resToSave = document.querySelector('.resume')?.cloneNode(true)
 
             if (user) {
-                const resumeName = prompt('resume name:')
+                const resumeName = prompt('resume name:', resumeID?.split('-').join(' '))
                 if (resumeName) {
-                    // check and ensure name doesn't exist!!!
-                    const resumeID = resumeName?.toLowerCase().split(' ').join('-')
-                    await setDoc(doc(db, user.uid, resumeID), {
+                    const resumeId = resumeName?.toLowerCase().split(' ').join('-')
+                    await setDoc(doc(db, user.uid, resumeId), {
                         title: resumeName,
-                        id: resumeID,
+                        id: resumeId,
                         resume: resToSave.outerHTML
                     })
-                    navigate(`/saved-resumes/${resumeID}`)
+                    if (resumeID) {
+                        await deleteDoc(doc(db, user.uid, resumeID))
+                    }
+                    navigate(`/saved-resumes/${resumeId}`)
                 } else {
                     throw new Error('Resume name cannot be empty!')
                 }
