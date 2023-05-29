@@ -28,6 +28,9 @@ type ResumeContainerProps = {
 const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeContainerProps) => {
     const { showToolbar, editMode, zoomLevel } = useSelector((state: RootState) => state.resume)
 
+    const [blankSectionLayout, setBlankSectionLayout] = useState('none')
+    const [addSectionLayoutDivider, setAddSectionLayoutDivider] = useState(false)
+
     const { user } = useSelector((state: RootState) => state.auth)
 
     const dispatch = useDispatch()
@@ -103,6 +106,34 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                     }}>
                                         preview
                                     </button>
+                                    {
+                                        !resClassName ?
+                                            <>
+                                                <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                                                    setBlankSectionLayout(e.target.value)
+                                                }} value={blankSectionLayout}>
+                                                    {
+                                                        ['', 'col-30-70', 'col-40-60', 'col-50-50', 'col-60-40', 'col-70-30'].map(
+                                                            (layout) => (
+                                                                <option value={layout}>
+                                                                    {layout == '' ? 'none' : layout}
+                                                                </option>
+                                                            )
+                                                        )
+                                                    }
+                                                </select>
+                                                <button onClick={() => {
+                                                    setAddSectionLayoutDivider(!addSectionLayoutDivider)
+                                                }}>
+                                                    add section divider
+                                                </button>
+                                            </>
+                                            :
+                                            null
+
+                                    }
+
+
                                 </div>)
                                 :
                                 (<div>
@@ -176,9 +207,18 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                             )
                         }
 
-                        <ResumeLayout resClassName={resClassName} HeaderSection={HeaderSection} FooterSection={FooterSection} MainLeftSection={MainLeftSection} MainRightSection={MainRightSection} isSectioned={isSectioned} resumeRef={resumeRef} mainLayout={mainLayout || ''} addDivider={addDivider}>
-                            {children}
-                        </ResumeLayout>
+                        {
+                            resClassName ?
+                                <ResumeLayout resClassName={resClassName} HeaderSection={HeaderSection} FooterSection={FooterSection} MainLeftSection={MainLeftSection} MainRightSection={MainRightSection} isSectioned={isSectioned} resumeRef={resumeRef} mainLayout={mainLayout || ''} addDivider={addDivider}>
+                                    {children}
+                                </ResumeLayout>
+                                :
+                                <ResumeLayout resClassName={resClassName} HeaderSection={HeaderSection} FooterSection={FooterSection} MainLeftSection={MainLeftSection} MainRightSection={MainRightSection} isSectioned={Boolean(blankSectionLayout)} resumeRef={resumeRef} mainLayout={blankSectionLayout} addDivider={addSectionLayoutDivider}>
+                                    {children}
+                                </ResumeLayout>
+
+                        }
+
 
                     </div>
                     :
