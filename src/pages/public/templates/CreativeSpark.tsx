@@ -29,7 +29,7 @@ const MainRightSection = () => {
                             <ResEl tag='h5' className='block' >
                                 {work.company} * {work.startDate} to {work.endDate}
                             </ResEl>
-                            <ResEl className='first-experience block'>
+                            <ResEl className='first-experience block' tag='div'>
                                 <ul >
                                     {
                                         work.jobDescription.map((desc, index) => (
@@ -60,7 +60,7 @@ const MainRightSection = () => {
                             <ResEl tag='h4' className='block'>
                                 {project.title}
                             </ResEl>
-                            <ResEl className='first-experience block'>
+                            <ResEl className='first-experience block' tag='div'>
                                 <ul >
                                     {
                                         project.description.map((desc, index) => (
@@ -141,7 +141,7 @@ const MainLeftSection = () => {
                     SKILLS
                 </ResEl>
 
-                <ResEl className='block'>
+                <ResEl className='block' tag='div'>
                     <ul >
                         {
                             skills.map((skill, index) => (

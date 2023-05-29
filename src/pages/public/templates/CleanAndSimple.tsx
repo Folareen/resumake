@@ -47,7 +47,7 @@ const CleanAndSimple = () => {
                         <ResEl tag='h4' className='block'>
                             {work.company} // {work.startDate} // {work.endDate}
                         </ResEl>
-                        <ResEl className='first-experience block'>
+                        <ResEl className='first-experience block' tag='div'>
                             <ul >
                                 {
                                     work.jobDescription.map((desc, index) => (
@@ -66,7 +66,7 @@ const CleanAndSimple = () => {
             <ResEl tag='h2' className='block'>
                 SKILLS
             </ResEl>
-            <ResEl>
+            <ResEl tag='div'>
                 <ul>
                     {
                         skills.slice(0, Math.floor(skills.length / 2)).map((skill, index) => (
@@ -77,7 +77,7 @@ const CleanAndSimple = () => {
                     }
                 </ul>
             </ResEl>
-            <ResEl>
+            <ResEl tag='div'>
                 <ul>
                     {
                         skills.slice(Math.floor(skills.length / 2), skills.length).map((skill, index) => (

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import ResEl from '../../../components/ResEl'
 import ResumeContainer from '../../../components/ResumeContainer'
 import { RootState } from '../../../redux/store'
@@ -75,7 +76,7 @@ const MainLeftSection = () => {
                 </ResEl>
             </div>
 
-            <ResEl className='block'>
+            <ResEl className='block' tag='div'>
                 <ul >
                     {
                         skills.map((skill, index) => (
@@ -140,7 +141,7 @@ const MainRightSection = () => {
                         <ResEl tag='h5' className='block' >
                             {work.company} * {work.startDate} to {work.endDate}
                         </ResEl>
-                        <ResEl className='first-experience block'>
+                        <ResEl className='first-experience block' tag='div'>
                             <ul >
                                 {
                                     work.jobDescription.map((desc, index) => (
@@ -169,7 +170,7 @@ const MainRightSection = () => {
                         <ResEl tag='h4' className='block'>
                             {project.title}
                         </ResEl>
-                        <ResEl className='first-experience block'>
+                        <ResEl className='first-experience block' tag='div'>
                             <ul >
                                 {
                                     project.description.map((desc, index) => (
