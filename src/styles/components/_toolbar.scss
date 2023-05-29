@@ -3,16 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     padding: 2px;
     position: fixed;
     top: 10px;
     width: 80%;
     left: 50%;
     transform: translateX(-50%);
-    overflow-x: scroll;
+    overflow-x: auto;
+    height: 70px;
 
-    button {
-        padding: 3px;
-        margin: 0 3px;
-    }
 }

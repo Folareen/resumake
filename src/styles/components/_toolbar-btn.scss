@@ -1,0 +1,25 @@
+.toolbar-btn{
+    position: relative;
+        height: 100%;
+
+    .btn{
+            padding: 5px;
+        
+    }
+
+    .tooltip{
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.1);
+        top: 30px;
+        left: 0;
+        text-align: center;
+
+
+        &-visible{
+            opacity: 1;
+        }
+        &-hidden{
+            opacity: 0;
+        }
+    }
+}
