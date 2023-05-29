@@ -23,7 +23,7 @@ const PrivateRoutes = () => {
             <Route path='/' element={<Landing />} />
             <Route path='*' element={<NotFound />} />
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/saved-resumes:resumeID' element={<SavedResume />} />
+            <Route path='/saved-resumes/:resumeID' element={<SavedResume />} />
             <Route path='/signup' element={<Navigate replace to='/dashboard' />} />
             <Route path='/login' element={<Navigate replace to='/dashboard' />} />
             <Route path='/dashboard' element={<Navigate replace to='/dashboard' />} />
