@@ -4,9 +4,12 @@ import ReactToPdf from 'react-to-pdf'
 import Toolbar from './Toolbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
-import { changeZoomLevel, editResume, previewResume } from '../redux/features/resumeSlice'
+import { changeZoomLevel, editResume, previewResume, saveResume } from '../redux/features/resumeSlice'
 import ResumeLayout from './ResumeLayout'
 import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
+import { db } from '../../firebase.config'
 
 type ResumeContainerProps = {
     HeaderSection?: any,
@@ -24,12 +27,49 @@ type ResumeContainerProps = {
 const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeContainerProps) => {
     const { showToolbar, editMode, zoomLevel } = useSelector((state: RootState) => state.resume)
 
+    const { user } = useSelector((state: RootState) => state.auth)
+
     const dispatch = useDispatch()
 
     const [downloadingPdf, setDownloadingPdf] = useState(false)
 
+    const navigate = useNavigate()
+
+    const [savingResume, setSavingResume] = useState(false)
+
+    const handleSaveResume = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        try {
+            setSavingResume(true)
+            const resToSave = document.querySelector('.resume')?.cloneNode(true)
+
+            if (user) {
+                const resumeName = prompt('resume name:')
+                if (resumeName) {
+                    // check and ensure name doesn't exist!!!
+                    const resumeID = resumeName?.toLowerCase().split(' ').join('-')
+                    await setDoc(doc(db, user.uid, resumeID), {
+                        title: resumeName,
+                        id: resumeID,
+                        resume: resToSave.outerHTML
+                    })
+                    navigate(`/saved-resumes/${resumeID}`)
+                } else {
+                    throw new Error('Resume name cannot be empty!')
+                }
+            } else {
+                dispatch(saveResume(resToSave))
+                toast.error('Please login to save resume.')
+                navigate('/login')
+            }
+        } catch (error: any) {
+            toast.error(error?.message || 'Unable to save resume.\n Pls try again.')
+        } finally {
+            setSavingResume(false)
+        }
+    }
+
     return (
-        <>
+        <div className='resume-container'>
             {
                 !(Boolean(window.location.pathname == '/templates')) ?
 
@@ -51,6 +91,14 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                             </select>
 
                         </div>
+                        <button onClick={handleSaveResume} disabled={savingResume}>
+                            {
+                                savingResume ?
+                                    'saving resume...'
+                                    :
+                                    'save'
+                            }
+                        </button>
                         {
                             editMode ?
                                 (<div>
@@ -58,11 +106,6 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                         dispatch(previewResume())
                                     }}>
                                         preview
-                                    </button>
-                                    <button onClick={() => {
-                                        dispatch(editResume())
-                                    }}>
-                                        save
                                     </button>
                                 </div>)
                                 :
@@ -74,7 +117,6 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                     </button>
 
                                     <ReactToPdf filename={`resume.pdf`} targetRef={resumeRef} options={{
-                                        // format: [resumeRef?.current?.clientWidth, resumeRef?.current?.clientHeight],
                                         unit: 'px',
                                     }} scale={1}>
                                         {
@@ -132,7 +174,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
             }
 
 
-        </>
+        </div>
 
     )
 }

@@ -50,7 +50,8 @@ type ResumeState = {
         languages: string[] | null,
         hobbies: string[] | null,
     },
-    zoomLevel: string
+    zoomLevel: string,
+    resumeToSave: any
 }
 
 const initialState: ResumeState = {
@@ -161,7 +162,8 @@ const initialState: ResumeState = {
         languages: null,
         hobbies: null,
         interests: null,
-    }
+    },
+    resumeToSave: null,
 }
 
 const resumeSlice = createSlice({
@@ -179,11 +181,29 @@ const resumeSlice = createSlice({
         editResume: (state) => {
             state.editMode = true
             state.showToolbar = true
+
+            const allResElements = document.querySelectorAll('.resume-element')
+            const allResElementsArr = [...allResElements]
+            allResElementsArr.forEach(
+                (el) => {
+                    el.classList.add('editable')
+                    el.contentEditable = true
+                }
+            )
         },
         previewResume: (state) => {
             state.editMode = false
             state.showToolbar = false
             state.currentEl = null
+
+            const allResElements = document.querySelectorAll('.resume-element')
+            const allResElementsArr = [...allResElements]
+            allResElementsArr.forEach(
+                (el) => {
+                    el.classList.remove('editable')
+                    el.contentEditable = false
+                }
+            )
         },
         setUserData: (state, action) => {
             const { key, value } = action.payload
@@ -242,8 +262,11 @@ const resumeSlice = createSlice({
         changeZoomLevel: (state, action) => {
             state.zoomLevel = action.payload
         },
+        saveResume: (state, action) => {
+            state.resumeToSave = action.payload
+        }
     }
 })
 
-export const { showToolbar, hideToolbar, editResume, previewResume, setUserData, clearUserData, nextForm, previousForm, changeZoomLevel } = resumeSlice.actions
+export const { showToolbar, hideToolbar, editResume, previewResume, setUserData, clearUserData, nextForm, previousForm, changeZoomLevel, saveResume } = resumeSlice.actions
 export default resumeSlice.reducer
