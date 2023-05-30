@@ -12,10 +12,10 @@
         right: 0;
         width: 100%;
         background-color: #453f5b;
-        padding: 20px;
+        padding: 15px;
 
         @include tablet {
-            padding: 20px 40px;
+            padding: 15px 40px;
         }
 
         box-shadow: 0 2px 1px 1px rgba(0, 0, 0, 0.1);
@@ -29,13 +29,13 @@
             width: 100%;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
 
 
             h1 {
                 color: whitesmoke;
-                font-size: 1.8rem;
+                font-size: 1.5rem;
                 font-weight: 700;
                 font-family: 'Lexend', sans-serif;
 
@@ -61,6 +61,45 @@
                     background-color: #1e40af;
                 }
             }
+
+            .dashboard-btns {
+                display: flex;
+                flex-direction: row;
+                gap: 5px;
+                @include tablet(){
+                    gap: 15px;
+                }
+
+                a{
+                    font-size: 0.8rem;
+                    padding: 0.5em 0.8em;
+
+                    @include tablet() {
+                        font-size: 1rem;
+                    }
+                }
+                .logout-btn {
+                    color: whitesmoke;
+                    text-decoration: none;
+                    font-weight: 500;
+                    background-color: #be123c;
+                    padding: 0.5em 0.8em;
+                    border-radius: 3px;
+                    font-size: 0.8rem;
+                    border: none;
+                    outline: none;
+
+                    @include tablet() {
+                        font-size: 1rem;
+                    }
+
+                    &:hover {
+                        background-color: #881337;
+                        cursor: pointer;
+                    }
+                }
+            }
+
         }
     }
 }
