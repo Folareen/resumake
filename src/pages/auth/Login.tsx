@@ -1,5 +1,6 @@
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { auth } from '../../../firebase.config'
 import formatFirebaseError from '../../utils/formatFirebaseError'
@@ -39,6 +40,12 @@ const Login = () => {
                             'Login'
                     }
                 </button>
+                <div>
+                    <p>
+                        Don't have an account?
+                    </p>
+                    <Link to='/signup' className=''>Signup</Link>
+                </div>
             </form>
         </div>
     )
