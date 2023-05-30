@@ -2,8 +2,10 @@
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
 .container {
-    padding-top: 61.4px;
+    padding-top: 62.4px;
     position: relative;
+    background-color: lightblue;
+    // min-height: calc(100vh - 61.4px);
 
     @include tablet(){
         padding-top: 70px;
