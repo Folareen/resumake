@@ -2,41 +2,169 @@
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
 .landing {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
-    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(-45deg, #2b5876, #4e4376, #2e2d32, #346CB0);
+    background-size: 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+
+    &__header {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        @include tablet {
+            padding: 20px 40px;
+        }
+
+        h1 {
+            color: whitesmoke;
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Lexend', sans-serif;
+
+            @include tablet() {
+                font-size: 2rem;
+            }
+        }
+
+        a {
+            color: whitesmoke;
+            text-decoration: none;
+            font-weight: 500;
+            background-color: #1d4ed8;
+            padding: 0.5em 1em;
+            border-radius: 3px;
+            font-size: 0.9rem;
+
+            @include tablet() {
+                font-size: 1.1rem;
+            }
+
+            &:hover {
+                background-color: #1e40af;
+            }
+        }
+    }
 
     &__content {
-        min-height: 40vh;
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
 
-        h1 {
+        h2 {
             text-align: center;
-            font-weight: 800;
-            color: darkblue;
-            font-size: 36px;
+            margin-top: 20px;
+            color: #eff6ff;
+            font-size: 2.2rem;
+            padding: 0 10px;
+            font-family: 'Manrope', sans-serif;
+
+            @include tablet() {
+                font-size: 3.5rem;
+            }
+
+            span {
+                color: #bfdbfe;
+            }
         }
 
         p {
+            color: whitesmoke;
             text-align: center;
-            margin-top: 20px;
-            color: rgb(36, 36, 44);
-            font-size: 20px;
+            margin-top: 10px;
+            font-size: 1rem;
+            font-weight: 300;
+            padding: 0 5px;
+
+            @include tablet() {
+                font-size: 1.2rem;
+            }
         }
 
-        a {
-            padding: 10px 20px;
-            background-color: rgb(7, 34, 116);
+        .cta {
+            padding: 0.8em 1.5em;
             color: white;
             text-decoration: none;
             display: block;
             max-width: max-content;
             margin: 30px auto;
-            border-radius: 5px;
+            border-radius: 3px;
+            transition: 0.5s ease;
+            animation: cta 10s ease infinite;
+            font-size: 0.8rem;
+
+            @include tablet() {
+                font-size: 1rem;
+            }
+
+            &:hover {
+                padding: 0.8em 2em;
+            }
         }
+
+
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        margin: 10px 0;
+        padding: 5px;
+        text-align: center;
+        color: rgb(226, 225, 225);
+
+        a {
+            color: rgb(209, 225, 242);
+            text-underline-offset: 2px;
+        }
+
+        .dot {
+            color: lightblue;
+        }
+    }
+
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes cta {
+    0% {
+        background-color: #4338ca;
+    }
+
+    25% {
+        background-color: #1e3a8a;
+    }
+
+    50% {
+        background-color: #3b82f6;
+    }
+
+    100% {
+        background-color: #1d4ed8;
     }
 }
