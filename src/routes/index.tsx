@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 import { saveResume } from "../redux/features/resumeSlice"
-import Header from "../components/layout/Header"
+import Header from "../components/layouts/Header"
 
 export default () => {
     const { user, loading } = useSelector((state: RootState) => state.auth)
