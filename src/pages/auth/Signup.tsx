@@ -41,14 +41,14 @@ const Signup = () => {
                     Signup
                 </h1>
 
-                <div className='input-box focus'>
+                <div className='input-box'>
                     <MdEmail />
                     <input type='email' value={email} onChange={(e) => {
                         setEmail(e.target.value)
                     }} placeholder='Email Address' className='input' onFocus={onFocus} onBlur={onBlur} />
                 </div>
 
-                <div className='input-box focus'>
+                <div className='input-box'>
                     <RiLockPasswordFill />
                     <input type='password' placeholder='Password' value={password} onChange={(e) => {
                         setPassword(e.target.value)

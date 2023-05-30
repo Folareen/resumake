@@ -40,7 +40,7 @@ const ForgotPassword = () => {
                     Forgot password
                 </h1>
 
-                <div className='input-box focus'>
+                <div className='input-box'>
                     <MdEmail />
                     <input type='email' value={email} onChange={(e) => {
                         setEmail(e.target.value)
