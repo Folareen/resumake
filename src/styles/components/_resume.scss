@@ -1,13 +1,13 @@
 .resume {
     &.display-as-template-card {
-        width: 158.6px;
-        height: 224.4px;
-        font-size: 3.2px;
+        width: 317.2px;
+        height: 448.8px;
+        font-size: 6.4px;
 
-        @media (min-width: 768px) {
-            width: 317.2px;
-            height: 448.8px;
-            font-size: 6.4px;
+        @include tablet {
+            width: 475.8px;
+            height: 673.2px;
+            font-size: 9.6px;
         }
     }
 
