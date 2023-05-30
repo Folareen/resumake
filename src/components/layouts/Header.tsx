@@ -36,7 +36,7 @@ const Header = () => {
                             }
                         </>
                         :
-                        pathname === '/login' ?
+                        pathname === '/login' || pathname == '/forgot-password' ?
                             <Link to='/signup' className='header-btn'>
                                 Signup
                             </Link>
