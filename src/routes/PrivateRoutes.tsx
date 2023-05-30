@@ -26,7 +26,7 @@ const PrivateRoutes = () => {
             <Route path='/saved-resumes/:resumeID' element={<SavedResume />} />
             <Route path='/signup' element={<Navigate replace to='/dashboard' />} />
             <Route path='/login' element={<Navigate replace to='/dashboard' />} />
-            <Route path='/dashboard' element={<Navigate replace to='/dashboard' />} />
+            <Route path='/forgot-password' element={<Navigate replace to='/dashboard' />} />
             <Route path='/create' element={<Create />} />
             <Route path='/templates' element={<Templates />} />
             <Route path='/create/classic-elegance' element={<ClassicElegance />} />
