@@ -2,7 +2,7 @@
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
 .container {
-    padding-top: 62.4px;
+    padding-top: 61.4px;
     position: relative;
 
     @include tablet(){
@@ -23,10 +23,6 @@
         }
 
         box-shadow: 0 2px 1px 1px rgba(0, 0, 0, 0.1);
-
-        // &.transparent{
-        //     background: transparent !important;
-        // }
 
         .header__content {
             display: flex;

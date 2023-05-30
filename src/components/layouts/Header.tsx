@@ -11,7 +11,7 @@ const Header = () => {
 
 
     return (
-        <header className={`header ${pathname == '/' ? 'transparent' : ''}`}>
+        <header className={'header'}>
             <div className='header__content'>
                 <h1><Link to='/'>resumake.</Link></h1>
                 {
