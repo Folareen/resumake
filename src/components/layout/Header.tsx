@@ -20,7 +20,7 @@ const Header = () => {
                             {
                                 pathname === '/dashboard' ?
                                     <div className='dashboard-btns'>
-                                        <Link to='/create' >
+                                        <Link to='/create' className='header-btn' >
                                             Create Resume
                                         </Link>
                                         <button onClick={() => {
