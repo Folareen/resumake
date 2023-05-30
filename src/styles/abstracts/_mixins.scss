@@ -1,9 +1,6 @@
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
-@mixin desktop {
-  @media (min-width: 800px) { @content; }
-}
 
 @mixin center{
     display: flex;
