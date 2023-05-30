@@ -6,12 +6,6 @@ import { GoPrimitiveDot } from 'react-icons/go'
 const Landing = () => {
     return (
         <div className="landing">
-            <header className="landing__header">
-                <h1>resumake.</h1>
-                <Link to='/login'>
-                    Login
-                </Link>
-            </header>
             <div className="landing__content">
                 <h2>
                     Build an outstanding <span>resume</span> in few minutes.
