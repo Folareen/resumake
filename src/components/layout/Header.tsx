@@ -13,14 +13,14 @@ const Header = () => {
     return (
         <header className={`header ${pathname == '/' ? 'transparent' : ''}`}>
             <div className='header__content'>
-                <h1>resumake.</h1>
+                <h1><Link to='/'>resumake.</Link></h1>
                 {
                     user ?
                         <>
                             {
                                 pathname === '/dashboard' ?
                                     <div className='dashboard-btns'>
-                                        <Link to='/create'>
+                                        <Link to='/create' >
                                             Create Resume
                                         </Link>
                                         <button onClick={() => {
@@ -30,18 +30,18 @@ const Header = () => {
                                         </button>
                                     </div>
                                     :
-                                    <Link to='/dashboard'>
+                                    <Link to='/dashboard' className='header-btn'>
                                         Dashboard
                                     </Link>
                             }
                         </>
                         :
                         pathname === '/login' ?
-                            <Link to='/signup'>
+                            <Link to='/signup' className='header-btn'>
                                 Signup
                             </Link>
                             :
-                            <Link to='/login'>
+                            <Link to='/login' className='header-btn'>
                                 Login
                             </Link>
                 }
