@@ -1,8 +1,11 @@
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
+import { MdEmail } from 'react-icons/md'
+import { RiLockPasswordFill } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { auth } from '../../../firebase.config'
+import GoogleSignInBtn from '../../components/GoogleSignInBtn'
 import formatFirebaseError from '../../utils/formatFirebaseError'
 
 const Login = () => {
@@ -23,16 +26,38 @@ const Login = () => {
         }
     }
 
+    const onFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+        e.target.parentElement.classList.add('focus')
+    }
+    const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+        e.target.parentElement.classList.remove('focus')
+    }
+
     return (
-        <div>Login
-            <form>
-                <input type='email' value={email} onChange={(e) => {
-                    setEmail(e.target.value)
-                }} placeholder='email' />
-                <input type='password' placeholder='password' value={password} onChange={(e) => {
-                    setPassword(e.target.value)
-                }} />
-                <button onClick={handleLogin}>
+        <div className='auth-page'>
+            <form className='auth-page__form'>
+
+                <h1>
+                    Login
+                </h1>
+
+                <div className='input-box '>
+                    <MdEmail />
+                    <input type='email' value={email} onChange={(e) => {
+                        setEmail(e.target.value)
+                    }} placeholder='Email Address' className='input' onFocus={onFocus} onBlur={onBlur} />
+                </div>
+
+                <div className='input-box '>
+                    <RiLockPasswordFill />
+                    <input type='password' placeholder='Password' value={password} onChange={(e) => {
+                        setPassword(e.target.value)
+                    }} className='input' onFocus={onFocus} onBlur={onBlur} />
+                </div>
+
+                <Link to='/forgot-password' className='forgot-password'>Forgot password?</Link>
+
+                <button onClick={handleLogin} className='submit-btn'>
                     {
                         submitting ?
                             'submitting'
@@ -40,12 +65,18 @@ const Login = () => {
                             'Login'
                     }
                 </button>
-                <div>
+                <div className='have'>
                     <p>
                         Don't have an account?
                     </p>
                     <Link to='/signup' className=''>Signup</Link>
                 </div>
+
+                <div className='divider'>
+                </div>
+
+                <GoogleSignInBtn />
+
             </form>
         </div>
     )
