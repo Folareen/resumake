@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 import { saveResume } from "../redux/features/resumeSlice"
+import Header from "../components/Header"
 
 export default () => {
     const { user, loading } = useSelector((state: RootState) => state.auth)
@@ -69,12 +70,16 @@ export default () => {
     return (
         <BrowserRouter>
             <ToastContainer />
-            {
-                user ?
-                    <PrivateRoutes />
-                    :
-                    <PublicRoutes />
-            }
+            <div style={{ position: 'relative', paddingTop: '76px' }}>
+                <Header />
+                {
+                    user ?
+                        <PrivateRoutes />
+                        :
+                        <PublicRoutes />
+                }
+            </div>
+
         </BrowserRouter>
     )
 }
