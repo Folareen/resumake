@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { nextForm, previousForm } from '../../redux/features/resumeSlice'
+import { useNavigate } from 'react-router-dom'
+import { nextForm, previousForm, setUserData } from '../../redux/features/resumeSlice'
 import { RootState } from '../../redux/store'
 import AwardsAndHonors from './AwardsAndHonors'
 import CareerObjective from './CareerObjective'
@@ -16,67 +17,105 @@ import Skills from './Skills'
 import WorkExperience from './WorkExperience'
 
 const UserDataForm = () => {
-    const { userData: { currentFormIndex } } = useSelector((state: RootState) => state.resume)
+    const { userData: { currentFormIndex, numOfFormsFilled } } = useSelector((state: RootState) => state.resume)
     const dispatch = useDispatch()
 
     const forms = [
         {
             form: <Profile />,
-            required: true
+            required: true,
+            title: 'profile'
         },
         {
             form: <Contact />,
-            required: true
+            required: true,
+            title: 'contact'
         },
         {
             form: <CareerObjective />,
-            required: true
+            required: true,
+            title: 'careerObjective'
         },
         {
             form: <Skills />,
-            required: true
+            required: true,
+            title: 'skills'
         },
         {
             form: <Education />,
-            required: false
+            required: false,
+            title: 'education'
         },
         {
             form: <WorkExperience />,
-            required: false
+            required: false,
+            title: 'workExperience'
         },
         {
             form: <Projects />,
-            required: false
+            required: false,
+            title: 'projects'
         },
         {
             form: <Certifications />,
-            required: false
+            required: false,
+            title: 'certifications'
         },
         {
             form: <AwardsAndHonors />,
-            required: false
+            required: false,
+            title: 'awardsAndHonors'
         },
         {
             form: <Interests />,
-            required: false
+            required: false,
+            title: 'interests'
         },
         {
             form: <Languages />,
-            required: false
+            required: false,
+            title: 'languages'
         },
         {
             form: <Hobbies />,
-            required: false
+            required: false,
+            title: 'hobbies'
         }
     ]
 
+    const navigate = useNavigate()
+
+
+    useEffect(() => {
+        if (numOfFormsFilled == 7) {
+            navigate('/templates')
+        }
+    }, [numOfFormsFilled])
+
     return (
-        <div>
-            UserDataForm
-            <div>
+        <div className='user-data-form'>
+
+            <div className={'user-data-form__container'} style={{ transform: `translateX(-${currentFormIndex}00vw)` }} >
+                {
+                    forms.map((form, index) => (
+                        <React.Fragment key={index}>
+                            {form.form}
+                        </React.Fragment>
+                    ))
+                }
+            </div>
+
+            {/* <div>
                 {
                     forms[currentFormIndex]['form']
                 }
+            </div> */}
+
+            <div className='progress'>
+                <div className='progress__bar' style={{ width: `calc((90% / 7) * ${numOfFormsFilled})` }} >
+
+                </div>
+
             </div>
 
             <div>
@@ -91,13 +130,13 @@ const UserDataForm = () => {
                 <button
                     disabled={forms[currentFormIndex]['required'] || (currentFormIndex == forms.length - 1)}
                     onClick={() => {
-                        dispatch(nextForm())
+                        dispatch(setUserData({
+                            key: forms[currentFormIndex]['title'],
+                            value: null
+                        }))
                     }}
                 >
                     Skip
-                </button>
-                <button style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
-                    Generate resume
                 </button>
             </div>
         </div>

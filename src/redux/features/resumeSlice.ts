@@ -6,6 +6,7 @@ type ResumeState = {
     editMode: boolean,
     userData: {
         currentFormIndex: number,
+        numOfFormsFilled: number,
         profile: {
             name: string,
             profession: string,
@@ -24,19 +25,19 @@ type ResumeState = {
             degree: string,
             startDate: string,
             endDate: string,
-        }[],
+        }[] | null,
         workExperience: {
             jobTitle: string,
             company: string,
             startDate: string,
             endDate: string,
             jobDescription: string[]
-        }[],
+        }[] | null,
         projects: {
             title: string,
             description: string[],
             links: string[]
-        }[],
+        }[] | null,
         certifications: {
             title: string,
             school: string,
@@ -61,6 +62,7 @@ const initialState: ResumeState = {
     zoomLevel: 'zoom 100',
     userData: {
         currentFormIndex: 0,
+        numOfFormsFilled: 0,
         profile: {
             name: 'John Doe',
             profession: 'Project Manager',
@@ -233,7 +235,6 @@ const resumeSlice = createSlice({
                     state.userData.certifications = value
                     break;
                 case 'awardsAndHonors':
-                    console.log(value)
                     state.userData.awardsAndHonors = value
                     break;
                 case 'languages':
@@ -249,12 +250,16 @@ const resumeSlice = createSlice({
                     break;
             }
             state.userData.currentFormIndex += 1
+            if(value !== null){
+                state.userData.numOfFormsFilled += 1
+            }
         },
         nextForm: (state) => {
             state.userData.currentFormIndex += 1
         },
         previousForm: (state) => {
             state.userData.currentFormIndex -= 1
+            state.userData.numOfFormsFilled -= 1
         },
         clearUserData: (state) => {
             // state.userData = null
