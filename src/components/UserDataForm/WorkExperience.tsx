@@ -31,7 +31,7 @@ const WorkExperience = () => {
         })
         dispatch(setUserData({
             key: 'workExperience',
-            value: workExperiences.map(workExperience => {
+            value: filteredWorkExperiences.map(workExperience => {
                 return {
                     ...workExperience,
                     jobDescription: workExperience.jobDescription.split('\n')

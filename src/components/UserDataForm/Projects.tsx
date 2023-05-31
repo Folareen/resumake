@@ -10,15 +10,8 @@ type ProjectType = {
 
 const Projects = () => {
     const [projects, setProjects] = useState<ProjectType[]>([])
-    const [project, setProject] = useState<{
-        title: string,
-        description: string,
-        links: string
-    }>({
-        title: '',
-        description: '',
-        links: ''
-    })
+    const inputContainerRef = useRef()
+
 
     const dispatch = useDispatch()
 
