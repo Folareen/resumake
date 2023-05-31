@@ -30,7 +30,7 @@ const Create = () => {
             }
             {
                 fillForm &&
-                <div>
+                <div className='user-data-form-wrapper'>
                     <button onClick={() => {
                         setFillForm(false)
                     }} className='back-btn'>

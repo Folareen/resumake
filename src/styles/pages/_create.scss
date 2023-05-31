@@ -1,5 +1,7 @@
 .create-page {
-    height: calc(100vh - 64.4px);
+    height: calc(100vh - 62.4px);
+    display: flex;
+    flex-direction: column;
 
     .choose-method {
         @include center;
@@ -46,9 +48,10 @@
     .back-btn {
         padding: 0.3em 0.8em;
         margin: 0.2em;
-        display: inline-flex;
         @include center;
+        display: inline-flex !important;
         background-color: rgba(27, 100, 177, 0.4);
+        width: max-content;
         color: #2b5876;
         text-decoration: none;
         border-radius: 0.2em;
@@ -70,5 +73,10 @@
     }
 
 
+    .user-data-form-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
 
 }

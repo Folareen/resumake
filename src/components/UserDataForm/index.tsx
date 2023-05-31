@@ -112,7 +112,7 @@ const UserDataForm = () => {
 
             </div>
 
-            <div>
+            <div className='prev-skip-btns'>
                 <button
                     disabled={!(currentFormIndex > 0)}
                     onClick={() => {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
+import Required from '../Required'
 
 const Profile = () => {
     const [name, setName] = useState<string>('')
@@ -21,15 +22,27 @@ const Profile = () => {
     }
 
     return (
-        <div>Profile
+        <div>
             <form>
-                <input type='text' value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setName(e.target.value)
-                }} placeholder='name' />
-                <input type='text' value={profession} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    setProfession(e.target.value)
-                }} placeholder='profession' />
-                <button onClick={onSave} disabled={!name || !profession}>
+                <h2>
+                    Profile <Required />
+                </h2>
+                <div className='input-container'>
+                    <label htmlFor='name'>Name</label>
+                    <input type='text' value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setName(e.target.value)
+                    }} placeholder='name' className='input' />
+                </div>
+
+
+                <div className='input-container'>
+                    <label htmlFor='profession'>Profession</label>
+                    <input type='text' value={profession} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                        setProfession(e.target.value)
+                    }} placeholder='profession' className='input' />
+                </div>
+
+                <button onClick={onSave} disabled={!name || !profession} className='save'>
                     Save
                 </button>
             </form>
