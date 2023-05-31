@@ -18,14 +18,14 @@ const ToolbarBtn = ({ className, onClick, children, tooltip }: ToolbarBtnProps) 
     }
 
     return (
-        <div className='toolbar-btn' onMouseEnter={handleShowTooltip} onMouseLeave={handleHideTooltip} onFocus={handleShowTooltip} onBlur={handleHideTooltip}>
-            <button onClick={onClick} className={className} >
+        <button onClick={onClick} className={`toolbar-btn ${className}`} onMouseEnter={handleShowTooltip} onMouseLeave={handleHideTooltip} onFocus={handleShowTooltip} onBlur={handleHideTooltip}>
+            <span>
                 {children}
-            </button>
+            </span>
             <span className={`tooltip ${showTooltip ? 'tooltip-visible' : 'tooltip-hidden'}`}>
                 {tooltip}
             </span>
-        </div>
+        </button>
     )
 }
 

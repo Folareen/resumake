@@ -1,24 +1,57 @@
-.toolbar-btn{
+.toolbar-btn {
     position: relative;
-        height: 100%;
+    height: 30px;
+    border: none;
+    color: whitesmoke;
+    text-decoration: none;
+    font-weight: 500;
+    background-color: rgba(9, 28, 79, 0.812);
+    padding: 0.2em 0.8em;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
 
-    .btn{
-            padding: 5px;
-        
+    // @include tablet() {
+    //     font-size: 1.1rem;
+    // }
+
+    &.duplicate-up{
+        svg{
+            transform: rotate(180deg);
+        }
+    }
+    &.duplicate-right{
+        svg{
+            transform: rotate(-90deg);
+        }
     }
 
-    .tooltip{
+    &:hover,
+    &:focus {
+        background-color: #233c8f;
+    }
+
+
+    .tooltip {
         position: absolute;
+        color: darkblue;
         background-color: rgba(0, 0, 0, 0.1);
-        top: 30px;
-        left: 0;
+        top: 35px;
+        left: 50%;
+        transform: translateX(-50%);
         text-align: center;
+        width: max-content;
+        font-size: 0.9em;
+        padding: 0.1em;
+        border-radius: 2px;
 
 
-        &-visible{
+        &-visible {
             opacity: 1;
         }
-        &-hidden{
+
+        &-hidden {
             opacity: 0;
         }
     }

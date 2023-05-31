@@ -51,13 +51,13 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                 const resumeName = prompt('resume name:', resumeID?.split('-').join(' ') || '')
                 if (resumeName) {
                     const resumeId = resumeName?.toLowerCase().split(' ').join('-')
-                    await setDoc(doc(db, user.uid, resumeId), {
+                    await setDoc(doc(db, `${user.uid}-${user.email}`, resumeId), {
                         title: resumeName,
                         id: resumeId,
                         resume: resToSave.outerHTML
                     })
                     if (resumeID) {
-                        await deleteDoc(doc(db, user.uid, resumeID))
+                        await deleteDoc(doc(db, `${user.uid}-${user.email}`, resumeID))
                     }
                     navigate(`/saved-resumes/${resumeId}`)
                 } else {
@@ -80,9 +80,9 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
             {
                 !(Boolean(window.location.pathname == '/templates')) ?
 
-                    <div>
+                    <>
 
-                        <div>
+                        <div className='header-toolbar'>
                             <select onChange={(e) => {
                                 dispatch(changeZoomLevel(e.target.value))
                             }} value={zoomLevel}>
@@ -96,109 +96,107 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                     )
                                 }
                             </select>
-
-                        </div>
-                        {
-                            editMode ?
-                                (<div>
-                                    <button onClick={() => {
-                                        dispatch(previewResume())
-                                    }}>
-                                        preview
-                                    </button>
-                                    {
-                                        !resClassName ?
-                                            <>
-                                                <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-                                                    setBlankSectionLayout(e.target.value)
-                                                }} value={blankSectionLayout}>
-                                                    {
-                                                        ['', 'col-30-70', 'col-40-60', 'col-50-50', 'col-60-40', 'col-70-30'].map(
-                                                            (layout) => (
-                                                                <option value={layout}>
-                                                                    {layout == '' ? 'none' : layout}
-                                                                </option>
+                            {
+                                editMode ?
+                                    (<>
+                                        <button onClick={() => {
+                                            dispatch(previewResume())
+                                        }}>
+                                            preview
+                                        </button>
+                                        {
+                                            !resClassName ?
+                                                <>
+                                                    <select onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+                                                        setBlankSectionLayout(e.target.value)
+                                                    }} value={blankSectionLayout}>
+                                                        {
+                                                            ['', 'col-30-70', 'col-40-60', 'col-50-50', 'col-60-40', 'col-70-30'].map(
+                                                                (layout) => (
+                                                                    <option value={layout}>
+                                                                        {layout == '' ? 'none' : layout}
+                                                                    </option>
+                                                                )
                                                             )
-                                                        )
-                                                    }
-                                                </select>
-                                                <button onClick={() => {
-                                                    setAddSectionLayoutDivider(!addSectionLayoutDivider)
-                                                }}>
-                                                    add section divider
-                                                </button>
-                                            </>
-                                            :
-                                            null
-
-                                    }
-
-
-                                </div>)
-                                :
-                                (<div>
-                                    <button onClick={handleSaveResume} disabled={savingResume}>
-                                        {
-                                            savingResume ?
-                                                'saving resume...'
+                                                        }
+                                                    </select>
+                                                    <button onClick={() => {
+                                                        setAddSectionLayoutDivider(!addSectionLayoutDivider)
+                                                    }}>
+                                                        add section divider
+                                                    </button>
+                                                </>
                                                 :
-                                                'save'
+                                                null
                                         }
-                                    </button>
-                                    <button onClick={() => {
-                                        dispatch(editResume())
-                                    }}>
-                                        edit
-                                    </button>
+                                    </>
+                                    )
+                                    :
+                                    (
+                                        <>
+                                            <button onClick={handleSaveResume} disabled={savingResume}>
+                                                {
+                                                    savingResume ?
+                                                        'saving resume...'
+                                                        :
+                                                        'save online'
+                                                }
+                                            </button>
+                                            <button onClick={() => {
+                                                dispatch(editResume())
+                                            }}>
+                                                edit
+                                            </button>
 
-                                    <ReactToPdf filename={resumeID ? `${resumeID}.pdf` : `resume.pdf`} targetRef={resumeRef} options={{
-                                        unit: 'px',
-                                    }} scale={1}>
-                                        {
-                                            ({ toPdf }: { toPdf: () => void }) => (
-                                                <button onClick={async () => {
-                                                    try {
-                                                        setDownloadingPdf(true)
-                                                        const formerZoomLevel = zoomLevel.split(' ').join('-')
-                                                        resumeRef?.current.classList.remove(formerZoomLevel)
-                                                        resumeRef?.current.classList.add('zoom-100')
-                                                        await toPdf()
-                                                        resumeRef?.current.classList.remove('zoom-100')
-                                                        resumeRef?.current.classList.add(formerZoomLevel)
-                                                    } catch (error) {
-                                                        toast.error('Unable to download resume.\n Please try again.')
-                                                    } finally {
-                                                        setDownloadingPdf(false)
-                                                    }
-                                                }}>
-                                                    {
-                                                        downloadingPdf ?
-                                                            'Please wait...'
-                                                            :
-                                                            'Download as Pdf'
-                                                    }
-                                                </button>
-                                            )
-                                        }
-                                    </ReactToPdf>
+                                            <ReactToPdf filename={resumeID ? `${resumeID}.pdf` : `resume.pdf`} targetRef={resumeRef} options={{
+                                                unit: 'px',
+                                            }} scale={1}>
+                                                {
+                                                    ({ toPdf }: { toPdf: () => void }) => (
+                                                        <button onClick={async () => {
+                                                            try {
+                                                                setDownloadingPdf(true)
+                                                                const formerZoomLevel = zoomLevel.split(' ').join('-')
+                                                                resumeRef?.current.classList.remove(formerZoomLevel)
+                                                                resumeRef?.current.classList.add('zoom-100')
+                                                                await toPdf()
+                                                                resumeRef?.current.classList.remove('zoom-100')
+                                                                resumeRef?.current.classList.add(formerZoomLevel)
+                                                            } catch (error) {
+                                                                toast.error('Unable to download resume.\n Please try again.')
+                                                            } finally {
+                                                                setDownloadingPdf(false)
+                                                            }
+                                                        }}>
+                                                            {
+                                                                downloadingPdf ?
+                                                                    'Please wait...'
+                                                                    :
+                                                                    'Download as Pdf'
+                                                            }
+                                                        </button>
+                                                    )
+                                                }
+                                            </ReactToPdf>
 
-                                    <button onClick={async () => {
-                                        const resumeEl = document.querySelector('.resume')
-                                        const canvas = await html2canvas(resumeEl as HTMLElement)
-                                        const data = canvas.toDataURL('image/jpg')
-                                        const link = document.createElement('a');
+                                            <button onClick={async () => {
+                                                const resumeEl = document.querySelector('.resume')
+                                                const canvas = await html2canvas(resumeEl as HTMLElement)
+                                                const data = canvas.toDataURL('image/jpg')
+                                                const link = document.createElement('a');
 
-                                        link.href = data;
-                                        link.download = resumeID ? `${resumeID}.jpg` : 'resume.jpg';
+                                                link.href = data;
+                                                link.download = resumeID ? `${resumeID}.jpg` : 'resume.jpg';
 
-                                        link.click();
-                                    }}>
-                                        Download as Image
-                                    </button>
+                                                link.click();
+                                            }}>
+                                                Download as Image
+                                            </button>
 
-                                </div>
-                                )
-                        }
+                                        </>
+                                    )
+                            }
+                        </div>
 
 
                         {
@@ -220,7 +218,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                         }
 
 
-                    </div>
+                    </>
                     :
                     <ResumeLayout resClassName={resClassName} HeaderSection={HeaderSection} FooterSection={FooterSection} MainLeftSection={MainLeftSection} MainRightSection={MainRightSection} isSectioned={isSectioned} resumeRef={resumeRef} mainLayout={mainLayout || ''} addDivider={addDivider}>
                         {children}

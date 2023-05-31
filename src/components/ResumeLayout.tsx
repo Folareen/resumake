@@ -48,12 +48,12 @@ const DefaultFooterSection = () => (
 
 
 const ResumeLayout = ({ HeaderSection = DefaultHeaderSection, FooterSection = DefaultFooterSection, MainLeftSection = DefaultMainLeftSection, MainRightSection = DefaultMainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeLayoutProps) => {
-    const { zoomLevel } = useSelector((state: RootState) => state.resume)
+    const { zoomLevel, editMode } = useSelector((state: RootState) => state.resume)
 
     const { pathname } = useLocation()
 
     return (
-        <div className='resume-wrapper'>
+        <div className='resume-wrapper' style={{ margin: pathname == '/templates' ? '0' : editMode ? '70px auto 50px auto' : 'auto' }}>
             <div ref={resumeRef} className={`${resClassName} resume  ${pathname == '/templates' ? 'display-as-template-card' : zoomLevel.split(' ').join('-')} ${isSectioned ? 'resume--sectioned' : 'resume--not-sectioned'} `}>
                 {
                     isSectioned ?

@@ -2,17 +2,18 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { hideToolbar, showToolbar } from '../redux/features/resumeSlice'
 import { IoDuplicate, IoTrashBin } from 'react-icons/io5'
-import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp, BsJustify, BsJustifyLeft, BsJustifyRight, BsSubscript, BsSuperscript } from 'react-icons/bs'
-import { MdContentCopy, MdContentCut, MdContentPaste, MdLinkOff, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp, MdOutlineStrikethroughS } from 'react-icons/md'
+import { BsChevronCompactDown, BsChevronCompactLeft, BsChevronCompactRight, BsChevronCompactUp, BsJustify, BsJustifyLeft, BsJustifyRight, BsSubscript, BsSuperscript, BsTextIndentLeft } from 'react-icons/bs'
+import { MdContentCopy, MdContentCut, MdContentPaste, MdFormatColorText, MdLinkOff, MdOutlineKeyboardDoubleArrowDown, MdOutlineKeyboardDoubleArrowUp, MdOutlineStrikethroughS, } from 'react-icons/md'
 import { TbRowInsertBottom, TbRowInsertTop } from 'react-icons/tb'
 import { CgInsertAfterR } from 'react-icons/cg'
 import { IoColorPaletteSharp } from 'react-icons/io5'
 import { IoIosColorFill, IoMdLink } from 'react-icons/io'
 import { RootState } from '../redux/store'
-import { AiOutlineLine, AiOutlineOrderedList, AiOutlineUnorderedList, AiOutlineVerticalAlignBottom, AiOutlineVerticalAlignTop } from 'react-icons/ai'
-import { FaFont, FaRedo, FaUndo } from 'react-icons/fa'
+import { AiOutlineItalic, AiOutlineLine, AiOutlineOrderedList, AiOutlineUnderline, AiOutlineUnorderedList, AiOutlineVerticalAlignBottom, AiOutlineVerticalAlignTop } from 'react-icons/ai'
+import { FaFont, FaIndent, FaOutdent, FaRedo, FaUndo } from 'react-icons/fa'
 import { BiAlignJustify, BiFontSize } from 'react-icons/bi'
 import ToolbarBtn from './ToolbarBtn'
+import { HiOutlineArrowDownOnSquareStack } from 'react-icons/hi2'
 
 
 const Toolbar = () => {
@@ -126,7 +127,7 @@ const Toolbar = () => {
                     document.execCommand('underline');
                 }}
             >
-                U
+                <AiOutlineUnderline />
             </ToolbarBtn>
             <ToolbarBtn
                 tooltip="Italic"
@@ -135,7 +136,7 @@ const Toolbar = () => {
                     document.execCommand('italic');
                 }}
             >
-                I
+                <AiOutlineItalic />
             </ToolbarBtn>
             <ToolbarBtn
                 tooltip="Indent"
@@ -146,7 +147,7 @@ const Toolbar = () => {
                     currentEl.style.display = 'inline-block';
                 }}
             >
-                Id
+                <FaIndent />
             </ToolbarBtn>
             <ToolbarBtn
                 tooltip="Outdent"
@@ -157,7 +158,7 @@ const Toolbar = () => {
                     currentEl.style.display = 'inline-block';
                 }}
             >
-                Ou
+                <FaOutdent />
             </ToolbarBtn>
             <ToolbarBtn
                 tooltip="Superscript"
@@ -364,12 +365,13 @@ const Toolbar = () => {
                 className="text-color"
                 onClick={() => { }}
             >
-                <IoColorPaletteSharp />
+                <MdFormatColorText />
                 <input
                     type="color"
                     onChange={(e) => {
                         document.execCommand('foreColor', false, e.target.value);
                     }}
+                    style={{ position: 'absolute', width: '100%', height: '100%', cursor: 'pointer', top: 0, right: 0, left: 0, bottom: 0, opacity: 0 }}
                 />
             </ToolbarBtn>
             <ToolbarBtn
@@ -383,6 +385,7 @@ const Toolbar = () => {
                     onChange={(e) => {
                         document.execCommand('backColor', false, e.target.value);
                     }}
+                    style={{ position: 'absolute', width: '100%', height: '100%', cursor: 'pointer', top: 0, right: 0, left: 0, bottom: 0, opacity: 0 }}
                 />
             </ToolbarBtn>
             <ToolbarBtn
@@ -390,24 +393,21 @@ const Toolbar = () => {
                 className="duplicate-down"
                 onClick={duplicateDown}
             >
-                <IoDuplicate />
-                <BsChevronCompactDown />
+                <HiOutlineArrowDownOnSquareStack />
             </ToolbarBtn>
             <ToolbarBtn
                 tooltip="Duplicate Up"
                 className="duplicate-up"
                 onClick={duplicateUp}
             >
-                <BsChevronCompactUp />
-                <IoDuplicate />
+                <HiOutlineArrowDownOnSquareStack />
             </ToolbarBtn>
             <ToolbarBtn
                 tooltip="Duplicate Right"
                 className="duplicate-right"
                 onClick={duplicateRight}
             >
-                <BsChevronCompactRight />
-                <IoDuplicate />
+                <HiOutlineArrowDownOnSquareStack />
             </ToolbarBtn>
             <ToolbarBtn
                 tooltip="Move Up"

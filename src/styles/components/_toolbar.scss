@@ -1,16 +1,49 @@
 .toolbar {
-    border: 1px solid black;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
     gap: 10px;
     padding: 2px;
     position: fixed;
-    top: 10px;
-    width: 80%;
+    top: 92.4px;
+
+    @include tablet() {
+        top: 72px;
+        height: 65px;
+        top: 105.4px;
+    }
+
+    width: 95%;
+    max-width: 2000px;
     left: 50%;
     transform: translateX(-50%);
     overflow-x: auto;
-    height: 70px;
+    height: 65px;
+
+    &::-webkit-scrollbar {
+        height: 4px;
+
+        @include tablet() {
+            height: 6px;
+        }
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #515761;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
+
+
+    .hide-toolbar {
+        // position: absolute;
+        // bottom: -10px;
+    }
 
 }
