@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
+import { IoIosAdd } from 'react-icons/io'
+
 
 const Languages = () => {
-    const [languages, setLanguages] = useState<string[]>([])
-    const languageRef = React.useRef<HTMLInputElement>(null)
+    const [languages, setLanguages] = useState<string[]>([' '])
+    const inputContainerRef = useRef()
 
     const dispatch = useDispatch()
 
@@ -13,36 +15,52 @@ const Languages = () => {
         if (languages.length === 0) return
         dispatch(setUserData({
             key: 'languages',
-            value: languages
+            value: languages.filter(language => language !== '')
         }))
     }
 
+    useEffect(() => {
+        if (languages.includes('')) {
+            setLanguages(languages.filter(language => language !== ''))
+        }
+    }, [languages])
+
+    useEffect(() => {
+        inputContainerRef.current.scrollLeft += 180
+
+    }, [languages])
+
+
+
     return (
         <div>
-            Languages
             <form>
-                <p>
+                <h2>
+                    Languages
+                </h2>
+
+                <div className='multiple-input-container' ref={inputContainerRef}>
                     {languages.map((language, index) => {
                         return (
-                            <span key={index}>{language} , </span>
+                            <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                let allLanguages = languages
+                                let currLanguage = languages[index]
+                                currLanguage = e.target.value
+                                allLanguages[index] = currLanguage
+                                setLanguages(allLanguages)
+                            }} placeholder='language' className='input-item' />
                         )
                     })
                     }
-                </p>
-                <div>
-                    <input type='text' ref={languageRef} placeholder='language' />
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         e.preventDefault()
-                        if (languageRef.current) {
-                            setLanguages([...languages, languageRef.current.value])
-                            languageRef.current.value = ''
-                        }
-                    }}>
-                        Add
+                        setLanguages([...languages, ' '])
+                    }} className='add'>
+                        <IoIosAdd />
                     </button>
                 </div>
 
-                <button onClick={onSave} disabled={languages.length === 0}>
+                <button onClick={onSave} disabled={languages.length === 0} className="save">
                     Save
                 </button>
             </form>
