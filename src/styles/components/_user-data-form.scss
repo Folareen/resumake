@@ -18,7 +18,7 @@
             padding: 10px;
             @include center;
 
-            @include tablet {
+            @include tablet() {
                 padding: 10px 40px;
             }
 
