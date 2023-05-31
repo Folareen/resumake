@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
+import Required from '../Required'
+import { IoIosAdd } from 'react-icons/io'
+
 
 const Skills = () => {
-    const [skills, setSkills] = useState<string[]>([])
-    const skillRef = React.useRef<HTMLInputElement>(null)
+    const [skills, setSkills] = useState<string[]>([' '])
+    const inputContainerRef = useRef()
 
     const dispatch = useDispatch()
 
@@ -13,35 +16,54 @@ const Skills = () => {
         if (skills.length === 0) return
         dispatch(setUserData({
             key: 'skills',
-            value: skills
+            value: skills.filter(skill => skill !== '')
         }))
     }
 
+    useEffect(() => {
+        if (skills.includes('')) {
+            setSkills(skills.filter(skill => skill !== ''))
+        }
+    }, [skills])
+
+    useEffect(() => {
+        inputContainerRef.current.scrollLeft += 180
+        
+        inputContainerRef.current.childNodes[inputContainerRef.current.childNodes.length - 2].focus()
+
+    }, [skills])
+
+
+
     return (
-        <div>Skills
+        <div>
             <form>
-                <p>
+                <h2>
+                    Skills <Required />
+                </h2>
+
+                <div className='multiple-input-container' ref={inputContainerRef}>
                     {skills.map((skill, index) => {
                         return (
-                            <span key={index}>{skill} , </span>
+                            <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                let allSkills = skills
+                                let currSkill = skills[index]
+                                currSkill = e.target.value
+                                allSkills[index] = currSkill
+                                setSkills(allSkills)
+                            }} placeholder='skill' className='input-item' />
                         )
                     })
                     }
-                </p>
-                <div>
-                    <input type='text' ref={skillRef} placeholder='skill' />
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         e.preventDefault()
-                        if (skillRef.current) {
-                            setSkills([...skills, skillRef.current.value])
-                            skillRef.current.value = ''
-                        }
-                    }}>
-                        Add
+                        setSkills([...skills, ' '])
+                    }} className='add'>
+                        <IoIosAdd />
                     </button>
                 </div>
 
-                <button onClick={onSave} disabled={skills.length === 0}>
+                <button onClick={onSave} disabled={skills.length === 0} className="save">
                     Save
                 </button>
             </form>
