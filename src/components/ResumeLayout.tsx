@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { RootState } from '../redux/store'
 import ResEl from './ResEl'
 
@@ -50,35 +50,37 @@ const DefaultFooterSection = () => (
 const ResumeLayout = ({ HeaderSection = DefaultHeaderSection, FooterSection = DefaultFooterSection, MainLeftSection = DefaultMainLeftSection, MainRightSection = DefaultMainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeLayoutProps) => {
     const { zoomLevel } = useSelector((state: RootState) => state.resume)
 
-    console.log(window.location.pathname)
+    const { pathname } = useLocation()
 
     return (
-        <div ref={resumeRef} className={`${resClassName} resume  ${window.location.pathname == '/templates' ? 'display-as-template-card' : zoomLevel.split(' ').join('-')} ${isSectioned ? 'resume--sectioned' : 'resume--not-sectioned'} `}>
-            {
-                isSectioned ?
-                    <>
-                        <HeaderSection />
-                        <div className={`main ${mainLayout}`}>
-                            <MainLeftSection />
-                            {
-                                addDivider ?
-                                    <div className="main__divider">
+        <div className='resume-wrapper'>
+            <div ref={resumeRef} className={`${resClassName} resume  ${pathname == '/templates' ? 'display-as-template-card' : zoomLevel.split(' ').join('-')} ${isSectioned ? 'resume--sectioned' : 'resume--not-sectioned'} `}>
+                {
+                    isSectioned ?
+                        <>
+                            <HeaderSection />
+                            <div className={`main ${mainLayout}`}>
+                                <MainLeftSection />
+                                {
+                                    addDivider ?
+                                        <div className="main__divider">
 
-                                    </div>
-                                    :
-                                    null
-                            }
+                                        </div>
+                                        :
+                                        null
+                                }
 
-                            <MainRightSection />
-                        </div>
-                        <FooterSection />
-                    </>
-                    :
-                    <>
-                        {children}
-                    </>
+                                <MainRightSection />
+                            </div>
+                            <FooterSection />
+                        </>
+                        :
+                        <>
+                            {children}
+                        </>
 
-            }
+                }
+            </div>
         </div>
     )
 }
