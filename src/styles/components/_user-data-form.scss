@@ -136,11 +136,11 @@
                     }
 
                     .add {
-                        padding: 0.3em 0.8em;
+                        padding: 0.2em 0.6em;
                         margin: 0.2em;
                         @include center;
                         display: inline-flex !important;
-                        background-color: rgba(27, 100, 177, 0.4);
+                        background-color: rgba(27, 100, 177, 0.6);
                         width: max-content;
                         color: #2b5876;
                         text-decoration: none;
@@ -149,10 +149,10 @@
                         outline: none;
                         border: 1px solid rgba(27, 100, 177, 1);
                         transition: 0.5s ease;
-                        font-size: 0.9rem;
+                        font-size: 1.1rem;
 
                         @include tablet() {
-                            font-size: 1.1rem;
+                            font-size: 1.2rem;
                         }
 
                         &:hover {
