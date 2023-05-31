@@ -29,8 +29,6 @@ const Skills = () => {
     useEffect(() => {
         inputContainerRef.current.scrollLeft += 180
 
-        // inputContainerRef.current.childNodes[inputContainerRef.current.childNodes.length - 2].focus()
-
     }, [skills])
 
 
