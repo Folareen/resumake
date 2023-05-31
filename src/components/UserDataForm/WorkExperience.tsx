@@ -60,6 +60,7 @@ const WorkExperience = () => {
     }, [workExperiences])
 
     useEffect(() => {
+        if (workExperiences.length === 1) return
         inputContainerRef.current.scrollLeft += 300
     }, [workExperiences])
 
@@ -103,7 +104,7 @@ const WorkExperience = () => {
                     </button>
                 </div>
 
-                <button onClick={onSave} disabled={workExperiences.length === 0}>
+                <button onClick={onSave} disabled={workExperiences.length === 0} className='save'>
                     Save
                 </button>
             </form >
