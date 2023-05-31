@@ -9,6 +9,7 @@ const CareerObjective = () => {
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        if (!careerObjective) return
         dispatch(setUserData({
             key: 'careerObjective',
             value: careerObjective
@@ -19,10 +20,10 @@ const CareerObjective = () => {
         <div>
             Career Objective
             <form>
-                <input type='text' value={careerObjective} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                <textarea value={careerObjective} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                     setCareerObjective(e.target.value)
-                }} placeholder='Career Objective' />
-                <button onClick={onSave}>
+                }} placeholder='Career Objective' > </textarea>
+                <button onClick={onSave} disabled={!careerObjective}>
                     Save
                 </button>
             </form>

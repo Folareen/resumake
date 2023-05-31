@@ -12,6 +12,7 @@ const Contact = () => {
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        if (!address || !phone || !email || !website) return
         dispatch(setUserData({
             key: 'contact',
             value: {
@@ -38,7 +39,7 @@ const Contact = () => {
                 <input type='text' value={website} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setWebsite(e.target.value)
                 }} placeholder='website' />
-                <button onClick={onSave}>
+                <button onClick={onSave} disabled={!address || !phone || !email || !website}>
                     Save
                 </button>
             </form>

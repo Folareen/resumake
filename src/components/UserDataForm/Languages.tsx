@@ -10,6 +10,7 @@ const Languages = () => {
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        if (languages.length === 0) return
         dispatch(setUserData({
             key: 'languages',
             value: languages
@@ -41,7 +42,7 @@ const Languages = () => {
                     </button>
                 </div>
 
-                <button onClick={onSave}>
+                <button onClick={onSave} disabled={languages.length === 0}>
                     Save
                 </button>
             </form>

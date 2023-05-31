@@ -10,6 +10,7 @@ const Hobbies = () => {
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        if (hobbies.length === 0) return
         dispatch(setUserData({
             key: 'hobbies',
             value: hobbies
@@ -41,7 +42,7 @@ const Hobbies = () => {
                     </button>
                 </div>
 
-                <button onClick={onSave}>
+                <button onClick={onSave} disabled={hobbies.length === 0}>
                     Save
                 </button>
             </form>

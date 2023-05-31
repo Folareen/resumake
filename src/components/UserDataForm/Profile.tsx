@@ -10,6 +10,7 @@ const Profile = () => {
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        if (!name || !profession) return
         dispatch(setUserData({
             key: 'profile',
             value: {
@@ -28,7 +29,7 @@ const Profile = () => {
                 <input type='text' value={profession} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                     setProfession(e.target.value)
                 }} placeholder='profession' />
-                <button onClick={onSave}>
+                <button onClick={onSave} disabled={!name || !profession}>
                     Save
                 </button>
             </form>

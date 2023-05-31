@@ -20,6 +20,7 @@ const Certification = () => {
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
+        if (certifications.length === 0) return
         dispatch(setUserData({
             key: 'certifications',
             value: certifications
@@ -66,7 +67,7 @@ const Certification = () => {
                     </button>
                 </div>
 
-                <button onClick={onSave}>
+                <button onClick={onSave} disabled={certifications.length === 0}>
                     Save
                 </button>
             </form >
