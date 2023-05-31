@@ -68,19 +68,17 @@ const Education = () => {
                 <div className='multiple-input-container multiple' ref={inputContainerRef}>
                     {educations.map((education, index) => {
                         return (
-                            <>
-                                <div className='input-item'>
-                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Course of study' name='courseOfStudy' className='' />
+                            <div className='input-item'>
+                                <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Course of study' name='courseOfStudy' className='' />
 
-                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='School' name='school' />
+                                <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='School' name='school' />
 
-                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='degree' name='degree' />
+                                <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='degree' name='degree' />
 
-                                    <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
+                                <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
 
-                                    <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
-                                </div>
-                            </>
+                                <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
+                            </div>
                         )
                     })
                     }

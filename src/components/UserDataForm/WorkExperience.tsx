@@ -74,20 +74,18 @@ const WorkExperience = () => {
                 <div className='multiple-input-container multiple' ref={inputContainerRef}>
                     {workExperiences.map((workExperience, index) => {
                         return (
-                            <>
-                                <div className='input-item'>
-                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Job title' name='jobTitle' className='' />
+                            <div className='input-item'>
+                                <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Job title' name='jobTitle' className='' />
 
-                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='company' name='company' />
+                                <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='company' name='company' />
 
-                                    <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
+                                <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
 
-                                    <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
+                                <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
 
-                                    <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Job description' name='jobDescription' />
+                                <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Job description' name='jobDescription' />
 
-                                </div>
-                            </>
+                            </div>
                         )
                     })
                     }
