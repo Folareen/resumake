@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { IoIosAdd } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
 
@@ -9,67 +10,85 @@ type CertificationType = {
 }
 
 const Certification = () => {
-    const [certifications, setCertifications] = useState<CertificationType[]>([])
-    const [certification, setCertification] = useState<CertificationType>({
-        title: '',
-        school: '',
-        date: '',
-    })
+    const [certifications, setCertifications] = useState<CertificationType[]>([{
+        title: ' ',
+        school: ' ',
+        date: ' '
+    }])
+    const inputContainerRef = useRef()
 
     const dispatch = useDispatch()
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         if (certifications.length === 0) return
+        const filteredCertifications = certifications.filter(
+            (certification) => {
+                return certification.title !== '' && certification.school.length !== 0 && certification.date.length !== 0
+            }
+        )
+        if (certifications.length === 0) return
         dispatch(setUserData({
             key: 'certifications',
-            value: certifications
+            value: filteredCertifications
         }))
     }
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setCertification({
-            ...certification,
-            [e.target.name]: e.target.value
-        })
+    const onChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
+        let allCertifications = certifications
+        let currCertification = certifications[0]
+        currCertification[e.target.name] = e.target.value
+        allCertifications[index] = currCertification
+        setCertifications(allCertifications)
     }
+
+    useEffect(() => {
+        const emptyCertificationExists = certifications.find(certification => {
+            return certification.title === '' || certification.school === '' || certification.date === ''
+        })
+        if (emptyCertificationExists) {
+            setCertifications(certifications.filter(certification => {
+                return certification.title !== '' && certification.school !== '' && certification.date !== ''
+            }))
+        }
+    }, [certifications])
+
+    useEffect(() => {
+        if (certifications.length === 1) return
+        inputContainerRef.current.scrollLeft += 300
+    }, [certifications])
 
     return (
         <div>
-            Certifications
             <form>
-                <p>
+                <h2>
+                    Certifications
+                </h2>
+
+                <div className='multiple-input-container multiple' ref={inputContainerRef}>
                     {certifications.map((certification, index) => {
                         return (
-                            <span key={index}>{JSON.stringify(certification)} , </span>
+                            <div key={index} className='input-item'>
+                                <input type='text' onChange={(e) => onChange(e, index)} placeholder='title' name='title' />
+                                <input type='text' onChange={(e) => onChange(e, index)} placeholder='school' name='school' />
+                                <input type='date' onChange={(e) => onChange(e, index)} placeholder='date' name='date' />
+                            </div>
                         )
                     })
                     }
-                </p>
-                <div>
-                    <div>
-                        <input type='text' value={certification.title} onChange={onChange} placeholder='title' name='title' />
-                        <input type='text' value={certification.school} onChange={onChange} placeholder='school' name='school' />
-                        <input type='date' value={certification.date} onChange={onChange} placeholder='date' name='date' />
-                    </div>
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         e.preventDefault()
-                        if (certification.title && certification.school && certification.date) {
-                            setCertifications([...certifications, certification])
-                            setCertification({
-                                title: '',
-                                school: '',
-                                date: '',
-                            })
-                        }
-                    }}>
-                        Add
+                        setCertifications([...certifications, {
+                            title: ' ',
+                            school: ' ',
+                            date: ' ',
+                        }])
+                    }} className='add'>
+                        <IoIosAdd />
                     </button>
                 </div>
 
-                <button onClick={onSave} disabled={certifications.length === 0}>
-                    Save
-                </button>
+                <button onClick={onSave} disabled={certifications.length === 0} className='save'> Save </button>
             </form >
         </div >
     )
