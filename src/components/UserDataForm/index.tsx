@@ -105,12 +105,6 @@ const UserDataForm = () => {
                 }
             </div>
 
-            {/* <div>
-                {
-                    forms[currentFormIndex]['form']
-                }
-            </div> */}
-
             <div className='progress'>
                 <div className='progress__bar' style={{ width: `calc((90% / 7) * ${numOfFormsFilled})` }} >
 
