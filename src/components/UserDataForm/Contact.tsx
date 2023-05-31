@@ -54,7 +54,7 @@ const Contact = () => {
                     </label>
                     <input type='text' value={website} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setWebsite(e.target.value)
-                    }} placeholder='website' className='input' />
+                    }} placeholder='www.johndoe.com' className='input' />
                 </div>
 
                 <button onClick={onSave} disabled={!address || !phone || !email || !website} className='save
