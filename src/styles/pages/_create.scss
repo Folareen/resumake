@@ -1,11 +1,10 @@
 .create-page {
-    // height: calc(100vh - 62.4px);
     display: flex;
     flex-direction: column;
 
     .choose-method {
         @include center;
-        height: 100%;
+        height: calc(100vh - 62.4px);
 
         .methods-btn-box {
             display: flex;
