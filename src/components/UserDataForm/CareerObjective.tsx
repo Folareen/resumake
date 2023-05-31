@@ -18,12 +18,19 @@ const CareerObjective = () => {
 
     return (
         <div>
-            Career Objective
+
             <form>
-                <textarea value={careerObjective} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-                    setCareerObjective(e.target.value)
-                }} placeholder='Career Objective' > </textarea>
-                <button onClick={onSave} disabled={!careerObjective}>
+                <h2>
+                    Career Objective
+                </h2>
+
+                <div className='input-container'>
+                    <textarea value={careerObjective} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                        setCareerObjective(e.target.value)
+                    }} placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim purus id purus tempus, ac eleifend turpis dictum. Ut non ultrices est. Phasellus condimentum semper ante, id tempor est dapibus eu. Quisque laoreet fringilla lorem, eu bibendum magna consectetur eu.' className='input' rows={10} > </textarea>
+                </div>
+
+                <button onClick={onSave} disabled={!careerObjective} className='save'>
                     Save
                 </button>
             </form>
