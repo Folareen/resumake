@@ -18,7 +18,7 @@ const Dashboard = () => {
             async () => {
                 try {
                     setFetching(true)
-                    const docs = await getDocs(collection(db, user.uid))
+                    const docs = await getDocs(collection(db, `${user.uid}-${user.email}`))
                     const data = docs.docs.map(doc => doc.data())
                     setSavedResumes(data)
                 } catch (error: any) {

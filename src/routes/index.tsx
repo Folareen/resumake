@@ -33,7 +33,7 @@ export default () => {
                             const resumeName = prompt('resume name:', '')
                             if (resumeName) {
                                 const resumeId = resumeName?.toLowerCase().split(' ').join('-')
-                                await setDoc(doc(db, user.uid, resumeId), {
+                                await setDoc(doc(db, `${user.uid}-${user.email}`, resumeId), {
                                     title: resumeName,
                                     id: resumeId,
                                     resume: resumeToSave

@@ -31,7 +31,7 @@ const SavedResume = () => {
             (
                 async () => {
                     try {
-                        const resDocSnap = await getDoc(doc(db, user.uid, resumeID))
+                        const resDocSnap = await getDoc(doc(db, `${user.uid}-${user.email}`, resumeID))
                         console.log(resDocSnap.exists())
                         if (resDocSnap.exists()) {
                             setSavedResume(resDocSnap.data().resume)
