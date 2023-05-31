@@ -249,8 +249,9 @@ const resumeSlice = createSlice({
                 default:
                     break;
             }
-
-            state.userData.currentFormIndex += 1
+            if (key != "hobbies") {
+                state.userData.currentFormIndex += 1
+            }
             const formExists = state.userData.filledForms.includes(key)
             if (formExists) return
             if (value !== null) {
