@@ -47,8 +47,13 @@ const Create = () => {
                     }} className='back-btn'>
                         <BiArrowBack />
                     </button>
-                    <Link to='/templates'>Build with template </Link>
-                    <Link to='/create/blank'>Build with a blank document</Link>
+                    <div className='choose-method' style={{ height: 'calc(100vh - 110px)' }}>
+                        <div className='methods-btn-box'>
+                            <Link to='/templates'>Build with template </Link>
+                            <Link to='/create/blank'>Build with a blank document
+                            </Link>
+                        </div>
+                    </div>
                 </div>
             }
 

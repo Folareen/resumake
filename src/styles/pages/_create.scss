@@ -15,7 +15,8 @@
             width: 90%;
             max-width: 500px;
 
-            button {
+            button, a {
+                text-align: center;
                 padding: 1.5em 2em;
                 background-color: rgba(27, 100, 177, 0.1);
                 display: block;
