@@ -33,7 +33,7 @@ const UserDataForm = () => {
         },
         {
             form: <CareerObjective />,
-            required: true,
+            required: false,
             title: 'careerObjective'
         },
         {
