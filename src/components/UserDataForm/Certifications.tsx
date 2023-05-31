@@ -27,7 +27,6 @@ const Certification = () => {
                 return certification.title !== '' && certification.school.length !== 0 && certification.date.length !== 0
             }
         )
-        if (certifications.length === 0) return
         dispatch(setUserData({
             key: 'certifications',
             value: filteredCertifications
@@ -36,7 +35,7 @@ const Certification = () => {
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
         let allCertifications = certifications
-        let currCertification = certifications[0]
+        let currCertification = certifications[index]
         currCertification[e.target.name] = e.target.value
         allCertifications[index] = currCertification
         setCertifications(allCertifications)
