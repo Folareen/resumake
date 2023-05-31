@@ -12,7 +12,7 @@ import SharpFocus from './templates/SharpFocus'
 import SleekLines from './templates/SleekLines'
 
 const Templates = () => {
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         setLoading(true)
