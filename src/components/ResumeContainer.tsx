@@ -7,7 +7,7 @@ import { RootState } from '../redux/store'
 import { changeZoomLevel, editResume, previewResume, saveResume } from '../redux/features/resumeSlice'
 import ResumeLayout from './ResumeLayout'
 import { toast } from 'react-toastify'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { addDoc, collection, deleteDoc, doc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 import html2canvas from 'html2canvas'
@@ -39,6 +39,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
 
     const navigate = useNavigate()
     const { resumeID } = useParams()
+    const { pathname } = useLocation()
 
     const [savingResume, setSavingResume] = useState(false)
 
@@ -76,9 +77,9 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
     }
 
     return (
-        <div className='resume-container'>
+        <div className='resume-container' style={{ paddingBottom: pathname == '/templates' ? '0' : '40px' }}>
             {
-                !(Boolean(window.location.pathname == '/templates')) ?
+                !(Boolean(pathname == '/templates')) ?
 
                     <>
 

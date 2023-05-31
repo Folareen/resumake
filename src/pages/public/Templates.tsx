@@ -25,7 +25,7 @@ const Templates = () => {
 
     return (
         <div className='templates'>
-            <h2 style={{ textAlign: 'center' }}>
+            <h2 className='templates__heading'>
                 Choose a template
             </h2>
 

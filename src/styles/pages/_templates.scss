@@ -1,26 +1,37 @@
-.templates{
+.templates {
 
-    &__container{
+    &__heading {
+        margin: 0.8em 0 0.4em 0;
+        font-family: 'Manrope', sans-serif;
+        color: #1e3a8a;
+        font-size: 2em;
+        text-align: center;
+    }
+
+    &__container {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 50px;
-        margin: 30px 0;
-        padding: 20px;
+        padding: 1.2em;
 
-        .template-card{
+        @include tablet() {
+            padding: 1.5em;
+        }
+
+        .template-card {
             box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.1);
             color: unset;
             text-decoration: none;
 
-            .title{
+            .title {
                 display: block;
                 text-align: center;
-                padding: 5px 0;
+                background: rgba(0, 0, 0, 0.1);
 
             }
 
-            .resume{
+            .resume {
                 margin-top: 0 !important;
             }
         }
