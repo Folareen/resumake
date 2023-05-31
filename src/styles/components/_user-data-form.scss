@@ -66,7 +66,6 @@
 
                         &::placeholder {
                             color: #1e3b8a9f;
-                            text-transform: capitalize;
                         }
 
                         &:focus {
@@ -102,7 +101,7 @@
                         &:hover {
                             cursor: not-allowed;
                             padding: 0.8em 1.5em;
-                        }   
+                        }
                     }
                 }
             }
@@ -139,35 +138,35 @@
         gap: 10px;
         margin-bottom: 10px;
 
-        button{
-                                padding: 0.8em 1.5em;
-                    color: white;
-                    text-decoration: none;
-                    display: block;
-                    max-width: max-content;
-                    border-radius: 3px;
-                    transition: 0.5s ease;
-                    font-size: 0.9rem;
-                    background-color: #1d4ed8;
-                    border: none;
-                    outline: none;
+        button {
+            padding: 0.8em 1.5em;
+            color: white;
+            text-decoration: none;
+            display: block;
+            max-width: max-content;
+            border-radius: 3px;
+            transition: 0.5s ease;
+            font-size: 0.9rem;
+            background-color: #1d4ed8;
+            border: none;
+            outline: none;
 
-                    @include tablet() {
-                        font-size: 1rem;
-                    }
+            @include tablet() {
+                font-size: 1rem;
+            }
 
-                    &:hover {
-                        padding: 0.8em 1.8em;
-                    }
+            &:hover {
+                padding: 0.8em 1.8em;
+            }
 
-                    &:disabled {
-                        background-color: #6cb5e5d3;
+            &:disabled {
+                background-color: #6cb5e5d3;
 
-                        &:hover {
-                            cursor: not-allowed;
-                            padding: 0.8em 1.5em;
-                        }   
-                    }
+                &:hover {
+                    cursor: not-allowed;
+                    padding: 0.8em 1.5em;
+                }
+            }
 
         }
     }
