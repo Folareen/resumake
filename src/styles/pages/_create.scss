@@ -1,0 +1,74 @@
+.create-page {
+    height: calc(100vh - 64.4px);
+
+    .choose-method {
+        @include center;
+        height: 100%;
+
+        .methods-btn-box {
+            display: flex;
+            flex-direction: center;
+            gap: 0.8em;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+
+            button {
+                padding: 1.5em 2em;
+                background-color: rgba(27, 100, 177, 0.1);
+                display: block;
+                color: #2b5876;
+                text-decoration: none;
+                display: block;
+                margin-top: 0;
+                border-radius: 0.5em;
+                border: none;
+                outline: none;
+                border: 1px solid rgba(27, 100, 177, 1);
+                transition: 0.5s ease;
+                font-size: 0.9rem;
+
+                @include tablet() {
+                    font-size: 1.1rem;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    color: white;
+                    background-color: rgba(27, 100, 177, 0.8);
+                }
+            }
+        }
+    }
+
+
+    .back-btn {
+        padding: 0.3em 0.8em;
+        margin: 0.2em;
+        display: inline-flex;
+        @include center;
+        background-color: rgba(27, 100, 177, 0.4);
+        color: #2b5876;
+        text-decoration: none;
+        border-radius: 0.2em;
+        border: none;
+        outline: none;
+        border: 1px solid rgba(27, 100, 177, 1);
+        transition: 0.5s ease;
+        font-size: 0.9rem;
+
+        @include tablet() {
+            font-size: 1.1rem;
+        }
+
+        &:hover {
+            cursor: pointer;
+            color: white;
+            background-color: rgba(27, 100, 177, 1);
+        }
+    }
+
+
+
+}

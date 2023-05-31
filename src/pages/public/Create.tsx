@@ -8,21 +8,23 @@ const Create = () => {
     const [buildWithEditor, setBuildWithEditor] = useState<boolean>(false)
 
     return (
-        <div>
+        <div className='create-page'>
             {
                 !fillForm && !buildWithEditor &&
                 (
-                    <div>
-                        <button onClick={() => {
-                            setFillForm(true)
-                        }}>
-                            Fill form to create resume
-                        </button>
-                        <button onClick={() => {
-                            setBuildWithEditor(true)
-                        }}>
-                            Build resume in editor
-                        </button>
+                    <div className='choose-method'>
+                        <div className='methods-btn-box'>
+                            <button onClick={() => {
+                                setFillForm(true)
+                            }}>
+                                Fill form to create resume
+                            </button>
+                            <button onClick={() => {
+                                setBuildWithEditor(true)
+                            }}>
+                                Build resume in editor
+                            </button>
+                        </div>
                     </div>
                 )
             }
@@ -31,7 +33,7 @@ const Create = () => {
                 <div>
                     <button onClick={() => {
                         setFillForm(false)
-                    }}>
+                    }} className='back-btn'>
                         <BiArrowBack />
                     </button>
                     <UserDataForm />
@@ -42,7 +44,7 @@ const Create = () => {
                 <div>
                     <button onClick={() => {
                         setBuildWithEditor(false)
-                    }}>
+                    }} className='back-btn'>
                         <BiArrowBack />
                     </button>
                     <Link to='/templates'>Build with template </Link>
