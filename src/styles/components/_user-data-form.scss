@@ -108,6 +108,7 @@
                 .multiple-input-container {
                     display: flex;
                     flex-direction: row;
+                    align-items: center;
                     gap: 0.8em;
                     overflow-x: auto;
                     margin-bottom: 1em;
@@ -133,6 +134,7 @@
                         &:focus {
                             outline: 1px solid #4173b0;
                         }
+
                     }
 
                     .add {
@@ -161,7 +163,28 @@
                             background-color: rgba(27, 100, 177, 1);
                         }
                     }
+
+                    &.multiple {
+
+                        .input-item {
+                            min-width: 300px;
+
+                            input{
+                                width: 100%;
+                                color: inherit;
+                                border: none;
+                                outline: inherit;
+                                padding: inherit;
+                                background: inherit;
+                                margin: inherit;
+                                margin-bottom: 0.6em;
+                                border-radius: inherit;
+
+                            }
+                        }
+                    }
                 }
+
             }
 
 

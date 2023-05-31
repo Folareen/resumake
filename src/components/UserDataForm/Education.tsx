@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { IoIosAdd } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
 
@@ -11,14 +12,14 @@ type EducationType = {
 }
 
 const Education = () => {
-    const [educations, setEducations] = useState<EducationType[]>([])
-    const [education, setEducation] = useState<EducationType>({
-        courseOfStudy: '',
-        school: '',
-        degree: '',
-        startDate: '',
-        endDate: '',
-    })
+    const [educations, setEducations] = useState<EducationType[]>([{
+        courseOfStudy: ' ',
+        school: ' ',
+        degree: ' ',
+        startDate: ' ',
+        endDate: ' ',
+    }])
+    const inputContainerRef = useRef()
 
     const dispatch = useDispatch()
 
@@ -27,56 +28,80 @@ const Education = () => {
         if (educations.length === 0) return
         dispatch(setUserData({
             key: 'education',
-            value: educations
+            value: educations.filter(education => {
+                return education.courseOfStudy !== '' && education.school !== '' && education.degree !== '' && education.startDate !== '' && education.endDate !== ''
+            })
         }))
     }
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEducation({
-            ...education,
-            [e.target.name]: e.target.value
-        })
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+        let allEducations = educations
+        let currEducation = educations[index]
+        currEducation[e.target.name] = e.target.value
+        allEducations[index] = currEducation
+        setEducations(allEducations)
     }
 
+    useEffect(() => {
+        const emptyEducationExists = educations.find(education => {
+            return education.courseOfStudy === '' || education.school === '' || education.degree === '' || education.startDate === '' || education.endDate === ''
+        })
+        if (emptyEducationExists) {
+            setEducations(educations.filter(education => {
+                return education.courseOfStudy !== '' && education.school !== '' && education.degree !== '' && education.startDate !== '' && education.endDate !== ''
+            }))
+        }
+
+    }, [educations])
+
+    useEffect(() => {
+        inputContainerRef.current.scrollLeft += 300
+    }, [educations])
+
     return (
-        <div>Education
+        <div>
             <form>
-                <p>
+                <h2>
+                    Education
+                </h2>
+
+                <div className='multiple-input-container multiple' ref={inputContainerRef}>
                     {educations.map((education, index) => {
                         return (
-                            <span key={index}>{JSON.stringify(education)} , </span>
+                            <>
+                                <div className='input-item'>
+                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Course of study' name='courseOfStudy' className='' />
+
+                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='School' name='school' />
+
+                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='degree' name='degree' />
+
+                                    <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
+
+                                    <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
+                                </div>
+                            </>
                         )
                     })
                     }
-                </p>
-                <div>
-                    <div>
-                        <input type='text' value={education.courseOfStudy} onChange={onChange} placeholder='course of study' name='courseOfStudy' />
-                        <input type='text' value={education.school} onChange={onChange} placeholder='school' name='school' />
-                        <input type='text' value={education.degree} onChange={onChange} placeholder='degree' name='degree' />
-                        <input type='date' value={education.startDate} onChange={onChange} placeholder='start date' name='startDate' />
-                        <input type='date' value={education.endDate} onChange={onChange} placeholder='end date' name='endDate' />
-                    </div>
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         e.preventDefault()
-                        if (education.courseOfStudy && education.school && education.degree && education.startDate && education.endDate) {
-                            setEducations([...educations, education])
-                            setEducation({
-                                courseOfStudy: '',
-                                school: '',
-                                degree: '',
-                                startDate: '',
-                                endDate: '',
-                            })
-                        }
-                    }}>
-                        Add
+                        setEducations([...educations, {
+                            courseOfStudy: ' ',
+                            school: ' ',
+                            degree: ' ',
+                            startDate: ' ',
+                            endDate: ' ',
+                        }])
+                    }} className='add'>
+                        <IoIosAdd />
                     </button>
                 </div>
 
-                <button onClick={onSave} disabled={educations.length === 0}>
+                <button onClick={onSave} disabled={educations.length === 0} className="save">
                     Save
                 </button>
+
             </form >
         </div >
     )
