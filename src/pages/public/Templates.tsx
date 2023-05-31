@@ -42,38 +42,38 @@ const Templates = () => {
                                     title: 'Classic Elegance',
                                     template: <ClassicElegance />
                                 },
-                                // {
-                                //     title: 'Modern Minimalism',
-                                //     template: <ModernMinimalism />
-                                // },
-                                // {
-                                //     title: 'Professional Edge',
-                                //     template: <ProfessionalEdge />
-                                // },
-                                // {
-                                //     title: 'Creative Spark',
-                                //     template: <CreativeSpark />
-                                // },
-                                // {
-                                //     title: 'Sleek Lines',
-                                //     template: <SleekLines />
-                                // },
+                                {
+                                    title: 'Modern Minimalism',
+                                    template: <ModernMinimalism />
+                                },
+                                {
+                                    title: 'Professional Edge',
+                                    template: <ProfessionalEdge />
+                                },
+                                {
+                                    title: 'Creative Spark',
+                                    template: <CreativeSpark />
+                                },
+                                {
+                                    title: 'Sleek Lines',
+                                    template: <SleekLines />
+                                },
                                 // {
                                 //     title: 'Distinctive Style',
                                 //     template: <DistinctiveStyle />
                                 // },
-                                // {
-                                //     title: 'Clean and Simple',
-                                //     template: <CleanAndSimple />
-                                // },
+                                {
+                                    title: 'Clean and Simple',
+                                    template: <CleanAndSimple />
+                                },
                                 // {
                                 //     title: 'Refined Grace',
                                 //     template: <RefinedGrace />
                                 // },
-                                // {
-                                //     title: 'Sharp Focus',
-                                //     template: <SharpFocus />
-                                // },
+                                {
+                                    title: 'Sharp Focus',
+                                    template: <SharpFocus />
+                                },
                                 // {
                                 //     title: 'Bold Ambition',
                                 //     template: <BoldAmbition />
