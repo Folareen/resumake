@@ -31,7 +31,7 @@ const Profile = () => {
                     <label htmlFor='name'>Name</label>
                     <input type='text' value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setName(e.target.value)
-                    }} placeholder='name' className='input' />
+                    }} placeholder='john doe' className='input' />
                 </div>
 
 
@@ -39,7 +39,7 @@ const Profile = () => {
                     <label htmlFor='profession'>Profession</label>
                     <input type='text' value={profession} onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         setProfession(e.target.value)
-                    }} placeholder='profession' className='input' />
+                    }} placeholder='software developer' className='input' />
                 </div>
 
                 <button onClick={onSave} disabled={!name || !profession} className='save'>
