@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
+import { IoIosAdd } from 'react-icons/io'
+
 
 const Interests = () => {
-    const [interests, setInterests] = useState<string[]>([])
-    const interestRef = React.useRef<HTMLInputElement>(null)
+    const [interests, setInterests] = useState<string[]>([' '])
+    const inputContainerRef = useRef()
 
     const dispatch = useDispatch()
 
@@ -13,36 +15,52 @@ const Interests = () => {
         if (interests.length === 0) return
         dispatch(setUserData({
             key: 'interests',
-            value: interests
+            value: interests.filter(interest => interest !== '')
         }))
     }
 
+    useEffect(() => {
+        if (interests.includes('')) {
+            setInterests(interests.filter(interest => interest !== ''))
+        }
+    }, [interests])
+
+    useEffect(() => {
+        inputContainerRef.current.scrollLeft += 180
+
+    }, [interests])
+
+
+
     return (
         <div>
-            Interests
             <form>
-                <p>
+                <h2>
+                    Interests
+                </h2>
+
+                <div className='multiple-input-container' ref={inputContainerRef}>
                     {interests.map((interest, index) => {
                         return (
-                            <span key={index}>{interest} , </span>
+                            <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                                let allInterests = interests
+                                let currInterest = interests[index]
+                                currInterest = e.target.value
+                                allInterests[index] = currInterest
+                                setInterests(allInterests)
+                            }} placeholder='interest' className='input-item' />
                         )
                     })
                     }
-                </p>
-                <div>
-                    <input type='text' ref={interestRef} placeholder='interest' />
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         e.preventDefault()
-                        if (interestRef.current) {
-                            setInterests([...interests, interestRef.current.value])
-                            interestRef.current.value = ''
-                        }
-                    }}>
-                        Add
+                        setInterests([...interests, ' '])
+                    }} className='add'>
+                        <IoIosAdd />
                     </button>
                 </div>
 
-                <button onClick={onSave} disabled={interests.length === 0}>
+                <button onClick={onSave} disabled={interests.length === 0} className="save">
                     Save
                 </button>
             </form>
