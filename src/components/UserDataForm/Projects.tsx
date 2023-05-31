@@ -1,84 +1,99 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { IoIosAdd } from 'react-icons/io'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
 
 type ProjectType = {
     title: string,
-    description: string[],
-    links: string[]
+    description: string,
+    links: string,
 }
 
 const Projects = () => {
-    const [projects, setProjects] = useState<ProjectType[]>([])
+    const [projects, setProjects] = useState<ProjectType[]>([{
+        title: ' ',
+        description: ' ',
+        links: ' '
+    }])
     const inputContainerRef = useRef()
-
 
     const dispatch = useDispatch()
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
         if (projects.length === 0) return
+        const filteredProjects = projects.filter(
+            (project) => {
+                return project.title !== '' && project.description.length !== 0 && project.links.length !== 0
+            }
+        )
         dispatch(setUserData({
             key: 'projects',
-            value: projects
+            value: filteredProjects.map(project => {
+                return {
+                    ...project,
+                    description: project.description.split('\n'),
+                    links: project.links.split('\n')
+                }
+            })
         }))
     }
 
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setProject({
-            ...project,
-            [e.target.name]: e.target.value
-        })
+    const onChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>, index: number) => {
+        let allProjects = projects
+        let currProject = projects[index]
+        currProject[e.target.name] = e.target.value
+        allProjects[index] = currProject
+        setProjects(allProjects)
     }
+
+    useEffect(() => {
+        const emptyProjectExists = projects.find(project => {
+            return project.title === '' || project.description === '' || project.links === ''
+        })
+        if (emptyProjectExists) {
+            setProjects(projects.filter(project => {
+                return project.title !== '' && project.description !== '' && project.links !== ''
+            }))
+        }
+    }, [projects])
+
+    useEffect(() => {
+        if (projects.length === 1) return
+        inputContainerRef.current.scrollLeft += 300
+    }, [projects])
 
     return (
         <div>
-            Projects
             <form>
-                <p>
-                    {projects.map((project, index) => {
-                        return (
-                            <span key={index}>{JSON.stringify(project)} , </span>
-                        )
-                    })
+                <h2>Projects</h2>
+                <div className='multiple-input-container multiple' ref={inputContainerRef}>
+                    {
+                        projects.map((project, index) => {
+                            return (
+                                <div className='input-item' key={index}>
+                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Job title' name='jobTitle' className='' />
+
+                                    <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Linkss' name='company' />
+
+                                    <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Project description' name='description' />
+                                </div>
+                            )
+                        })
                     }
-                </p>
-                <div>
-                    <div>
-                        <input type='text' value={project.title} onChange={onChange} placeholder='Project Title' name='title' />
-                        <textarea value={project.description} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-                            setProject({
-                                ...project,
-                                [e.target.name]: e.target.value
-                            })
-                        }} placeholder='project description' name='description' />
-                        <textarea value={project.links} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
-                            setProject({
-                                ...project,
-                                [e.target.name]: e.target.value
-                            })
-                        }} placeholder='project links' name='links' />
-                    </div>
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         e.preventDefault()
-                        if (project.title && project.description && project.links) {
-                            setProjects([...projects, {
-                                title: project.title,
-                                description: project.description.split('\n'),
-                                links: project.links.split('\n')
-                            }])
-                            setProject({
-                                title: '',
-                                description: '',
-                                links: ''
-                            })
-                        }
-                    }}>
-                        Add
+                        setProjects([...projects, {
+                            title: ' ',
+                            description: ' ',
+                            links: ' '
+                        }])
+                    }} className='add'>
+                        <IoIosAdd />
                     </button>
                 </div>
 
-                <button onClick={onSave} disabled={projects.length === 0}>
+                <button onClick={onSave} disabled={projects.length === 0} className='save'>
                     Save
                 </button>
             </form >
