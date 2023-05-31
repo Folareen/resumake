@@ -17,7 +17,7 @@ import Skills from './Skills'
 import WorkExperience from './WorkExperience'
 
 const UserDataForm = () => {
-    const { userData: { currentFormIndex, numOfFormsFilled } } = useSelector((state: RootState) => state.resume)
+    const { userData: { currentFormIndex, filledForms } } = useSelector((state: RootState) => state.resume)
     const dispatch = useDispatch()
 
     const forms = [
@@ -87,10 +87,10 @@ const UserDataForm = () => {
 
 
     useEffect(() => {
-        if (numOfFormsFilled == 7) {
+        if (filledForms.length == 7) {
             navigate('/templates')
         }
-    }, [numOfFormsFilled])
+    }, [filledForms])
 
     return (
         <div className='user-data-form'>
@@ -106,7 +106,7 @@ const UserDataForm = () => {
             </div>
 
             <div className='progress'>
-                <div className='progress__bar' style={{ width: `calc((90% / 7) * ${numOfFormsFilled})` }} >
+                <div className='progress__bar' style={{ width: `calc((90% / 7) * ${filledForms.length})` }} >
 
                 </div>
 

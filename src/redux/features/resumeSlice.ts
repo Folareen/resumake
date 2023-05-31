@@ -6,7 +6,7 @@ type ResumeState = {
     editMode: boolean,
     userData: {
         currentFormIndex: number,
-        numOfFormsFilled: number,
+        filledForms: string[],
         profile: {
             name: string,
             profession: string,
@@ -62,7 +62,7 @@ const initialState: ResumeState = {
     zoomLevel: 'zoom 100',
     userData: {
         currentFormIndex: 0,
-        numOfFormsFilled: 0,
+        filledForms: [],
         profile: {
             name: 'John Doe',
             profession: 'Project Manager',
@@ -249,9 +249,12 @@ const resumeSlice = createSlice({
                 default:
                     break;
             }
+
             state.userData.currentFormIndex += 1
-            if(value !== null){
-                state.userData.numOfFormsFilled += 1
+            const formExists = state.userData.filledForms.includes(key)
+            if (formExists) return
+            if (value !== null) {
+                state.userData.filledForms = [...state.userData.filledForms, key]
             }
         },
         nextForm: (state) => {
@@ -259,7 +262,6 @@ const resumeSlice = createSlice({
         },
         previousForm: (state) => {
             state.userData.currentFormIndex -= 1
-            state.userData.numOfFormsFilled -= 1
         },
         clearUserData: (state) => {
             // state.userData = null
