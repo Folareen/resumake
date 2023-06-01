@@ -69,7 +69,7 @@ const MainRightSection = () => {
                                         {cert.school}
                                     </ResEl>
                                     <ResEl tag='h4' className='block'>
-                                        {cert.title}
+                                        {cert.date}
                                     </ResEl>
                                     <ResEl className='block empty' />
                                 </>
