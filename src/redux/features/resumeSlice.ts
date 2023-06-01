@@ -17,7 +17,7 @@ type ResumeState = {
             email: string,
             website: string,
         }
-        careerObjective: string,
+        careerObjective: string | null,
         skills: string[],
         education: {
             courseOfStudy: string,
