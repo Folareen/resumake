@@ -15,15 +15,18 @@ const HeaderSection = () => {
             <ResEl tag='h3' className='profession'>
                 {profile.profession}
             </ResEl>
-            <ResEl className='summary'>
-                {careerObjective}
-            </ResEl>
+            {
+                careerObjective &&
+                <ResEl className='summary'>
+                    {careerObjective}
+                </ResEl>
+            }
 
         </div>
     )
 }
 const MainRightSection = () => {
-    const { userData: { contact, skills, education } } = useSelector((state: RootState) => state.resume)
+    const { userData: { contact, skills, education, interests, languages, hobbies } } = useSelector((state: RootState) => state.resume)
 
     return (
         <div>
@@ -46,7 +49,6 @@ const MainRightSection = () => {
                 {contact.website}
             </ResEl>
 
-
             <ResEl className='block empty' />
             <ResEl tag='h3' className='block'>
                 SKILLS
@@ -56,8 +58,8 @@ const MainRightSection = () => {
             <ResEl className='block' tag='div'>
                 <ul >
                     {
-                        skills.map((skill) => (
-                            <li>
+                        skills.map((skill, index) => (
+                            <li key={index}>
                                 {skill}
                             </li>
                         ))
@@ -65,106 +67,245 @@ const MainRightSection = () => {
                 </ul>
             </ResEl>
 
-
             <ResEl className='block empty' />
-            <ResEl tag='h3' className='block'>
-                EDUCATION
-            </ResEl>
-            <ResEl className='line' tag='div' />
 
             {
-                education.map((edu, index) => (
-                    <>
-                        <ResEl tag='h4' className='block'>
-                            {edu.degree}
-                        </ResEl>
-                        <ResEl className='block'>
-                            <b>{edu.courseOfStudy}</b>
-                        </ResEl>
-                        <ResEl className='block'>
-                            {edu.school}
-                        </ResEl>
-                        <ResEl className='block'>
-                            <small>{edu.startDate} - {edu.endDate}</small>
-                        </ResEl>
-                        <ResEl tag='h6' className='empty block' />
-                    </>
-                ))
+                education &&
+                <>
+                    <ResEl className='block empty' />
+                    <ResEl tag='h3' className='block'>
+                        EDUCATION
+                    </ResEl>
+                    <ResEl className='line' tag='div' />
+
+                    {
+                        education.map((edu, index) => (
+                            <>
+                                <ResEl tag='h4' className='block'>
+                                    {edu.degree}
+                                </ResEl>
+                                <ResEl className='block'>
+                                    <b>{edu.courseOfStudy}</b>
+                                </ResEl>
+                                <ResEl className='block'>
+                                    {edu.school}
+                                </ResEl>
+                                <ResEl className='block'>
+                                    <small>{edu.startDate} - {edu.endDate}</small>
+                                </ResEl>
+                                <ResEl tag='h6' className='empty block' />
+                            </>
+                        ))
+                    }
+                </>
+            }
+
+            {
+                interests &&
+                <>
+                    <ResEl className='block empty' />
+                    <ResEl tag='h3' className='block'>
+                        INTERESTS
+                    </ResEl>
+                    <ResEl className='line' tag='div' />
+
+                    <ResEl className='block' tag='div'>
+                        <ul >
+                            {
+                                interests.map((interest) => (
+                                    <li>
+                                        {interest}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </ResEl>
+                </>
+            }
+
+            {
+                languages &&
+                <>
+                    <ResEl className='block empty' />
+                    <ResEl tag='h3' className='block'>
+                        LANGUAGES
+                    </ResEl>
+                    <ResEl className='line' tag='div' />
+
+                    <ResEl className='block' tag='div'>
+                        <ul >
+                            {
+                                languages.map((language) => (
+                                    <li>
+                                        {language}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </ResEl>
+                </>
+            }
+
+            {
+                hobbies &&
+                <>
+                    <ResEl className='block empty' />
+                    <ResEl tag='h3' className='block'>
+                        HOBBIES
+                    </ResEl>
+                    <ResEl className='line' tag='div' />
+
+                    <ResEl className='block' tag='div'>
+                        <ul >
+                            {
+                                hobbies.map((hobby) => (
+                                    <li>
+                                        {hobby}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </ResEl>
+                </>
             }
 
         </div>
     )
 }
 const MainLeftSection = () => {
-    const { userData: { workExperience, projects } } = useSelector((state: RootState) => state.resume)
+    const { userData: { workExperience, projects, certifications, awardsAndHonors } } = useSelector((state: RootState) => state.resume)
 
     return (
         <div>
             <ResEl className='block empty' />
-            <ResEl tag='h3' className='block'>
-                WORK EXPERIENCE
-            </ResEl>
-            <ResEl className='line' tag='div' />
 
             {
-                workExperience.map((work, index) => (
-                    <>
-                        <ResEl tag='h4' className='block'>
-                            {work.jobTitle}
-                        </ResEl>
-                        <ResEl tag='h5' className='block' >
-                            {work.company} * {work.startDate} to {work.endDate}
-                        </ResEl>
-                        <ResEl className='first-experience block' tag='div'>
-                            <ul >
-                                {
-                                    work.jobDescription.map((desc, index) => (
-                                        <li key={index}>
-                                            {desc}
-                                        </li>
-                                    ))
-                                }
-                            </ul>
-                        </ResEl>
-                        <ResEl className='block empty' />
-                    </>
-                ))
+                workExperience &&
+                <>
+                    <ResEl tag='h3' className='block'>
+                        WORK EXPERIENCE
+                    </ResEl>
+                    <ResEl className='line' tag='div' />
+
+                    {
+                        workExperience.map((work, index) => (
+                            <>
+                                <ResEl tag='h4' className='block'>
+                                    {work.jobTitle}
+                                </ResEl>
+                                <ResEl tag='h5' className='block' >
+                                    {work.company} * {work.startDate} to {work.endDate}
+                                </ResEl>
+                                <ResEl className='first-experience block' tag='div'>
+                                    <ul >
+                                        {
+                                            work.jobDescription.map((desc, index) => (
+                                                <li key={index}>
+                                                    {desc}
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </ResEl>
+                                <ResEl className='block empty' />
+                            </>
+                        ))
+                    }
+                </>
             }
 
 
-            <ResEl tag='h3' className='block'>
-                PROJECTS
-            </ResEl>
-            <ResEl className='line' tag='div' />
+            {
+                projects &&
+                <>
+                    <ResEl tag='h3' className='block'>
+                        PROJECTS
+                    </ResEl>
+                    <ResEl className='line' tag='div' />
+
+                    {
+                        projects.map((project, index) => (
+                            <>
+                                <ResEl tag='h4' className='block'>
+                                    {project.title}
+                                </ResEl>
+                                <ResEl className='first-experience block' tag='div'>
+                                    <ul >
+                                        {
+                                            project.description.map((desc, index) => (
+                                                <li key={index}>
+                                                    {desc}
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </ResEl>
+                                {
+                                    project.links.map((link, index) => (
+                                        <ResEl className='block' key={index}>
+                                            <a href={link} target='_blank' rel="noreferrer">{link}</a>
+                                        </ResEl>
+                                    ))
+                                }
+                                <ResEl className='block empty' />
+                            </>
+                        ))
+                    }
+
+                </>
+            }
+
 
             {
-                projects.map((project, index) => (
-                    <>
-                        <ResEl tag='h4' className='block'>
-                            {project.title}
-                        </ResEl>
-                        <ResEl className='first-experience block' tag='div'>
-                            <ul >
-                                {
-                                    project.description.map((desc, index) => (
-                                        <li key={index}>
-                                            {desc}
-                                        </li>
-                                    ))
+                certifications &&
+                <>
+                    <ResEl tag='h3' className='block'>
+                        CERTIFICATIONS
+                    </ResEl>
+                    <ResEl className='line' tag='div' />
 
-                                }
-                            </ul>
-                        </ResEl>
-                        {
-                            project.links.map((link, index) => (
-                                <ResEl className='block' key={index}>
-                                    <a href={link} target='_blank' rel="noreferrer">{link}</a>
+                    {
+                        certifications.map((cert, index) => (
+                            <>
+                                <ResEl tag='h4' className='block'>
+                                    {cert.title}
                                 </ResEl>
-                            ))
-                        }
-                        <ResEl className='block empty' />
-                    </>
-                ))
+                                <ResEl tag='h5' className='block' >
+                                    {cert.school}
+                                </ResEl>
+                                <ResEl tag='h4' className='block'>
+                                    {cert.title}
+                                </ResEl>
+                                <ResEl className='block empty' />
+                            </>
+                        ))
+                    }
+                </>
+            }
+
+
+            {
+                awardsAndHonors &&
+                <>
+                    <ResEl tag='h3' className='block'>
+                        AWARDS
+                    </ResEl>
+                    <ResEl className='line' tag='div' />
+
+                    {
+                        awardsAndHonors.map((awardsAndHonor, index) => (
+                            <>
+                                <ResEl tag='h4' className='block'>
+                                    {awardsAndHonor.title}
+                                </ResEl>
+                                <ResEl className='block'>
+                                    <small>{awardsAndHonor.date}</small>
+                                </ResEl>
+                                <ResEl tag='h6' className='empty block' />
+                            </>
+                        ))
+                    }
+                </>
             }
 
         </div>
