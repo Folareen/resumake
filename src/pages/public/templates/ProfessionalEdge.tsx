@@ -60,9 +60,6 @@ const MainRightSection = () => {
             </ResEl>
 
             <ResEl className='block empty' />
-            <ResEl tag='h3' className='block'>
-                EDUCATION
-            </ResEl>
 
             {
                 education &&
