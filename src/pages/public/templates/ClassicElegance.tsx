@@ -61,19 +61,24 @@ const MainLeftSection = () => {
     return (
         <div className='main-left'>
 
-            <div className='heading-item'>
-                <FaAddressCard />
-                <ResEl tag='h3' className='block'>
-                    CAREER OBJECTIVE
-                </ResEl>
-            </div>
+            {
+                careerObjective &&
+                <>
+                    <div className='heading-item'>
+                        <FaAddressCard />
+                        <ResEl tag='h3' className='block'>
+                            CAREER OBJECTIVE
+                        </ResEl>
+                    </div>
 
-            <ResEl className='summary'>
-                {careerObjective}
-            </ResEl>
+                    <ResEl className='summary'>
+                        {careerObjective}
+                    </ResEl>
+                    <ResEl className='block empty' />
+                </>
+            }
 
 
-            <ResEl className='block empty' />
 
             <div className='heading-item'>
                 <GiSkills />
