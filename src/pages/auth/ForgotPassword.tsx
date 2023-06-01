@@ -6,6 +6,8 @@ import { toast } from 'react-toastify'
 import { auth } from '../../../firebase.config'
 import GoogleSignInBtn from '../../components/GoogleSignInBtn'
 import formatFirebaseError from '../../utils/formatFirebaseError'
+import { Bars } from 'react-loader-spinner'
+
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('')
@@ -47,10 +49,18 @@ const ForgotPassword = () => {
                     }} placeholder='Email Address' className='input' onFocus={onFocus} onBlur={onBlur} />
                 </div>
 
-                <button onClick={handleSubmit} className='submit-btn'>
+                <button onClick={handleSubmit} className='submit-btn' disabled={submitting}>
                     {
                         submitting ?
-                            'submitting'
+                            <Bars
+                                height="20"
+                                width="20"
+                                color="white"
+                                ariaLabel="signing in..."
+                                wrapperStyle={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                wrapperClass=""
+                                visible={true}
+                            />
                             :
                             'Reset password'
                     }

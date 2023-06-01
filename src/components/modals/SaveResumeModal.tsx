@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { db } from '../../../firebase.config'
 import { saveResume } from '../../redux/features/resumeSlice'
 import { RootState } from '../../redux/store'
+import { Bars } from 'react-loader-spinner'
 
 type ModalProps = {
     modalVisible: boolean,
@@ -86,10 +87,18 @@ const SaveResumeModal = ({ modalVisible, setModalVisible }: ModalProps) => {
                     }} className='input' />
                 </div>
 
-                <button onClick={handleSaveResume} className='submit-btn'>
+                <button onClick={handleSaveResume} className='submit-btn' disabled={submitting}>
                     {
                         submitting ?
-                            'submitting'
+                            <Bars
+                                height="20"
+                                width="20"
+                                color="white"
+                                ariaLabel="signing in..."
+                                wrapperStyle={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                wrapperClass=""
+                                visible={true}
+                            />
                             :
                             'Save'
                     }

@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { auth } from '../../../firebase.config'
 import GoogleSignInBtn from '../../components/GoogleSignInBtn'
 import formatFirebaseError from '../../utils/formatFirebaseError'
+import { Bars } from 'react-loader-spinner'
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -57,10 +58,18 @@ const Login = () => {
 
                 <Link to='/forgot-password' className='forgot-password'>Forgot password?</Link>
 
-                <button onClick={handleLogin} className='submit-btn'>
+                <button onClick={handleLogin} className='submit-btn' disabled={submitting}>
                     {
                         submitting ?
-                            'submitting'
+                            <Bars
+                                height="20"
+                                width="20"
+                                color="white"
+                                ariaLabel="signing in..."
+                                wrapperStyle={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                                wrapperClass=""
+                                visible={true}
+                            />
                             :
                             'Login'
                     }
