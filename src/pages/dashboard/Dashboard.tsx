@@ -73,8 +73,13 @@ const Dashboard = () => {
             <div className='saved-resumes-container'>
                 {
                     savedResumes.map(resume => (
-                        <Link className='card-wrapper' key={resume.id} to={`/saved-resumes/${resume.id}`} dangerouslySetInnerHTML={{ __html: resume.resume }}>
-                        </Link>
+                        <div>
+                            <Link className='card-wrapper' key={resume.id} to={`/saved-resumes/${resume.id}`} dangerouslySetInnerHTML={{ __html: resume.resume }}>
+                            </Link>
+                            <p className='card-wrapper__title'>
+                                {resume.title}
+                            </p>
+                        </div>
                     ))
                 }
 

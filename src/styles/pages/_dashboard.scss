@@ -1,4 +1,5 @@
 .dashboard {
+    padding-bottom: 40px;
 
     &__heading {
         margin: 0.4em 0 0.8em 0;
@@ -29,7 +30,7 @@
             text-decoration: unset;
 
             .card {
-                box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 -1px 3px 1px rgba(0, 0, 0, 0.3);
                 width: 317.2px !important;
                 height: 448.8px !important;
                 font-size: 6.4px !important;
@@ -40,6 +41,14 @@
                     font-size: 9.6px !important;
                 }
             }
+        }
+
+        .card-wrapper__title {
+            display: block;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.3);
+            padding: 0.2em;
         }
     }
 
