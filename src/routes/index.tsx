@@ -28,18 +28,16 @@ export default () => {
                     if (user) {
                         dispatch(setUser(user))
                         dispatch(setLoading(true))
-                        console.log('user', user)
                         if (resumeToSave) {
-                            const resumeName = prompt('resume name:', '')
+                            const resumeName = resumeToSave.name
                             if (resumeName) {
                                 const resumeId = resumeName?.toLowerCase().split(' ').join('-')
                                 await setDoc(doc(db, `${user.uid}-${user.email}`, resumeId), {
                                     title: resumeName,
                                     id: resumeId,
-                                    resume: resumeToSave
+                                    resume: resumeToSave.res
                                 })
-                                toast.success('done saving resume')
-                                console.log('oya ')
+                                toast.success('Resume saved successfully!')
                                 const link = document.createElement('a')
                                 link.href = `saved-resumes/${resumeId}`
                                 link.click()

@@ -52,7 +52,10 @@ type ResumeState = {
         hobbies: string[] | null,
     },
     zoomLevel: string,
-    resumeToSave: any
+    resumeToSave: {
+        name: string,
+        res: any,
+    } | null,
 }
 
 const initialState: ResumeState = {

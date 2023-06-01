@@ -1,0 +1,111 @@
+.modal {
+    background-color: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+
+    @include center;
+
+    &--visible {
+        height: 100vh;
+    }
+
+    &--hidden {
+        height: 0;
+    }
+
+    &__close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        border: none;
+        outline: none;
+        color: #be123c;
+        background-color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        padding: 0.4em;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        border-radius: 0.1em;
+        @include center;
+
+        @include tablet() {
+            font-size: 1.3rem;
+        }
+
+        &:hover,
+        &:focus {
+            background-color: #be123c;
+            color: rgba(255, 255, 255, 0.9);
+        }
+    }
+
+    &__content {
+        background-color: #dbeafe;
+        width: 50%;
+        max-width: 500px;
+        padding: 1em;
+        border-radius: 0.25em;
+
+        @include tablet() {
+            padding: 2em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-size: 0.9em;
+            font-family: 'Manrope', 'sans-serif';
+
+            @include tablet() {
+                margin-bottom: 1em;
+                font-size: 1.1em;
+            }
+        }
+
+        .input {
+            width: 100%;
+            display: block;
+            color: inherit;
+            font-family: inherit;
+            font-size: inherit;
+            border: none;
+            padding: 1em;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 0.5em;
+            outline: 1px solid #4b7bb6;
+
+            &:focus {
+                outline: 1px solid #325074;
+            }
+        }
+
+        .submit-btn {
+            padding: 0.8em 1.5em;
+            width: 100%;
+            display: block;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 1.5em auto;
+            border-radius: 0.5em;
+            border: none;
+            outline: none;
+            background-color: rgb(40, 67, 142);
+            transition: 0.5s ease;
+            font-size: 0.9rem;
+
+            @include tablet() {
+                font-size: 1.1rem;
+            }
+
+            &:hover {
+                background-color: #1e40af;
+            }
+        }
+    }
+}

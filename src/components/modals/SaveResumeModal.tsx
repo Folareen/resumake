@@ -52,8 +52,8 @@ const SaveResumeModal = ({ modalVisible, setModalVisible }: ModalProps) => {
                     throw new Error('Resume name cannot be empty!')
                 }
             } else {
-                dispatch(saveResume(resToSave.outerHTML))
-                toast.error('Please login to save resume.')
+                dispatch(saveResume({ name: resumeName, res: resToSave.outerHTML }))
+                toast.error('Please login to save resume to your account')
                 navigate('/login')
             }
         } catch (error: any) {
