@@ -61,7 +61,7 @@ const WorkExperience = () => {
 
     useEffect(() => {
         if (workExperiences.length === 1) return
-        inputContainerRef.current.scrollLeft += 300
+        inputContainerRef.current.scrollTop += 100
     }, [workExperiences])
 
 

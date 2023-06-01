@@ -54,7 +54,7 @@ const Certification = () => {
 
     useEffect(() => {
         if (certifications.length === 1) return
-        inputContainerRef.current.scrollLeft += 300
+        inputContainerRef.current.scrollTop += 100
     }, [certifications])
 
     return (

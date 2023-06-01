@@ -56,7 +56,7 @@ const Education = () => {
 
     useEffect(() => {
         if (educations.length === 1) return
-        inputContainerRef.current.scrollLeft += 300
+        inputContainerRef.current.scrollTop += 100
     }, [educations])
 
     return (

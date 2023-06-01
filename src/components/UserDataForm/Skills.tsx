@@ -27,8 +27,7 @@ const Skills = () => {
     }, [skills])
 
     useEffect(() => {
-        inputContainerRef.current.scrollLeft += 180
-
+        inputContainerRef.current.scrollTop += 100
     }, [skills])
 
 

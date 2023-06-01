@@ -60,7 +60,7 @@ const Projects = () => {
 
     useEffect(() => {
         if (projects.length === 1) return
-        inputContainerRef.current.scrollLeft += 300
+        inputContainerRef.current.scrollTop += 100
     }, [projects])
 
     return (

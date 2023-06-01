@@ -26,7 +26,7 @@ const Languages = () => {
     }, [languages])
 
     useEffect(() => {
-        inputContainerRef.current.scrollLeft += 180
+        inputContainerRef.current.scrollTop += 100
 
     }, [languages])
 

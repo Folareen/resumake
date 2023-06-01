@@ -26,7 +26,7 @@ const Interests = () => {
     }, [interests])
 
     useEffect(() => {
-        inputContainerRef.current.scrollLeft += 180
+        inputContainerRef.current.scrollTop += 100
 
     }, [interests])
 

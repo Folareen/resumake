@@ -54,7 +54,7 @@ const AwardsAndHonours = () => {
 
     useEffect(() => {
         if (awardsAndHonors.length === 1) return
-        inputContainerRef.current.scrollLeft += 300
+        inputContainerRef.current.scrollTop += 100
     }, [awardsAndHonors])
 
 
