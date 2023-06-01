@@ -65,25 +65,19 @@ const Dashboard = () => {
     }
 
     return (
-        <div className='dashboard'>Dashboard
-            <button onClick={() => {
-                signOut(auth)
-            }}>
-                logout
-            </button>
+        <div className='dashboard'>
+            <h1 className='dashboard__heading'>
+                Saved resumes
+            </h1>
 
-            <div>
-                saved resumes
+            <div className='saved-resumes-container'>
+                {
+                    savedResumes.map(resume => (
+                        <Link className='card-wrapper' key={resume.id} to={`/saved-resumes/${resume.id}`} dangerouslySetInnerHTML={{ __html: resume.resume }}>
+                        </Link>
+                    ))
+                }
 
-                <div className='saved-resumes-container'>
-                    {
-                        savedResumes.map(resume => (
-                            <Link className='card-wrapper' key={resume.id} to={`/saved-resumes/${resume.id}`} dangerouslySetInnerHTML={{ __html: resume.resume }}>
-                            </Link>
-                        ))
-                    }
-
-                </div>
             </div>
         </div>
     )
