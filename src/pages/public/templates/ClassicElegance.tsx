@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { BsTelephoneFill } from 'react-icons/bs'
 import { FaAddressCard, FaGlobe, FaGraduationCap } from 'react-icons/fa'
 import { IoLocationSharp } from 'react-icons/io5'
@@ -14,9 +14,13 @@ import { RootState } from '../../../redux/store'
 const HeaderSection = () => {
     const { userData: { profile: { name, profession }, contact: { address, phone, email, website } } } = useSelector((state: RootState) => state.resume)
 
+    const [isMale, setIsMale] = useState<boolean>(true)
+
     return (
         <div className='header'>
-            <img src='/vite.svg' className='avatar' />
+            <img src={isMale ? '/male-memoji.png' : '/female-memoji.png'} onClick={(e: React.MouseEvent<HTMLImageElement>) => {
+                setIsMale(!isMale)
+            }} className='avatar' />
             <div>
                 <ResEl tag="h1" className='name'>
                     {name}
