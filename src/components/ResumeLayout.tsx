@@ -53,7 +53,7 @@ const ResumeLayout = ({ HeaderSection = DefaultHeaderSection, FooterSection = De
     const { pathname } = useLocation()
 
     return (
-        <div className='resume-wrapper' style={{ margin: pathname == '/templates' ? '0' : editMode ? '80px auto 0 auto' : '5px auto 0 auto' }}>
+        <div className='resume-wrapper' style={{ margin: pathname == '/templates' ? '0' : editMode ? '90px auto 0 auto' : '10px auto 0 auto' }}>
             <div ref={resumeRef} className={`${resClassName} resume  ${pathname == '/templates' ? 'display-as-template-card' : zoomLevel.split(' ').join('-')} ${isSectioned ? 'resume--sectioned' : 'resume--not-sectioned'} `}>
                 {
                     isSectioned ?
