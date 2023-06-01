@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
 import { BsTelephoneFill } from 'react-icons/bs'
-import { FaAddressCard, FaGlobe, FaGraduationCap } from 'react-icons/fa'
-import { IoLocationSharp } from 'react-icons/io5'
+import { FaAddressCard, FaAward, FaGlobe, FaGraduationCap } from 'react-icons/fa'
+import { IoLanguage, IoLocationSharp } from 'react-icons/io5'
 import { MdEmail, MdWorkHistory } from 'react-icons/md'
 import { GiSkills } from 'react-icons/gi'
-import { GrProjects } from 'react-icons/gr'
+import { GrCertificate, GrProjects } from 'react-icons/gr'
+import { MdOutlineInterests } from "react-icons/md";
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import ResEl from '../../../components/ResEl'
 import ResumeContainer from '../../../components/ResumeContainer'
 import { RootState } from '../../../redux/store'
@@ -140,7 +140,7 @@ const MainLeftSection = () => {
             {interests &&
                 <>
                     <div className='heading-item'>
-                        <GiSkills />
+                        <MdOutlineInterests />
                         <ResEl tag='h3' className='block'>
                             INTERESTS
                         </ResEl>
@@ -163,7 +163,7 @@ const MainLeftSection = () => {
             {languages &&
                 <>
                     <div className='heading-item'>
-                        <GiSkills />
+                        <IoLanguage />
                         <ResEl tag='h3' className='block'>
                             LANGUAGES
                         </ResEl>
@@ -186,7 +186,7 @@ const MainLeftSection = () => {
             {hobbies &&
                 <>
                     <div className='heading-item'>
-                        <GiSkills />
+                        <MdsRoundedInterests />
                         <ResEl tag='h3' className='block'>
                             HOBBIES
                         </ResEl>
@@ -303,7 +303,7 @@ const MainRightSection = () => {
                 certifications &&
                 <>
                     <div className='heading-item'>
-                        <FaGraduationCap />
+                        <GrCertificate />
                         <ResEl tag='h3' className='block'>
                             CERTIFICATIONS
                         </ResEl>
@@ -332,7 +332,7 @@ const MainRightSection = () => {
                 awardsAndHonors &&
                 <>
                     <div className='heading-item'>
-                        <FaGraduationCap />
+                        <FaAward />
                         <ResEl tag='h3' className='block'>
                             AWARDS AND HONORS
                         </ResEl>
