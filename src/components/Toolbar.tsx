@@ -235,7 +235,7 @@ const Toolbar = () => {
             >
                 <BsJustify />
             </ToolbarBtn>
-            <ToolbarBtn
+            {/* <ToolbarBtn
                 tooltip="Font Size"
                 className="font-size"
                 onClick={() => {
@@ -252,7 +252,7 @@ const Toolbar = () => {
                 }}
             >
                 <FaFont />
-            </ToolbarBtn>
+            </ToolbarBtn> */}
             <ToolbarBtn
                 tooltip="Insert Horizontal Rule"
                 className="insert-hr"
