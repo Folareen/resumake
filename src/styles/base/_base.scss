@@ -16,6 +16,10 @@ html {
 button{
     font-family: inherit;
     cursor: pointer;
+
+    &:disabled{
+        cursor: not-allowed !important;
+    }
 }
 body, html{
     overflow-x: hidden;
