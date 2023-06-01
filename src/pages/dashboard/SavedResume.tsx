@@ -68,7 +68,7 @@ const SavedResume = () => {
                 }
 
 
-                document.querySelector('.resume-container > div')?.insertBefore(undefinedResumeEl, document.querySelector('.resume')?.nextSibling)
+                document.querySelector('.resume-container > .resume-wrapper')?.insertBefore(undefinedResumeEl, document.querySelector('.resume')?.nextSibling)
             }
 
 
