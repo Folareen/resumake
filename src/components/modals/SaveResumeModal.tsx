@@ -68,13 +68,15 @@ const SaveResumeModal = ({ modalVisible, setModalVisible }: ModalProps) => {
     return (
         <div className={`modal ${modalVisible ? 'modal--visible' : 'modal--hidden'}`}>
 
-            <button className='modal__close-btn' onClick={() => {
-                setModalVisible(false)
-            }}>
-                <IoClose />
-            </button>
-
             <form className='modal__content'>
+
+                <button className='modal__close-btn' onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                    e.preventDefault()
+                    setModalVisible(false)
+                }}>
+                    <IoClose />
+                </button>
+
                 <div >
                     <label htmlFor='resume name'>
                         Resume name

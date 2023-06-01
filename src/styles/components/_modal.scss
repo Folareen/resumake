@@ -19,8 +19,8 @@
 
     &__close-btn {
         position: absolute;
-        top: 1rem;
-        right: 2rem;
+        top: -1.8em;
+        right: -1.8em;
         border: none;
         outline: none;
         color: #be123c;
@@ -50,6 +50,7 @@
         max-width: 500px;
         padding: 1em;
         border-radius: 0.25em;
+        position: relative;
 
         @include tablet() {
             padding: 2em;
@@ -74,7 +75,7 @@
             font-family: inherit;
             font-size: inherit;
             border: none;
-            padding: 1em;
+            padding: 0.8em;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 0.5em;
             outline: 1px solid #4b7bb6;
