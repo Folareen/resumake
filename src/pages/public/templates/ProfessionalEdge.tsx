@@ -171,12 +171,19 @@ const MainLeftSection = () => {
 
     return (
         <div className='main-left'>
-            <ResEl tag='h3' className='block'>
-                CAREER OBJECTIVE
-            </ResEl>
-            <ResEl className='summary'>
-                {careerObjective}
-            </ResEl>
+            {
+                careerObjective &&
+                <>
+                    <ResEl tag='h3' className='block'>
+                        CAREER OBJECTIVE
+                    </ResEl>
+                    <ResEl className='summary'>
+                        {careerObjective}
+                    </ResEl>
+                    <ResEl className='block empty' />
+                </>
+            }
+
 
             {
                 workExperience &&
