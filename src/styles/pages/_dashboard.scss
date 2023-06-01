@@ -1,5 +1,16 @@
 .dashboard {
 
+    &__heading {
+        margin: 0.4em 0 0.8em 0;
+        font-family: 'Manrope', sans-serif;
+        color: #1e3a8a;
+        font-size: 1.5em;
+        text-align: center;
+
+        @include tablet() {
+            font-size: 2em;
+        }
+    }
 
     .saved-resumes-container {
         display: flex;
