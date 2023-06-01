@@ -24,7 +24,7 @@
 
 
             .name {
-                border-right: 1px solid rgba(56, 56, 135, 0.9);
+                border-right: 0.0625em solid rgba(56, 56, 135, 0.9);
                 width: 130%;
                 text-align: center;
             }
@@ -34,11 +34,11 @@
             margin: 0;
             width: 100%;
             display: flex;
-            border-top: 1px solid rgba(56, 56, 135, 0.9);
-            border-bottom: 1px solid rgba(56, 56, 135, 0.9);
+            border-top: 0.0625em solid rgba(56, 56, 135, 0.9);
+            border-bottom: 0.0625em solid rgba(56, 56, 135, 0.9);
 
             * {
-                border-right: 1px solid rgba(56, 56, 135, 0.9);
+                border-right: 0.0625em solid rgba(56, 56, 135, 0.9);
                 text-align: center;
                 padding-top: 0.625em;
                 padding-bottom: 0.625em;
@@ -49,50 +49,50 @@
 
     .profile {
         width: 100%;
-        border-bottom: 1px solid rgba(56, 56, 135, 0.9);
+        border-bottom: 0.0625em solid rgba(56, 56, 135, 0.9);
         padding: 0.625em;
     }
 
     .career-objective {
         width: 100%;
-        border-bottom: 1px solid rgba(56, 56, 135, 0.9);
+        border-bottom: 0.0625em solid rgba(56, 56, 135, 0.9);
         padding: 0.625em;
     }
 
 
     .skills {
         width: 100%;
-        border-bottom: 1px solid rgba(56, 56, 135, 0.9);
+        border-bottom: 0.0625em solid rgba(56, 56, 135, 0.9);
 
         padding: 0.625em;
     }
 
     .education {
         width: 100%;
-        border-bottom: 1px solid rgba(56, 56, 135, 0.9);
+        border-bottom: 0.0625em solid rgba(56, 56, 135, 0.9);
 
         padding: 0.625em;
     }
 
     .experience {
         width: 100%;
-        border-bottom: 1px solid rgba(56, 56, 135, 0.9);
+        border-bottom: 0.0625em solid rgba(56, 56, 135, 0.9);
 
-        padding: 1em;
+        padding: 0.625em;
     }
 
     .projects {
         width: 100%;
-        border-bottom: 1px solid rgba(56, 56, 135, 0.9);
+        border-bottom: 0.0625em solid rgba(56, 56, 135, 0.9);
 
-        padding: 1em;
+        padding: 0.0625em;
     }
 
 
     .main {}
 
     .main-left {
-        border-right: 1px solid rgba(56, 56, 135, 0.9);
+        border-right: 0.0625em solid rgba(56, 56, 135, 0.9);
 
         width: 35% !important;
     }

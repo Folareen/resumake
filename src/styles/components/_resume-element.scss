@@ -38,7 +38,7 @@
 
 
     &.line {
-        height: 1px ;
+        height: 0.0625em ;
         width: 100%;
         display: block;
         background-color: rgb(0, 0, 0);
@@ -48,7 +48,7 @@
         &.editable {
             resize: horizontal !important;
             overflow: auto;
-            min-height: 1px !important;
+            min-height: 0.0625em !important;
 
             &:focus,
             &:active {
