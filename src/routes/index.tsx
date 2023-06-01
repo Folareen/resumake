@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import PublicRoutes from "./PublicRoutes"
 import PrivateRoutes from "./PrivateRoutes"
@@ -13,6 +13,8 @@ import { doc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 import { saveResume } from "../redux/features/resumeSlice"
 import Header from "../components/layouts/Header"
+import { Grid } from 'react-loader-spinner'
+
 
 export default () => {
     const { user, loading } = useSelector((state: RootState) => state.auth)
@@ -20,6 +22,7 @@ export default () => {
     const { resumeToSave } = useSelector((state: RootState) => state.resume)
 
     const dispatch = useDispatch()
+
 
     useEffect(
         () => {
@@ -56,10 +59,21 @@ export default () => {
         }, [user]
     )
 
+
+
     if (loading) {
         return (
-            <div>
-                Loading...
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', backgroundColor: '#ada9d2' }}>
+                <Grid
+                    height="80"
+                    width="80"
+                    color="#2617c8"
+                    ariaLabel="grid-loading"
+                    radius="12.5"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    visible={true}
+                />
             </div>
         )
     }
