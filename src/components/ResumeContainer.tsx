@@ -29,7 +29,7 @@ type ResumeContainerProps = {
 const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeContainerProps) => {
     const { showToolbar, editMode, zoomLevel } = useSelector((state: RootState) => state.resume)
 
-    const [blankSectionLayout, setBlankSectionLayout] = useState('none')
+    const [blankSectionLayout, setBlankSectionLayout] = useState('')
     const [addSectionLayoutDivider, setAddSectionLayoutDivider] = useState(false)
 
 
