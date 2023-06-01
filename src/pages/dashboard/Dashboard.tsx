@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { auth, db } from '../../../firebase.config'
 import { RootState } from '../../redux/store'
+import { Puff } from 'react-loader-spinner'
+
 
 const Dashboard = () => {
     const [savedResumes, setSavedResumes] = useState<any[]>([])
@@ -40,18 +42,31 @@ const Dashboard = () => {
         }
     }, [savedResumes])
 
-
     if (fetching) {
         return (
-            <div>
-                fetching resume...
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 'calc(100vh - 62px)' }}>
+                <div>
+                    <Puff
+                        height="120"
+                        width="120"
+                        radius={2}
+                        color="#4338ca"
+                        ariaLabel="puff-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                    />
+                    <p style={{ textAlign: 'center', color: '#4338ca', marginTop: '20px' }}>Fetching saved resumes...</p>
+                </div>
             </div>
         )
     }
     if (!fetching && !savedResumes) {
         return (
             <div>
-                no resume found
+                <h1>
+                    No resume found...
+                </h1>
             </div>
         )
     }
@@ -59,7 +74,9 @@ const Dashboard = () => {
     if (error) {
         return (
             <div>
-                {error}
+                <p style={{ color: '#be123c' }}>
+                    {error}
+                </p>
             </div>
         )
     }

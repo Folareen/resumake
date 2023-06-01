@@ -6,6 +6,8 @@ import { db } from '../../../firebase.config'
 import ResumeContainer from '../../components/ResumeContainer'
 import { showToolbar } from '../../redux/features/resumeSlice'
 import { RootState } from '../../redux/store'
+import { Puff } from 'react-loader-spinner'
+
 
 const SavedResume = () => {
     const [savedResume, setSavedResume] = useState(null)
@@ -94,15 +96,29 @@ const SavedResume = () => {
 
     if (fetching) {
         return (
-            <div>
-                fetching resume...
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: 'calc(100vh - 62px)' }}>
+                <div>
+                    <Puff
+                        height="120"
+                        width="120"
+                        radius={2}
+                        color="#4338ca"
+                        ariaLabel="puff-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                    />
+                    <p style={{ textAlign: 'center', color: '#4338ca', marginTop: '20px' }}>Fetching resume...</p>
+                </div>
             </div>
         )
     }
     if (!fetching && !savedResume) {
         return (
             <div>
-                resume not found...
+                <h1>
+                    Resume not found...
+                </h1>
             </div>
         )
     }
@@ -110,7 +126,9 @@ const SavedResume = () => {
     if (error) {
         return (
             <div>
-                {error}
+                <p style={{ color: '#be123c' }}>
+                    {error}
+                </p>
             </div>
         )
     }
