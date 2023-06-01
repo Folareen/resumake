@@ -111,7 +111,7 @@ const Toolbar = () => {
 
     return (
         <div className='toolbar'>
-            <ToolbarBtn
+            {/* <ToolbarBtn
                 tooltip="Hide toolbar"
                 className="hide-toolbar"
                 onClick={() => {
@@ -119,7 +119,7 @@ const Toolbar = () => {
                 }}
             >
                 X
-            </ToolbarBtn>
+            </ToolbarBtn> */}
             <ToolbarBtn
                 tooltip="Underline"
                 className="underline"
