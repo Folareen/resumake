@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import BoldAmbition from '../pages/public/templates/BoldAmbition'
 import ClassicElegance from '../pages/public/templates/ClassicElegance'
 import CleanAndSimple from '../pages/public/templates/CleanAndSimple'
@@ -19,6 +20,12 @@ import Templates from '../pages/public/Templates'
 import ForgotPassword from '../pages/auth/ForgotPassword'
 
 const PublicRoutes = () => {
+    const pathname = useLocation().pathname
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [pathname])
+
     return (
         <Routes>
             <Route path='/' element={<Landing />} />
