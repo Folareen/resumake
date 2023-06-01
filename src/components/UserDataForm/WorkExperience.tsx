@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { IoIosAdd } from 'react-icons/io'
+import { IoClose } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
 
@@ -8,7 +9,8 @@ type WorkExperienceType = {
     company: string,
     startDate: string,
     endDate: string,
-    jobDescription: string
+    jobDescription: string,
+    id: number
 }
 
 const WorkExperience = () => {
@@ -17,7 +19,8 @@ const WorkExperience = () => {
         company: ' ',
         startDate: ' ',
         endDate: ' ',
-        jobDescription: ' '
+        jobDescription: ' ',
+        id: 0
     }])
     const inputContainerRef = useRef()
 
@@ -28,6 +31,14 @@ const WorkExperience = () => {
         if (workExperiences.length === 0) return
         const filteredWorkExperiences = workExperiences.filter(workExperience => {
             return workExperience.jobTitle !== '' && workExperience.company !== '' && workExperience.startDate !== '' && workExperience.endDate !== '' && workExperience.jobDescription.length > 0
+        }).map((workExperience, index) => {
+            return {
+                jobTitle: workExperience.jobTitle,
+                company: workExperience.company,
+                startDate: workExperience.startDate,
+                endDate: workExperience.endDate,
+                jobDescription: workExperience.jobDescription,
+            }
         })
         dispatch(setUserData({
             key: 'workExperience',
@@ -49,17 +60,6 @@ const WorkExperience = () => {
     }
 
     useEffect(() => {
-        const emptyWorkExperienceExists = workExperiences.find(workExperience => {
-            return workExperience.jobTitle === '' || workExperience.company === '' || workExperience.startDate === '' || workExperience.endDate === '' || workExperience.jobDescription === ''
-        })
-        if (emptyWorkExperienceExists) {
-            setWorkExperiences(workExperiences.filter(workExperience => {
-                return workExperience.jobTitle !== '' && workExperience.company !== '' && workExperience.startDate !== '' && workExperience.endDate !== '' && workExperience.jobDescription !== ''
-            }))
-        }
-    }, [workExperiences])
-
-    useEffect(() => {
         if (workExperiences.length === 1) return
         inputContainerRef.current.scrollTop += 100
     }, [workExperiences])
@@ -75,7 +75,13 @@ const WorkExperience = () => {
                 <div className='multiple-input-container multiple' ref={inputContainerRef}>
                     {workExperiences.map((workExperience, index) => {
                         return (
-                            <div className='input-item'>
+                            <div className='input-item' key={workExperience.id}>
+                                <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                                    e.preventDefault()
+                                    setWorkExperiences(workExperiences.filter(work => workExperience.id !== work.id))
+                                }} className='del-item-btn'>
+                                    <IoClose />
+                                </button>
                                 <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Job title' name='jobTitle' className='' />
 
                                 <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='company' name='company' />
@@ -97,7 +103,8 @@ const WorkExperience = () => {
                             company: ' ',
                             startDate: ' ',
                             endDate: ' ',
-                            jobDescription: ' '
+                            jobDescription: ' ',
+                            id: workExperiences[workExperiences.length - 1]['id'] + 1 || 0
                         }])
                     }} className='add'>
                         <IoIosAdd />

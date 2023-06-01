@@ -110,7 +110,8 @@
                     align-items: center;
                     height: 300px;
                     overflow-y: auto;
-                    gap: 0.8em;
+                    overflow-x: hidden;
+                    gap: 1.2em;
                     margin-bottom: 1em;
                     padding: 0.5em;
                     padding-left: 0.25em;
@@ -146,6 +147,34 @@
                         border: none;
                         padding: 0.8em;
                         border-radius: 0.5em;
+                        position: relative;
+
+                        .del-item-btn {
+                            position: absolute;
+                            top: -0.5em;
+                            right: -0.5em;
+                            border: none;
+                            outline: none;
+                            color: #be123c;
+                            background-color: rgba(255, 255, 255, 0.9);
+                            font-size: 1rem;
+                            padding: 0.2em;
+                            box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.1);
+                            cursor: pointer;
+                            transition: all 0.2s ease-in-out;
+                            border-radius: 0.1em;
+                            @include center;
+
+                            @include tablet() {
+                                font-size: 1.3rem;
+                            }
+
+                            &:hover,
+                            &:focus {
+                                background-color: #be123c;
+                                color: rgba(255, 255, 255, 0.9);
+                            }
+                        }
 
                         &::placeholder {
                             color: #1e3b8a9f;

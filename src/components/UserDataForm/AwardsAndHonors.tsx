@@ -1,18 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { IoIosAdd } from 'react-icons/io'
+import { IoClose } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
 
 type AwardsAndHonorsType = {
     title: string,
     date: string,
+    id: number
 }
 
 const AwardsAndHonours = () => {
     const [awardsAndHonors, setAwardsAndHonors] = useState<AwardsAndHonorsType[]>([
         {
             title: ' ',
-            date: ' '
+            date: ' ',
+            id: 0
         }
     ])
     const inputContainerRef = useRef()
@@ -25,6 +28,13 @@ const AwardsAndHonours = () => {
         const filteredAwardsAndHonors = awardsAndHonors.filter(
             (awardAndHonour) => {
                 return awardAndHonour.title !== '' && awardAndHonour.date.length !== 0
+            }
+        ).map(
+            (awardAndHonor, index) => {
+                return {
+                    title: awardAndHonor.title,
+                    date: awardAndHonor.date,
+                }
             }
         )
         dispatch(setUserData({
@@ -42,17 +52,6 @@ const AwardsAndHonours = () => {
     }
 
     useEffect(() => {
-        const emptyAwardsAndHonorsExists = awardsAndHonors.find(awardAndHonour => {
-            return awardAndHonour.title === '' || awardAndHonour.date === ''
-        })
-        if (emptyAwardsAndHonorsExists) {
-            setAwardsAndHonors(awardsAndHonors.filter(awardAndHonour => {
-                return awardAndHonour.title !== '' && awardAndHonour.date !== ''
-            }))
-        }
-    }, [awardsAndHonors])
-
-    useEffect(() => {
         if (awardsAndHonors.length === 1) return
         inputContainerRef.current.scrollTop += 100
     }, [awardsAndHonors])
@@ -68,7 +67,16 @@ const AwardsAndHonours = () => {
                     {
                         awardsAndHonors.map((awardAndHonour, index) => {
                             return (
-                                <div key={index} className='input-item'>
+                                <div key={awardAndHonour.id} className='input-item' >
+                                    <button
+                                        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                                            e.preventDefault()
+                                            setAwardsAndHonors(awardsAndHonors.filter((awh) => awh.id !== awardAndHonour.id))
+                                        }}
+                                        className='del-item-btn'
+                                    >
+                                        <IoClose />
+                                    </button>
                                     <input type='text' onChange={(e) => onChange(e, index)} placeholder='title' name='title' />
                                     <input type='date' onChange={(e) => onChange(e, index)} placeholder='date' name='date' />
                                 </div>
@@ -80,6 +88,7 @@ const AwardsAndHonours = () => {
                         setAwardsAndHonors([...awardsAndHonors, {
                             title: ' ',
                             date: ' ',
+                            id: awardsAndHonors[awardsAndHonors.length - 1].id + 1 || 0
                         }])
                     }} className='add'>
                         <IoIosAdd />

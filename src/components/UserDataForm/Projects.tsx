@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { IoIosAdd } from 'react-icons/io'
+import { IoClose } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
 
@@ -7,13 +8,15 @@ type ProjectType = {
     title: string,
     description: string,
     links: string,
+    id: number
 }
 
 const Projects = () => {
     const [projects, setProjects] = useState<ProjectType[]>([{
         title: ' ',
         description: ' ',
-        links: ' '
+        links: ' ',
+        id: 0
     }])
     const inputContainerRef = useRef()
 
@@ -26,7 +29,13 @@ const Projects = () => {
             (project) => {
                 return project.title !== '' && project.description.length !== 0 && project.links.length !== 0
             }
-        )
+        ).map((project, index) => {
+            return {
+                title: project.title,
+                description: project.description,
+                links: project.links,
+            }
+        })
         dispatch(setUserData({
             key: 'projects',
             value: filteredProjects.map(project => {
@@ -48,17 +57,6 @@ const Projects = () => {
     }
 
     useEffect(() => {
-        const emptyProjectExists = projects.find(project => {
-            return project.title === '' || project.description === '' || project.links === ''
-        })
-        if (emptyProjectExists) {
-            setProjects(projects.filter(project => {
-                return project.title !== '' && project.description !== '' && project.links !== ''
-            }))
-        }
-    }, [projects])
-
-    useEffect(() => {
         if (projects.length === 1) return
         inputContainerRef.current.scrollTop += 100
     }, [projects])
@@ -71,7 +69,15 @@ const Projects = () => {
                     {
                         projects.map((project, index) => {
                             return (
-                                <div className='input-item' key={index}>
+                                <div className='input-item' key={project.id}>
+                                    <button
+                                        onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                                            e.preventDefault()
+                                            setProjects(projects.filter((prj, i) => prj.id !== project.id))
+                                        }}
+                                        className='del-item-btn'>
+                                        <IoClose />
+                                    </button>
                                     <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Job title' name='jobTitle' className='' />
 
                                     <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Linkss' name='company' />
@@ -86,7 +92,8 @@ const Projects = () => {
                         setProjects([...projects, {
                             title: ' ',
                             description: ' ',
-                            links: ' '
+                            links: ' ',
+                            id: projects[projects.length - 1]['id'] + 1 || 0
                         }])
                     }} className='add'>
                         <IoIosAdd />
