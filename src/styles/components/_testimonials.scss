@@ -1,7 +1,48 @@
-.testimonials{
+.testimony-card {
+    min-width: 250px;
+    height: max-content;
+    background-color: rgba(0, 0, 0, 0.4);
     color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 5px;
 
+    h4 {
+        text-align: right;
+        margin-top: 10px;
+    }
+}
+
+.testimonials {
+    width: 200%;
+    overflow: hidden;
     height: 200px;
-    width: 100%;
-    border: 1px solid whitesmoke;
+    position: relative;
+
+    &__inner {
+        width: 200%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: absolute;
+        left: 0;
+        animation: scroll 30s linear infinite;
+
+        .testimonies-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: max-content;
+        }
+    }
+}
+
+@keyframes scroll {
+    0% {
+        left: 0;
+    }
+
+    100% {
+        left: -100%;
+    }
 }
