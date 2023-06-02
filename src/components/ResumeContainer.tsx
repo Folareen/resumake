@@ -62,7 +62,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                             <div className='header-toolbar'>
                                 <select onChange={(e) => {
                                     dispatch(changeZoomLevel(e.target.value))
-                                }} value={zoomLevel}>
+                                }} value={zoomLevel} style={{ textTransform: 'capitalize' }}>
                                     {
                                         ['zoom 40', 'zoom 60', 'zoom 80', 'zoom 100'].map(
                                             (zoomLevel) => (
@@ -119,7 +119,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                                 <button onClick={() => {
                                                     dispatch(editResume())
                                                 }}>
-                                                    edit
+                                                    Edit
                                                 </button>
 
                                                 {/* <ReactToPdf filename={resumeID ? `${resumeID}.pdf` : `resume.pdf`} targetRef={resumeRef} options={{
