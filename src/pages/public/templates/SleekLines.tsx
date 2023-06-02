@@ -5,7 +5,7 @@ import ResumeContainer from '../../../components/ResumeContainer'
 import { RootState } from '../../../redux/store'
 
 const HeaderSection = () => {
-    const { userData: { profile: { name, profession }, contact: { address, phone, email, website } } } = useSelector((state: RootState) => state.resume)
+    const { userData: { profile: { name, profession }, contact: { phone, email, website } } } = useSelector((state: RootState) => state.resume)
 
     return (
         <div className='header'>
@@ -18,9 +18,9 @@ const HeaderSection = () => {
                 </ResEl>
             </div>
             <div className='contact'>
-                <ResEl className='address' tag='h6'>
+                {/* <ResEl className='address' tag='h6'>
                     {address}
-                </ResEl>
+                </ResEl> */}
                 <ResEl className='phone' tag='h6'>
                     {phone}
                 </ResEl>

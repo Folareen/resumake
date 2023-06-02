@@ -29,9 +29,9 @@ const MainRightSection = () => {
                 CONTACT
             </ResEl>
 
-            <ResEl className='address' tag='h6'>
+            {/* <ResEl className='address' tag='h6'>
                 {contact.address}
-            </ResEl>
+            </ResEl> */}
             <ResEl className='phone' tag='h6'>
                 {contact.phone}
             </ResEl>

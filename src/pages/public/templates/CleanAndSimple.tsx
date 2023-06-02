@@ -17,9 +17,9 @@ const CleanAndSimple = () => {
             <ResEl tag='h3' className='profession'>
                 {profile.profession}
             </ResEl>
-            <ResEl className='address'>
+            {/* <ResEl className='address'>
                 {contact.address}
-            </ResEl>
+            </ResEl> */}
 
             <ResEl className='phone-email'>
                 {contact.phone} |  {contact.email}

@@ -12,7 +12,7 @@ type ResumeState = {
             profession: string,
         },
         contact: {
-            address: string,
+            // address: string,
             phone: string,
             email: string,
             website: string,
@@ -71,7 +71,7 @@ const initialState: ResumeState = {
             profession: 'Project Manager',
         },
         contact: {
-            address: '1234 Main St, City, State 12345',
+            // address: '1234 Main St, City, State 12345',
             phone: '123-456-7890',
             email: 'johndoe@mail.com',
             website: 'johndoe.com',

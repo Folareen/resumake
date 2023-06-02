@@ -12,7 +12,7 @@ import ResumeContainer from '../../../components/ResumeContainer'
 import { RootState } from '../../../redux/store'
 
 const HeaderSection = () => {
-    const { userData: { profile: { name, profession }, contact: { address, phone, email, website } } } = useSelector((state: RootState) => state.resume)
+    const { userData: { profile: { name, profession }, contact: { phone, email, website } } } = useSelector((state: RootState) => state.resume)
 
     const [isMale, setIsMale] = useState<boolean>(true)
 
@@ -30,12 +30,12 @@ const HeaderSection = () => {
                 </ResEl>
             </div>
             <div className='contact'>
-                <div className='contact-item'>
+                {/* <div className='contact-item'>
                     <IoLocationSharp />
                     <ResEl className='address' tag='h6'>
                         {address}
                     </ResEl>
-                </div>
+                </div> */}
                 <div className='contact-item'>
                     <BsTelephoneFill />
                     <ResEl className='phone' tag='h6'>
