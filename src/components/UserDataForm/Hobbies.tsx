@@ -3,21 +3,23 @@ import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
 import { IoIosAdd } from 'react-icons/io'
 import { IoClose } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
 
-type SkillType = {
+type HobbyType = {
     hobby: string,
     id: number
 }
 
 
 const Hobbies = () => {
-    const [hobbies, setSkills] = useState<SkillType[]>([{
+    const [hobbies, setHobbies] = useState<HobbyType[]>([{
         hobby: ' ',
         id: 0
     }])
     const inputContainerRef = useRef()
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const onSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
@@ -47,15 +49,15 @@ const Hobbies = () => {
                         return (
                             <div className='input-item' key={hobby.id} >
                                 <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                                    let allSkills = hobbies
-                                    let currSkill = hobbies[index]
-                                    currSkill.hobby = e.target.value
-                                    allSkills[index] = currSkill
-                                    setSkills(allSkills)
+                                    let allHobbies = hobbies
+                                    let currHobby = hobbies[index]
+                                    currHobby.hobby = e.target.value
+                                    allHobbies[index] = currHobby
+                                    setHobbies(allHobbies)
                                 }} placeholder='hobby' className='input-item' />
                                 <button onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                                     e.preventDefault()
-                                    setSkills(hobbies.filter(sk => sk.id != hobby.id))
+                                    setHobbies(hobbies.filter(hob => hob.id != hobby.id))
                                 }} className='del-item-btn'>
                                     <IoClose />
                                 </button>
@@ -65,7 +67,7 @@ const Hobbies = () => {
                     }
                     <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
                         e.preventDefault()
-                        setSkills([...hobbies, {
+                        setHobbies([...hobbies, {
                             hobby: ' ',
                             id: hobbies[hobbies.length - 1]['id'] + 1 || 0
                         }])
@@ -76,6 +78,12 @@ const Hobbies = () => {
 
                 <button onClick={onSave} disabled={hobbies.length === 0} className="save">
                     Save
+                </button>
+                <button onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+                    e.preventDefault()
+                    navigate('/templates')
+                }} className="save" style={{ marginTop: '0.5em' }}>
+                    Generate Resume
                 </button>
             </form>
         </div>
