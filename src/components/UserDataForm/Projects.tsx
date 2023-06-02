@@ -78,11 +78,11 @@ const Projects = () => {
                                         className='del-item-btn'>
                                         <IoClose />
                                     </button>
-                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Job title' name='jobTitle' className='' />
+                                    <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Title' name='title' className='' />
 
-                                    <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Linkss' name='company' />
+                                    <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Links' name='links' />
 
-                                    <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Project description' name='description' />
+                                    <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Description' name='description' />
                                 </div>
                             )
                         })
