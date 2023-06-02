@@ -3,6 +3,7 @@ import { IoIosAdd } from 'react-icons/io'
 import { IoClose } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
+import formatDate from '../../utils/formatDate'
 
 type CertificationType = {
     title: string,
@@ -34,7 +35,7 @@ const Certification = () => {
                 return {
                     title: certification.title,
                     school: certification.school,
-                    date: certification.date,
+                    date: formatDate(certification.date),
                 }
             }
         )
@@ -79,7 +80,7 @@ const Certification = () => {
                                 </button>
                                 <input type='text' onChange={(e) => onChange(e, index)} placeholder='title' name='title' />
                                 <input type='text' onChange={(e) => onChange(e, index)} placeholder='school' name='school' />
-                                <input type='date' onChange={(e) => onChange(e, index)} placeholder='date' name='date' />
+                                <input type='month' onChange={(e) => onChange(e, index)} placeholder='date' name='date' />
                             </div>
                         )
                     })

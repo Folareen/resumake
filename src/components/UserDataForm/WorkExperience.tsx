@@ -3,6 +3,7 @@ import { IoIosAdd } from 'react-icons/io'
 import { IoClose } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
+import formatDate from '../../utils/formatDate'
 
 type WorkExperienceType = {
     jobTitle: string,
@@ -35,8 +36,8 @@ const WorkExperience = () => {
             return {
                 jobTitle: workExperience.jobTitle,
                 company: workExperience.company,
-                startDate: workExperience.startDate,
-                endDate: workExperience.endDate,
+                startDate: formatDate(workExperience.startDate),
+                endDate: formatDate(workExperience.endDate),
                 jobDescription: workExperience.jobDescription,
             }
         })
@@ -86,9 +87,9 @@ const WorkExperience = () => {
 
                                 <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='company' name='company' />
 
-                                <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
+                                <input type='month' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
 
-                                <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
+                                <input type='month' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
 
                                 <textarea onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => onChange(e, index)} placeholder='Job description' name='jobDescription' />
 

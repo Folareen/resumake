@@ -3,6 +3,7 @@ import { IoIosAdd } from 'react-icons/io'
 import { IoClose } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
+import formatDate from '../../utils/formatDate'
 
 type EducationType = {
     courseOfStudy: string,
@@ -33,7 +34,7 @@ const Education = () => {
             key: 'education',
             value: educations.filter(education => {
                 return education.courseOfStudy !== '' && education.school !== '' && education.degree !== '' && education.startDate !== '' && education.endDate !== ''
-            }).map(education => ({ courseOfStudy: education.courseOfStudy, school: education.school, degree: education.degree, startDate: education.startDate, endDate: education.endDate }))
+            }).map(education => ({ courseOfStudy: education.courseOfStudy, school: education.school, degree: education.degree, startDate: formatDate(education.startDate), endDate: formatDate(education.endDate) }))
         }))
     }
 
@@ -73,9 +74,9 @@ const Education = () => {
 
                                 <input type='text' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='degree' name='degree' />
 
-                                <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
+                                <input type='month' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='Start date' name='startDate' />
 
-                                <input type='date' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
+                                <input type='month' onChange={(e: React.ChangeEvent<HTMLInputElement>) => onChange(e, index)} placeholder='End date' name='endDate' />
                             </div>
                         )
                     })

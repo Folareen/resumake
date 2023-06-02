@@ -3,6 +3,7 @@ import { IoIosAdd } from 'react-icons/io'
 import { IoClose } from 'react-icons/io5'
 import { useDispatch } from 'react-redux'
 import { setUserData } from '../../redux/features/resumeSlice'
+import formatDate from '../../utils/formatDate'
 
 type AwardsAndHonorsType = {
     title: string,
@@ -33,7 +34,7 @@ const AwardsAndHonours = () => {
             (awardAndHonor, index) => {
                 return {
                     title: awardAndHonor.title,
-                    date: awardAndHonor.date,
+                    date: formatDate(awardAndHonor.date),
                 }
             }
         )
@@ -78,7 +79,7 @@ const AwardsAndHonours = () => {
                                         <IoClose />
                                     </button>
                                     <input type='text' onChange={(e) => onChange(e, index)} placeholder='title' name='title' />
-                                    <input type='date' onChange={(e) => onChange(e, index)} placeholder='date' name='date' />
+                                    <input type='month' onChange={(e) => onChange(e, index)} placeholder='date' name='date' />
                                 </div>
                             )
                         })
