@@ -12,6 +12,7 @@ import { addDoc, collection, deleteDoc, doc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase.config'
 import html2canvas from 'html2canvas'
 import SaveResumeModal from './modals/SaveResumeModal'
+import { useReactToPrint } from 'react-to-print'
 
 type ResumeContainerProps = {
     HeaderSection?: any,
@@ -35,7 +36,12 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
 
     const dispatch = useDispatch()
 
-    const [downloadingPdf, setDownloadingPdf] = useState(false)
+    // const [downloadingPdf, setDownloadingPdf] = useState(false)
+    const handlePrint = useReactToPrint({
+        content: () => resumeRef.current,
+        documentTitle: 'resume',
+        onPrintError: () => alert('error printing resume'),
+    })
 
     const { resumeID } = useParams()
     const { pathname } = useLocation()
@@ -116,7 +122,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                                     edit
                                                 </button>
 
-                                                <ReactToPdf filename={resumeID ? `${resumeID}.pdf` : `resume.pdf`} targetRef={resumeRef} options={{
+                                                {/* <ReactToPdf filename={resumeID ? `${resumeID}.pdf` : `resume.pdf`} targetRef={resumeRef} options={{
                                                     unit: 'px',
                                                 }} scale={1}>
                                                     {
@@ -145,7 +151,10 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                                                             </button>
                                                         )
                                                     }
-                                                </ReactToPdf>
+                                                </ReactToPdf> */}
+                                                <button onClick={handlePrint}>
+                                                    Download as Pdf
+                                                </button>
 
                                                 <button onClick={async () => {
                                                     const resumeEl = document.querySelector('.resume')
