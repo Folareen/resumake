@@ -1,6 +1,6 @@
 .testimony-card {
-    min-width: 250px;
-    height: max-content;
+    width: 250px;
+    min-height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     padding: 20px;
@@ -16,14 +16,15 @@
 .testimonials {
     width: 200%;
     overflow: hidden;
-    height: 200px;
+    min-height: 180px;
+    height: max-content;
     position: relative;
 
     &__inner {
         width: 200%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        // justify-content: space-around;
         position: absolute;
         left: 0;
         animation: scroll 30s linear infinite;
