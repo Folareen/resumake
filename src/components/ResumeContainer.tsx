@@ -53,18 +53,18 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
         },
     })
 
+    const { resumeID } = useParams()
+    const { pathname } = useLocation()
+
+    const [showSaveResModal, setShowSaveResModal] = useState(false)
+
     useEffect(() => {
-        if (formerZoomLevel !== zoomLevel) {
+        if (resumeID && (formerZoomLevel !== zoomLevel)) {
             console.log('after print', formerZoomLevel)
             resumeRef?.current.classList.remove('zoom-100')
             resumeRef?.current.classList.add(formerZoomLevel)
         }
     }, [formerZoomLevel])
-
-    const { resumeID } = useParams()
-    const { pathname } = useLocation()
-
-    const [showSaveResModal, setShowSaveResModal] = useState(false)
 
     return (
         <>
