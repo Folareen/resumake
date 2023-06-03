@@ -44,7 +44,7 @@ const SaveResumeModal = ({ modalVisible, setModalVisible }: ModalProps) => {
                         id: resumeId,
                         resume: resToSave.outerHTML
                     })
-                    if (resumeID) {
+                    if (resumeID && (resumeID !== resumeId)) {
                         await deleteDoc(doc(db, `${user.uid}-${user.email}`, resumeID))
                     }
                     navigate(`/saved-resumes/${resumeId}`)
