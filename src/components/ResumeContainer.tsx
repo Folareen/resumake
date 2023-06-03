@@ -201,7 +201,7 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
                             }
 
                             {
-                                resClassName ?
+                                resClassName != 'blank' ?
                                     <ResumeLayout resClassName={resClassName} HeaderSection={HeaderSection} FooterSection={FooterSection} MainLeftSection={MainLeftSection} MainRightSection={MainRightSection} isSectioned={isSectioned} resumeRef={resumeRef} mainLayout={mainLayout || ''} addDivider={addDivider}>
                                         {children}
                                     </ResumeLayout>
