@@ -29,6 +29,7 @@ type ResumeContainerProps = {
 
 const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRightSection, isSectioned, children, resumeRef, resClassName, mainLayout, addDivider }: ResumeContainerProps) => {
     const { showToolbar, editMode, zoomLevel } = useSelector((state: RootState) => state.resume)
+    const [formerZoomLevel, setFormerZoomLevel] = useState(zoomLevel.split(' ').join('-'))
 
     const [blankSectionLayout, setBlankSectionLayout] = useState('')
     const [addSectionLayoutDivider, setAddSectionLayoutDivider] = useState(false)
@@ -40,8 +41,25 @@ const ResumeContainer = ({ HeaderSection, FooterSection, MainLeftSection, MainRi
     const handlePrint = useReactToPrint({
         content: () => resumeRef.current,
         documentTitle: 'resume',
-        onPrintError: () => alert('error printing resume'),
+        onPrintError: () => {
+            toast.error('Error printing resume!')
+        },
+        onBeforeGetContent: () => {
+            const _formerZoomLevel = zoomLevel.split(' ').join('-')
+            console.log(_formerZoomLevel)
+            setFormerZoomLevel(_formerZoomLevel)
+            resumeRef?.current.classList.remove(_formerZoomLevel)
+            resumeRef?.current.classList.add('zoom-100')
+        },
     })
+
+    useEffect(() => {
+        if (formerZoomLevel !== zoomLevel) {
+            console.log('after print', formerZoomLevel)
+            resumeRef?.current.classList.remove('zoom-100')
+            resumeRef?.current.classList.add(formerZoomLevel)
+        }
+    }, [formerZoomLevel])
 
     const { resumeID } = useParams()
     const { pathname } = useLocation()
